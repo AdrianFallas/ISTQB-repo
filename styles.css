@@ -1,0 +1,201 @@
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    /* Color de fondo */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Altura completa de la ventana */
+    position: relative;
+    /* Necesario para el posicionamiento de otros elementos */
+}
+
+.container {
+    max-width: 800px;
+    /* Ancho máximo del contenedor */
+    margin: auto;
+    background: #fff;
+    /* Fondo blanco */
+    padding: 30px;
+    /* Aumentar el padding para más espacio */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Sombra más suave */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    width: 90%;
+    /* Ancho responsivo */
+}
+
+h1 {
+    text-align: center;
+    /* Centrar el título */
+    color: #333;
+    /* Color del texto */
+    font-size: 1.8em;
+    /* Tamaño de fuente más grande */
+    margin-bottom: 20px;
+    /* Espacio debajo del título */
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navigation a {
+    text-decoration: none;
+}
+
+#language-selector {
+    margin-bottom: 20px;
+    /* Espacio debajo del selector de idioma */
+    text-align: center;
+    /* Centrar el selector */
+}
+
+#language {
+    padding: 10px;
+    /* Espaciado interno del selector */
+    font-size: 16px;
+    /* Tamaño del texto del selector */
+    border: 1px solid #ccc;
+    /* Borde del selector */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    background-color: #f9f9f9;
+    /* Color de fondo del selector */
+}
+
+#timer {
+    font-size: 24px;
+    /* Tamaño del texto del cronómetro */
+    color: #ff0000;
+    /* Color rojo para el cronómetro */
+    position: fixed;
+    /* Posicionamiento fijo */
+    top: 20px;
+    /* Espacio desde la parte superior */
+    right: 20px;
+    /* Espacio desde la derecha */
+    z-index: 1000;
+    /* Asegurarse de que esté por encima de otros elementos */
+}
+
+.question {
+    margin: 20px 0;
+    /* Espaciado entre preguntas */
+    padding: 15px;
+    /* Espaciado interno para las preguntas */
+    border: 1px solid #ddd;
+    /* Borde ligero alrededor de cada pregunta */
+    border-radius: 5px;
+    /* Bordes redondeados para las preguntas */
+    background-color: #fafafa;
+    /* Color de fondo suave para las preguntas */
+}
+
+.options {
+    text-align: left;
+    /* Alinear las opciones a la izquierda */
+    margin-top: 10px;
+    /* Espacio encima de las opciones */
+}
+
+.options label {
+    display: block;
+    /* Mostrar cada opción en una nueva línea */
+    margin-bottom: 10px;
+    /* Espacio entre las opciones */
+    font-size: 16px;
+    /* Tamaño del texto de las opciones */
+}
+
+button {
+    display: block;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    min-width: 250px;
+    text-align: center;
+    margin: 5px 0;
+    /* Cambiar cursor al pasar sobre el botón */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+button:active {
+    transform: scale(0.98);
+    /* Efecto de pulsación al hacer clic */
+}
+
+.correct {
+    color: green;
+    /* Color para respuestas correctas */
+    font-weight: bold;
+    /* Negrita para respuestas correctas */
+}
+
+.incorrect {
+    color: red;
+    /* Color para respuestas incorrectas */
+    font-weight: bold;
+    /* Negrita para respuestas incorrectas */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1 .5em;
+        /* Tamaño de fuente más pequeño en pantallas pequeñas */
+    }
+
+    #timer {
+        font-size: 20px;
+        /* Tamaño de fuente más pequeño para el cronómetro */
+    }
+
+    button {
+        font-size: 14px;
+        /* Tamaño de fuente más pequeño para el botón */
+    }
+
+    .container {
+        padding: 20px;
+        /* Ajustar padding en pantallas pequeñas */
+    }
+
+    .question {
+        padding: 10px;
+        /* Menos espaciado interno para preguntas en pantallas pequeñas */
+    }
+
+    #language {
+        width: 100%;
+        /* Hacer que el selector ocupe todo el ancho */
+    }
+    
+}
+         /* Estilos para el dropdown */
+        .dropdown-content {
+            display: none;
+            flex-direction: column;
+            margin-top: 5px;
+            position: relative;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: flex;
+        }

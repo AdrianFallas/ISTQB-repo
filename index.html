@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MENU</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>MENU</h1>
+        <div class="navigation">
+            <a href="./Acceptance-Testing-Syllabus/index.html"><button type="button">Acceptance Testing</button></a>
+            <a href="./Agile-Technical-Tester-Syllabus/index.html"><button type="button">Agile Technical
+                    Tester</button></a>
+            <a href="./Agile-Testing-Syllabus/index.html"><button type="button">Agile Testing</button></a>
+
+            <div class="relative dropdown" id="dropdown">
+                <button id="dropdownBtn" type="button" style="min-width: 250px;">AI Testing</button>
+                <div class="dropdown-content">
+                    <a href="./AI-Testing/AI_Smple example1/index.html"><button type="button">AI Testing Example
+                            1</button></a>
+                    <a href="./AI-Testing/AI_Smple example2/index.html"><button type="button">AI Testing Example
+                            2</button></a>
+                </div>
+            </div>
+
+            <a href="./Automotive Software Tester/index.html"><button type="button">Automotive Software
+                    Tester</button></a>
+
+            <div class="relative dropdown" id="dropdown2">
+                <button id="dropdownBtn" type="button" style="min-width: 250px;">Gambling</button>
+                <div class="dropdown-content">
+                    <a href="./Gambling/Arturo solution/index.html"><button type="button">Gambling Solucion
+                            Arturo</button></a>
+                    <a href="./Gambling/Solucion base/Gambling/index.html"><button type="button">Gambling Solucion
+                            Base</button></a>
+                </div>
+            </div>
+
+
+            <a href="./Game/index.html"><button type="button">Game</button></a>
+            <a href="./Iot Mobile/index.html"><button type="button">Iot</button></a>
+            <a href="./Mobile application/index.html"><button type="button">Mobile Application</button></a>
+            <a href="./Model-Based/index.html"><button type="button">Model Based</button></a>
+
+            <div class="relative dropdown" id="dropdown3">
+                <button id="dropdownBtn" type="button" style="min-width: 250px;">Performance Testing</button>
+                <div class="dropdown-content">
+                    <a href="./Performance Testing/Example 1/index.html"><button type="button">Performance Testing
+                            Example 1</button></a>
+                    <a href="./Performance Testing/Example 2/index.html"><button type="button">Performance Testing
+                            Example 2</button></a>
+                </div>
+            </div>
+
+            <a href="./Security-Advance/index.html"><button type="button">Security Advance</button></a>
+            <a href="./Technical Test Analyst/index.html"><button type="button">Technical Test Analyst</button></a>
+
+            <div class="relative dropdown" id="dropdown4">
+                <button id="dropdownBtn" type="button" style="min-width: 250px;">Test Analyst Advance</button>
+                <div class="dropdown-content">
+                    <a href="./Test Analyst Advance/Example 1/index.html"><button type="button">Test Analyst Advance
+                            Example 1</button></a>
+                    <a href="./Test Analyst Advance/Example 2/index.html"><button type="button">Test Analyst Advance
+                            Example 2</button></a>
+                </div>
+            </div>
+
+
+            <div class="relative dropdown" id="dropdown5">
+                <button id="dropdownBtn" type="button" style="min-width: 250px;">Test Automation Engineering</button>
+                <div class="dropdown-content">
+                    <a href="./Test Automation Engineering Advance/Example 1/index.html"><button type="button">Test
+                            Automation Engineering Advance Example 1</button></a>
+                    <a href="./Test Automation Engineering Advance/Example 2/index.html"><button type="button">Test
+                            Automation Engineering Advance Example 2</button></a>
+                </div>
+            </div>
+
+
+            <div class="relative dropdown" id="dropdown6">
+                <button id="dropdownBtn" type="button" style="min-width: 250px;">Test Automation Strategy</button>
+                <div class="dropdown-content">
+                    <a href="./Test Automation Strategy/Example 1/index.html"><button type="button">Test Automation
+                            Strategy Example 1</button></a>
+                    <a href="./Test Automation Strategy/Example 2/index.html"><button type="button">Test Automation
+                            Strategy Example 2</button></a>
+                </div>
+            </div>
+
+
+            <div class="relative dropdown" id="dropdown7">
+                <button id="dropdownBtn" type="button" style="min-width: 250px;">Test Management Advance</button>
+                <div class="dropdown-content">
+                    <a href="./Test Management-Advance/Example 1/index.html"><button type="button">Test Management
+                            Advance Example 1</button></a>
+                    <a href="./Test Management-Advance/Example 2/index.html"><button type="button">Test Management
+                            Advance Example 2</button></a>
+                </div>
+            </div>
+
+            <a href="./Test Management-Expert/index.html"><button type="button">Test Management Expert</button></a>
+            <a href="./Usability Testing/index.html"><button type="button">Usability Testing</button></a>
+
+        </div>
+        <script>
+            // Funcionalidad del dropdown
+            const dropdowns = [document.getElementById('dropdown'), document.getElementById('dropdown2'), document.getElementById('dropdown3'), document.getElementById('dropdown4'), document.getElementById('dropdown5'), document.getElementById('dropdown6'), document.getElementById('dropdown7')];
+            dropdowns.forEach((dropdown, index) => {
+                const dropdownBtn = dropdown.querySelector('button');
+                dropdownBtn.addEventListener('click', () => {
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Cerrar el dropdown al hacer clic fuera de él
+            document.addEventListener('click', (e) => {
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            });
+        </script>
+</body>
+
+</html>

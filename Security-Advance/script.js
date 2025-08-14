@@ -181,7 +181,7 @@ const questions = [
             "Investigar la extensión del problema realizando más pruebas en la versión planificada con particular concentración en otros problemas XSS, realizar un análisis estático del código.",
             "Informar a la dirección, documentar el defecto e incluirlo en tu informe de estado semanal a los interesados, continuar probando otros defectos de seguridad para determinar la extensión de los problemas de seguridad."
         ],
-                correctAnswer: 1,
+        correctAnswer: 1,
         urlImage: ""
     },
     {
