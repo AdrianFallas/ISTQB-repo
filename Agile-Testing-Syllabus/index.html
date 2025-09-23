@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Agile Testing</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
     <div class="container">
         <h1>Agile Testing Specialist</h1>
-        <div id="timer">40:00</div> <!-- Elemento para el cronómetro -->
+        <div id="language-selector" style="text-align:center; margin-bottom: 20px;">
+            <select id="language">
+                <option value="es">Español</option>
+                <option value="en">English</option>
+                <option value="pt">Português</option>
+            </select>
+        </div>
+
+        <div id="timer">40:00</div>
+
         <form id="quiz-form">
             <div id="questions-container"></div>
             <div class="navigation">
                 <button type="button" id="next-btn">Siguiente</button>
             </div>
         </form>
+
+        <div id="result-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+      background: rgba(0,0,0,0.5); justify-content:center; align-items:center;">
+            <div
+                style="background:#fff; padding:20px; border-radius:8px; max-width:400px; width:90%; text-align:center;">
+                <div id="result-message"></div>
+                <button id="restart-btn" style="display:none; margin-top:15px;">Reiniciar</button>
+                <button id="close-modal" style="margin-top:15px;">Cerrar</button>
+            </div>
+        </div>
     </div>
+    <script src="./traducciones/script.Es.js"></script>
+    <script src="./traducciones/script.En.js"></script>
+    <!--<script src="./traducciones/pt.js"></script>
+  Incluye aquí los otros idiomas si los tienes -->
     <script src="script.js"></script>
 </body>
+
 </html>

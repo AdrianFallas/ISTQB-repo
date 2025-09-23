@@ -1,772 +1,538 @@
-const questions = [
-  {
-    question: "Si deseas crear automatización de pruebas que interactúe con el software que el usuario ve e interactúa, ¿cuál debería ser tu objetivo?",
-    options: [
-      "a. Las APIs",
-      "b. Las bibliotecas del SUT",
-      "c. Los protocolos utilizados por el SUT",
-      "d. La GUI"
-    ],
-    correctAnswer: 3, // La opción correcta es d)
-    urlImage: " "
-  },
-  {
-    question: "¿Cuál de los siguientes es necesario para probar APIs?",
-    options: [
-      "a. Deben tener recuperación de errores completa",
-      "b. Deben trabajar con una interfaz estándar y estar completamente documentadas",
-      "c. Deben estar expuestas al público",
-      "d. Deben ser capaces de manejar cualquier combinación de datos"
-    ],
-    correctAnswer: 2, // La opción correcta es c)
-    urlImage: " "
-  },
-  {
-    question: "¿Por qué es importante tener un entorno de prueba estable y datos de prueba al ejecutar pruebas automatizadas?",
-    options: [
-      "a. Esto permite que el entorno y los datos se compartan con pruebas manuales",
-      "b. Los resultados de las pruebas son confiables y repetibles",
-      "c. Se minimizan los falsos positivos",
-      "d. Es mejor tener inestabilidad en el entorno y los datos, ya que eso amplía la cobertura de pruebas"
-    ],
-    correctAnswer: 1, // La opción correcta es b)
-    urlImage: " "
-  },
-   {
-    question: "Al crear una solución completa de automatización de pruebas para un SUT, ¿cuánto código de automatización de pruebas se espera que sea necesario?",
-    options: [
-      "a. Ninguno, ya que esto no es posible porque no existen soluciones de automatización completas",
-      "b. Tanto como o más que el SUT",
-      "c. Ligeramente menos que el SUT",
-      "d. Normalmente entre el 20-35% de la cantidad de código del SUT"
-    ],
-    correctAnswer: 1, // La opción correcta es a)
-    urlImage: " "
-  },
-  {
-    question: "¿Cuál de los siguientes es lo más importante que debe estar en su lugar antes de prepararse para comenzar un gran proyecto de automatización?",
-    options: [
-      "a. Implementar una herramienta para usar en la implementación de la automatización",
-      "b. Un ROI aceptado",
-      "c. Casos de prueba claramente definidos y precisos",
-      "d. Un plan de pruebas"
-    ],
-    correctAnswer: 1, // La opción correcta es b)
-    urlImage: " "
-  },
-   {
-    question: "Tu organización desea desarrollar automatización de pruebas para una aplicación móvil. No tienen el personal técnico para hacer el trabajo y son reacios a invertir en herramientas, pero reconocen la necesidad de automatización de pruebas para esta aplicación en particular. ¿Cuál de las siguientes es la mejor solución a seguir?",
-    options: [
-      "a. Basada en proveedores",
-      "b. Externalizada",
-      "c. Interna",
-      "d. Basada en herramientas"
-    ],
-    correctAnswer: 1, // La opción correcta es b)
-    urlImage: " "
-  },
-  {
-    question: "Tienes un equipo de 10 ingenieros de automatización de pruebas, pero solo cinco de ellos usarán la herramienta al mismo tiempo. Estás pagando por 10 licencias. ¿Qué tipo de modelo estás utilizando?",
-    options: [
-      "a. Código abierto",
-      "b. Por máquina/usuario",
-      "c. Flotante",
-      "d. Tiempo de ejecución"
-    ],
-    correctAnswer: 1, // La opción correcta es a)
-    urlImage: " "
-  },
-  {
-    question: "¿De qué manera es el sistema de gestión de pruebas una consideración en el presupuesto de automatización de pruebas?",
-    options: [
-      "a. No es un factor",
-      "b. Dado que el sistema de gestión de pruebas generará los informes de defectos para los defectos encontrados por la automatización de pruebas, los campos de defectos deben estar claramente definidos y eso tomará tiempo y esfuerzo",
-      "c. Los paneles y reportes del sistema de gestión de pruebas tendrán que actualizarse para proporcionar un estado de mitigación de riesgos en tiempo real a la automatización de pruebas",
-      "d. El sistema de gestión de pruebas tendrá una interfaz con las herramientas de automatización de pruebas para proporcionar actualizaciones sobre la ejecución de pruebas"
-    ],
-    correctAnswer: 3, // La opción correcta es d)
-    urlImage: " "
-  },
-  {
-    question: "En el equipo de automatización, ¿quién se espera que tenga conocimientos de programación y arquitectura técnica?",
-    options: [
-      "a. El SME",
-      "b. El gerente de pruebas",
-      "c. El analista de pruebas",
-      "d. El ingeniero de automatización de pruebas"
-    ],
-    correctAnswer: 3, // La opción correcta es d)
-    urlImage: " "
-  },
-  {
-    question: "En el modelo de prueba de paraguas, ¿cuál es el enfoque principal de la automatización de pruebas?",
-    options: [
-      "a. Pruebas de UI",
-      "b. Pruebas de servicios",
-      "c. Pruebas unitarias",
-      "d. Pruebas de integración"
-    ],
-    correctAnswer: 0, // La opción correcta es a)
-    urlImage: " "
-  },
-  {
-    question: "Estás probando el nivel de UI de una aplicación bancaria. Encuentras que funciona bien en la mayoría de las transacciones, pero cada vez que se utiliza una dirección, hay errores respecto al formato esperado, a pesar de que el formato ingresado es correcto según los requisitos. ¿Qué nivel de prueba probablemente se pasó por alto, lo que ha resultado en estos errores?",
-    options: [
-      "a. Unidad",
-      "b. API",
-      "c. Contrato",
-      "d. UI"
-    ],
-    correctAnswer: 2, // La opción correcta es b)
-    urlImage: " "
-  },
-  {
-    question: "Si hay un enfoque principal en construir automatización de pruebas que pueda ejecutarse en los entornos de producción o pre-producción para proporcionar pruebas de extremo a extremo en el sistema completado, ¿qué enfoque se está utilizando?",
-    options: [
-      "a. Shift left",
-      "b. Shift right",
-      "c. Shift up",
-      "d. Shift down"
-    ],
-    correctAnswer: 1, // La opción correcta es b)
-    urlImage: " "
-  },
-  {
-    question: "¿Cuál de las siguientes es una afirmación verdadera respecto a la automatización de pruebas en un proyecto V-model?",
-    options: [
-      "a. La automatización de pruebas comienza más tarde que en un proyecto Agile",
-      "b. La automatización de pruebas comienza antes que en un proyecto Agile",
-      "c. La automatización de pruebas no es posible debido a los largos ciclos de desarrollo",
-      "d. La automatización de pruebas resultará en un ROI más alto que en un proyecto Agile"
-    ],
-    correctAnswer: 0, // La opción correcta es a)
-    urlImage: " "
-  },
-   {
-    question: "En el proyecto ideal de desarrollo de software Agile, ¿cuándo deberían integrarse los casos de prueba automatizados para un sprint en el pipeline de CI/CD?",
-    options: [
-      "a. Al comienzo del sprint",
-      "b. Antes de que termine el sprint",
-      "c. Inmediatamente antes de que comience SIT",
-      "d. Inmediatamente después de UAT"
-    ],
-    correctAnswer: 1, // La opción correcta es b)
-    urlImage: " "
-  },
-  {
-    question: "Tu equipo está desarrollando una nueva aplicación móvil. Esta será la primera vez que la organización intente implementar un enfoque DevOps. El producto está siendo desarrollado por tres equipos Agile, uno haciendo el front end, uno haciendo los servicios web y uno manejando las transacciones de la base de datos. Los desarrolladores de servicios web han desarrollado las pruebas unitarias automatizadas que están ejecutando en sus propias máquinas antes de la implementación. ¿Qué necesitan hacer para cumplir con las mejores prácticas?",
-    options: [
-      "a. Necesitan asegurarse de que otro desarrollador haya revisado y pueda ejecutar las pruebas",
-      "b. Necesitan desplegar las pruebas en el pipeline de DevOps y asegurarse de que se ejecuten en el entorno de implementación cada vez que se despliega código",
-      "c. Necesitan desplegar las pruebas en el pipeline de DevOps y asegurarse de que las pruebas se ejecuten en el entorno de prueba cada vez que se despliega y construye nuevo código",
-      "d. Necesitan implementar infraestructura como código para crear el entorno de prueba, luego desplegar las pruebas en el pipeline de DevOps y asegurarse de que las pruebas se ejecuten en el nuevo entorno de prueba construido cada vez que se despliega y construye código nuevo o cambiado"
-    ],
-    correctAnswer: 1, // La opción correcta es b)
-    urlImage: " "
-  },
-   {
-    question: "¿Cuál de las siguientes pruebas es la mejor candidata para la automatización?",
-    options: [
-      "a. Prueba de recuperación de errores para una aplicación móvil que requiere reinicios frecuentes del teléfono",
-      "b. Prueba de UI que valida que la navegación es adecuada para varias clases de usuarios",
-      "c. Prueba de flujo de trabajo crítico que requiere que múltiples usuarios proporcionen aprobaciones durante el flujo de trabajo",
-      "d. Prueba de cálculo de hipoteca que requiere entrada de múltiples tablas de datos para determinar la tasa adecuada"
-    ],
-    correctAnswer: 3, // La opción correcta es d)
-    urlImage: " "
-  },
-  {
-    question: "Tu equipo está trabajando con un pipeline de CI/CD. Hasta ahora, todas las pruebas se han realizado manualmente con el código integrado desplegado en un entorno de prueba. Si deseas implementar la automatización, ¿cómo podría cambiar esto para incorporar las mejores prácticas?",
-    options: [
-      "a. La automatización de pruebas podría incluirse en el pipeline y ejecutarse allí para las pruebas tempranas (unitarias, integración de componentes)",
-      "b. La automatización de pruebas podría reemplazar las pruebas manuales de extremo a extremo y pueden llevarse a cabo en los entornos de prueba",
-      "c. Automatizar algunas de las pruebas más fáciles, pero mantener las pruebas cruzadas de navegador para pruebas manuales",
-      "d. Minimizar la ejecución de pruebas en el pipeline y concentrarse en ejecutar la automatización de pruebas en el entorno cercano a producción"
-    ],
-    correctAnswer: 0, // La opción correcta es a)
-    urlImage: " "
-  },
-  {
-    question: "Estás automatizando una nueva aplicación web. Uno de los escenarios de prueba es probar la función de tiempo de espera que cierra la sesión si la aplicación ha estado inactiva durante más de una hora. ¿Se puede automatizar esta prueba?",
-    options: [
-      "a. No, requiere demasiado tiempo esperar por el tiempo de espera",
-      "b. No, la automatización de pruebas no puede realizar pruebas relacionadas con el tiempo",
-      "c. Sí, pero requerirá intervención manual para cronometrar el tiempo de espera y luego reiniciar la automatización para verificar el resultado",
-      "d. Sí, pero debes verificar que otras pruebas puedan ejecutarse de manera eficiente mientras esta espera por el tiempo de espera"
-    ],
-    correctAnswer: 3, // La opción correcta es d)
-    urlImage: " "
-  },
-  {
-    question: "Si hay una necesidad urgente de que un producto llegue al mercado lo antes posible, ¿cómo puede ayudar la automatización de pruebas?",
-    options: [
-      "a. Al mover las pruebas hacia la izquierda",
-      "b. Al mover las pruebas hacia la derecha",
-      "c. Al minimizar el número de pruebas que se deben ejecutar",
-      "d. Al limitar los datos de prueba que son ejercitados por las pruebas"
-    ],
-    correctAnswer: 0, // La opción correcta es a)
-    urlImage: " "
-  },
-  {
-    question: "¿Cómo se llama una prueba automatizada cuando se utiliza para verificar que un defecto ha sido corregido y permanece corregido?",
-    options: [
-      "a. Prueba de regresión",
-      "b. Prueba de confirmación",
-      "c. Prueba de defecto",
-      "d. Prueba dirigida"
-    ],
-    correctAnswer: 1, // La opción correcta es b)
-    urlImage: " "
-  },
-  {
-    question: "DevOps asume la participación de los equipos de desarrollo y operaciones en la creación de un producto. ¿Cuál de las siguientes pruebas es de particular interés para el equipo de operaciones?",
-    options: [
-      "a. Pruebas unitarias",
-      "b. Pruebas de confirmación",
-      "c. Pruebas de instalación",
-      "d. Pruebas del sistema"
-    ],
-    correctAnswer: 2, // La opción correcta es c)
-    urlImage: " "
-  },
-  {
-    question: "¿Cómo afecta la licencia de herramientas de prueba a la selección estratégica de la herramienta de automatización de pruebas?",
-    options: [
-      "a. Costo",
-      "b. ROI",
-      "c. Acceso desde múltiples entornos de prueba",
-      "d. Número de licencias que estarán disponibles para los desarrolladores"
-    ],
-    correctAnswer: 2, // La opción correcta es c)
-    urlImage: " "
-  },
-  {
-    question: "¿Por qué es necesario rastrear las versiones del software de automatización de pruebas?",
-    options: [
-      "a. Porque diferentes versiones pueden ser necesarias para diferentes configuraciones del entorno de prueba",
-      "b. Porque puede que necesites volver a una versión anterior cuando se descubra un defecto en el SUT",
-      "c. Porque es más fácil rastrear la productividad de los ingenieros de automatización cuando todos los cambios están versionados",
-      "d. Porque los desarrolladores podrán ver qué cambios se están realizando en la automatización y sabrán qué defectos serán detectados por una versión particular"
-    ],
-    correctAnswer: 0, // La opción correcta es a)
-    urlImage: " "
-  },
-  {
-    question: "Has desarrollado automatización de pruebas para un gran sistema de Planificación de Recursos Empresariales (ERP). Este es un producto en la nube como Servicio (SaaS) que será actualizado por el proveedor a intervalos regulares. ¿Cuál de los siguientes es un riesgo con el software de automatización de pruebas para este sistema?",
-    options: [
-      "a. Puede que no migre de manera limpia a un nuevo entorno de prueba",
-      "b. Los datos de prueba no pueden ser creados antes de la implementación",
-      "c. Puede ser demasiado difícil descifrar los resultados de las pruebas porque es una implementación en la nube",
-      "d. Puede ser difícil mantener a los ingenieros de prueba que conocen el sistema para hacer futuras actualizaciones"
-    ],
-    correctAnswer: 3, // La opción correcta es d)
-    urlImage: " "
-  },
-  {
-    question: "¿Cuál es el propósito principal de ejecutar la suite de automatización de pruebas para realizar pruebas de regresión en una nueva versión del SUT?",
-    options: [
-      "a. Detectar si algo ha cambiado",
-      "b. Detectar si algo que solía funcionar no está funcionando",
-      "c. Verificar las correcciones de defectos y actualizar la TAS según sea necesario",
-      "d. Practicar la ejecución de la suite de automatización de pruebas"
-    ],
-    correctAnswer: 1, // La opción correcta es b)
-    urlImage: " "
-  },
-  {
-    question: "¿Cuál es el propósito de una suite de automatización de pruebas?",
-    options: [
-      "a. Es una forma de agrupar lógicamente casos de prueba relacionados",
-      "b. Es un componente requerido del TAF",
-      "c. Es una colección de archivos de salida creados por los scripts de automatización de pruebas",
-      "d. Es una matriz de trazabilidad de riesgos utilizada específicamente para la automatización de pruebas"
-    ],
-    correctAnswer: 0, // La opción correcta es a)
-    urlImage: " "
-  },
-  {
-    question: "¿Cuál de las siguientes es una consideración cuando varias máquinas ejecutarán las pruebas de automatización en paralelo para simular escenarios de usuario realistas?",
-    options: [
-      "Los usuarios reales deberán iniciar sesión en cada máquina antes de la ejecución",
-      "Reunir los resultados de las pruebas será difícil",
-      "Las máquinas deberán estar en la misma red y pueden necesitar comunicarse entre sí",
-      "Las máquinas deberán configurarse de manera idéntica para no sesgar los resultados de las pruebas debido a diferencias de memoria u otros recursos"
-    ],
-    correctAnswer: 2, // La opción correcta es c)
-    urlImage: ""
-  },
-  {
-    question: "Algunos scripts de automatización de pruebas verifican los datos accediendo directamente a la base de datos y comprobando los valores allí. ¿Es esto una buena práctica?",
-    options: [
-      "No, tenderá a introducir falsos negativos debido a errores de scripting",
-      "No, es un acceso irreal de los datos",
-      "Sí, permite verificar los cambios de datos esperados",
-      "Sí, es una buena práctica que los ingenieros de automatización comprendan la estructura de la base de datos y conviertan ese entendimiento en un requisito"
-    ],
-    correctAnswer: 2, // La opción correcta es c)
-    urlImage: ""
-  },
-   {
-    question: "Has calculado los siguientes ahorros esperados de la automatización de pruebas: dados estos números, ¿cuál de los siguientes es el ahorro esperado correcto (en minutos)?",
-    options: [
-      "3.000.000 minutos",
-      "300.000 minutos",
-      "30.000 minutos",
-      "30 minutos"
-    ],
-    correctAnswer: 2, // La opción correcta es c)
-    urlImage: "./tabla preg29.png"
-  },
-  {
-    question: "Has calculado la inversión esperada para un proyecto de automatización de pruebas. Dados estos números, ¿cuál de los siguientes es el costo de inversión correcto (en minutos)?",
-    options: [
-      "3.240.000 minutos",
-      "324.000 minutos",
-      "32.400 minutos",
-      "3.240 minutos"
-    ],
-    correctAnswer: 2, // La opción correcta es c)
-    urlImage: "./tabla preg30.png"
-  },
-  {
-    question: "Si acabas de ejecutar tu suite de automatización de pruebas y reportó 50 fallos cuando normalmente informa 1 o 2, ¿qué deberías hacer?",
-    options: [
-      "Crear un informe de defecto por cada fallo para que el desarrollador lo resuelva",
-      "Crear un informe de defecto por cada fallo para que el ingeniero de automatización lo corrija",
-      "Buscar un defecto en cascada donde un solo problema haya causado múltiples fallos",
-      "Verificar que las capturas de pantalla sean válidas y que no haya habido una falla interna de la automatización de pruebas"
-    ],
-    correctAnswer: 2, // La opción correcta es c)
-    urlImage: ""
-  },
-   {
-    question: "Estás trabajando en una organización que siempre prefiere usar herramientas comerciales de automatización de pruebas. El proyecto anterior implementó una herramienta muy cara, pero el equipo no pudo automatizar mucho debido a que la herramienta era inflexible. El proyecto fue abandonado y el equipo renunció. Ahora estás eligiendo una herramienta para tu proyecto. ¿Qué deberías hacer?",
-    options: [
-      "Evitar usar esa herramienta",
-      "Investigar los problemas técnicos con la herramienta para ver si había alternativas de implementación factibles que el equipo no haya considerado",
-      "Asegurar que tu proyecto tenga tiempo suficiente para un fallo de herramienta y tiempo para aprender una nueva en caso de que la primera no funcione",
-      "Optar por una herramienta de código abierto que te brinde mejor flexibilidad y control sobre la implementación"
-    ],
-    correctAnswer: 1, // La opción correcta es b)
-    urlImage: ""
-  },
-  {
-    question: "Estás trabajando en un proyecto de automatización de pruebas para un sistema de inmigración. Ya existe un gran número de casos de prueba manuales que se han usado durante varios años. Se determinó que la cobertura de estos casos de prueba es muy buena y los casos están priorizados según la criticidad para el sistema y los usuarios. Dada solo esta información, ¿qué debería ser tu primera prioridad en la automatización de pruebas?",
-    options: [
-      "Automatizar los flujos de usuario de extremo a extremo",
-      "Automatizar los casos de prueba manuales existentes en orden de prioridad",
-      "Capacitar a tu equipo acerca de las prácticas y reglas de inmigración",
-      "Capacitar a los usuarios de negocio en cómo generar código de automatización de pruebas a partir de los requisitos"
-    ],
-    correctAnswer: 1, // La opción correcta es b)
-    urlImage: ""
-  },
-  {
-    question: "Estás creando una estrategia de automatización de pruebas para un nuevo producto insignia de tu empresa. Sabes que la gerencia se muestra reticente a comprometerse con un esfuerzo de automatización. ¿Qué debes presentarles para convencerlos de respaldar un nuevo esfuerzo de automatización?",
-    options: [
-      "Los antecedentes y la experiencia del equipo propuesto de automatización de pruebas",
-      "El valor de negocio de la automatización de pruebas",
-      "El costo del esfuerzo de automatización en comparación con el esfuerzo de desarrollo, incluyendo herramientas",
-      "La comparación del producto actual con los productos de la competencia"
-    ],
-    correctAnswer: 1, // La opción correcta es b)
-    urlImage: ""
-  },
-  {
-    question: "¿Cómo puede el reporte de automatización de pruebas indicar que hay necesidad de desplazar las pruebas más a la izquierda?",
-    options: [
-      "Encontrando problemas significativos que ocurren a nivel de componente funcional",
-      "Encontrando problemas significativos que ocurren en la integración de componentes individuales",
-      "Encontrando problemas significativos que ocurren al probar transacciones de usuario",
-      "Encontrando problemas significativos que ocurren en flujos de trabajo de extremo a extremo"
-    ],
-    correctAnswer: 0, // La opción correcta es a)
-    urlImage: ""
-  },
-    {
-        question: "¿Cómo ayuda la creación de componentes reutilizables al esfuerzo de automatización de pruebas?",
-        options: [
-            "A. Lo ralentiza, permitiendo más tiempo para el análisis.",
-            "B. Emplea arquitectos de automatización para definir la solución de automatización de pruebas.",
-            "C. Permite que los componentes se creen y mantengan en un solo lugar, pero se utilicen en muchos.",
-            "D. Soporta un entorno de ejecución distribuido que puede permitir que más agentes de automatización se ejecuten de manera concurrente."
-        ],
-        correctAnswer: 2, // La opción correcta es C
-        urlImage: ""
-    },
-    {
-        question: "¿Qué les sucede a los testers manuales cuando una suite de automatización de pruebas ha automatizado la mayor parte de las pruebas que históricamente han realizado?",
-        options: [
-            "A. Necesitan encontrar nuevos trabajos.",
-            "B. Necesitan convertirse en ingenieros de automatización de pruebas.",
-            "C. Ahora tienen tiempo para ampliar la cobertura de pruebas.",
-            "D. Ahora tienen tiempo para crear más datos de prueba."
-        ],
-        correctAnswer: 2, // La opción correcta es C
-        urlImage: ""
-    },
-    {
-        question: "¿Qué se debe hacer antes de desplegar un nuevo conjunto de pruebas en el TAS en un entorno de pruebas continuas?",
-        options: [
-            "A. Las pruebas existentes deben ser probadas de regresión.",
-            "B. Las nuevas pruebas deben ser probadas.",
-            "C. Las nuevas pruebas deben someterse a pruebas de rendimiento y seguridad.",
-            "D. La canalización debe extenderse para capturar métricas de prueba e información de defectos."
-        ],
-        correctAnswer: 1, // La opción correcta es B
-        urlImage: ""
-    },
-    {
-        question: "Tu automatización de pruebas está fallando durante la ejecución. Has realizado un análisis de causa raíz y has determinado que los problemas se deben casi siempre a los datos. En particular, los datos no están disponibles o no están en el estado correcto. Por ejemplo, tienes una prueba que se supone que debe encontrar y eliminar cuentas de usuario no utilizadas, pero no hay cuentas no utilizadas disponibles para eliminar. ¿Qué necesitas hacer para solucionar este problema?",
-        options: [
-            "A. Crear programáticamente las precondiciones requeridas por las pruebas.",
-            "B. Alterar manualmente los datos antes de ejecutar las pruebas.",
-            "C. Pedir a las personas de la base de datos que busquen y te proporcionen una lista de datos de prueba válidos.",
-            "D. Omitir esta prueba hasta que los datos estén disponibles."
-        ],
-        correctAnswer: 0, // La opción correcta es A
-        urlImage: ""
-    },
-    {
-        question: "Tu equipo de automatización ha estado añadiendo pruebas automatizadas en la canalización de CI/CD a medida que se desarrollan nuevas características. Los desarrolladores ahora se quejan de que la canalización se está ralentizando por las pruebas. Ellos piensan que hay demasiadas pruebas en ejecución. ¿Qué deberías hacer?",
-        options: [
-            "A. Ignorar a los desarrolladores, las pruebas son necesarias.",
-            "B. Realizar pruebas de rendimiento para las pruebas y ver si son lo más eficientes posible.",
-            "C. Revisar las pruebas que se están ejecutando e incluir solo las críticas en la canalización y ejecutar el resto como una suite de pruebas de regresión durante la noche.",
-            "D. Implementar ejecución por lotes donde todas las pruebas se dividan en tres conjuntos y solo se ejecute un conjunto a la vez para un despliegue."
-        ],
-        correctAnswer: 2, // La opción correcta es C
-        urlImage: ""
-    },
-];
+class QuizApp {
+  constructor() {
+    // Estado
+    this.questions = [];
+    this.translations = {};
+    this.currentQuestionIndex = 0;
+    this.userAnswers = [];
+    this.modoVozActivo = false;
+    this.isRecognizing = false;
+    this.timer = null;
+    this.timeLeft = 2400; // 40 minutos en segundos
+    this.recognition = null;
+    this.hasRequestedMicPermission = false;
 
+    // DOM Elements
+    this.quizForm = document.getElementById('quiz-form');
+    this.questionsContainer = document.getElementById('questions-container');
+    this.nextBtn = document.getElementById('next-btn');
+    this.timerEl = document.getElementById('timer');
+    this.resultModal = document.getElementById('result-modal');
+    this.resultMessage = document.getElementById('result-message');
+    this.restartBtn = document.getElementById('restart-btn');
+    this.closeModalBtn = document.getElementById('close-modal');
+    this.languageSelector = document.getElementById('language');
 
-let currentQuestionIndex = 0;
-let timer;
-let timeLeft = 2400; // 40 minutos en segundos
-const userAnswers = new Array(questions.length).fill(null);
+    // Elementos dinámicos
+    this.feedbackEl = null;
+    this.btnActivarVoz = null;
+  }
 
-// Función para renderizar la pregunta actual
-function renderQuestion(index) {
-  const container = document.getElementById("questions-container");
-  container.innerHTML = ""; // Limpiar el contenedor
+  init() {
+    this.createDynamicElements();
+    this.setupSpeechRecognition();
+    this.addEventListeners();
+    this.loadLanguageData(this.languageSelector.value);
+    this.startTimer();
+  }
 
-  const q = questions[index];
-  const questionDiv = document.createElement("div");
-  questionDiv.classList.add("question");
-  const formattedText = q.question.replace(/\n/g, "<br>");
+  createDynamicElements() {
+    // Crear feedbackEl
+    this.feedbackEl = document.createElement('div');
+    this.feedbackEl.style.fontStyle = 'italic';
+    this.feedbackEl.style.marginTop = '10px';
+    this.questionsContainer.parentNode.insertBefore(this.feedbackEl, this.questionsContainer.nextSibling);
 
-  const esMultiple = Array.isArray(q.correctAnswer); // Detecta si hay más de una respuesta correcta
+    // Crear botón activar voz
+    this.btnActivarVoz = document.createElement('button');
+    this.btnActivarVoz.type = 'button';
+    this.btnActivarVoz.id = 'btn-activar-voz';
+    this.btnActivarVoz.textContent = 'Contestar por voz';
+    this.btnActivarVoz.style.marginLeft = '10px';
+    this.nextBtn.parentNode.appendChild(this.btnActivarVoz);
+  }
 
-  questionDiv.innerHTML = `
-  <h2 style="white-space: normal;">${index + 1}. ${formattedText}</h2>
-  ${
-  Array.isArray(q.urlImages) && q.urlImages.length > 0
-    ? q.urlImages.map(
-        (imgSrc) => `
-          <div class="image-container" style="margin: 1em 0;">
-            <div style="
-              width: 100%;
-              height: 200px;
-              background-image: url('${imgSrc}');
-              background-size: contain;
-              background-repeat: no-repeat;
-              background-position: center;
-            "></div>
-          </div>
-        `
-      ).join("")
-    : (typeof q.urlImage === "string" && q.urlImage.trim() !== ""
-        ? `
-          <div class="image-container" style="margin: 1em 0;">
-            <div style="
-              width: 100%;
-              height: 200px;
-              background-image: url('${q.urlImage}');
-              background-size: contain;
-              background-repeat: no-repeat;
-              background-position: center;
-            "></div>
-          </div>
-        `
-        : "")
-}
-`;
+  setupSpeechRecognition() {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert('Tu navegador no soporta reconocimiento de voz.');
+      this.nextBtn.disabled = true;
+      this.btnActivarVoz.disabled = true;
+      return;
+    }
 
-  const optionsDiv = document.createElement("div");
-  optionsDiv.classList.add("options");
+    this.recognition = new SpeechRecognition();
+    this.recognition.lang = 'en-US'; // Se actualizará dinámicamente
+    this.recognition.interimResults = false;
+    this.recognition.maxAlternatives = 1;
+    this.recognition.continuous = true;
 
-  q.options.forEach((option, i) => {
-    const input = document.createElement("input");
-    input.type = esMultiple ? "checkbox" : "radio";
-    input.name = `question-${index}`;
-    input.value = i;
-    input.id = `q${index}_opt${i}`;
+    this.recognition.addEventListener('start', () => {
+      this.isRecognizing = true;
+      this.setFeedback(this.translations.listeningFeedback || 'Escuchando...');
+    });
 
-    const label = document.createElement("label");
+    this.recognition.addEventListener('end', () => {
+      this.isRecognizing = false;
+      if (this.modoVozActivo && this.currentQuestionIndex < this.questions.length) {
+        // Reiniciar automáticamente para mejor UX
+        this.recognition.start();
+        this.setFeedback(this.translations.listeningFeedback || 'Escuchando...');
+      }
+    });
+
+    this.recognition.addEventListener('result', (event) => this.handleSpeechResult(event));
+
+    this.recognition.addEventListener('error', (event) => this.handleRecognitionError(event));
+  }
+
+  setFeedback(message) {
+    this.feedbackEl.textContent = message;
+  }
+
+  normalizeText(text) {
+    return text.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // elimina tildes
+      .replace(/[.,!?¡¿]$/g, '') // elimina puntuación final
+      .trim();
+  }
+
+  parseSpeechToOptions(speechText, options, mapNumeros) {
+    const delimiters = /,| y también | y |opciones |opcion | /;
+    const parts = speechText.split(delimiters)
+      .map(s => this.normalizeText(s))
+      .filter(Boolean);
+
+    const selectedIndices = [];
+
+    parts.forEach(part => {
+      if (mapNumeros.hasOwnProperty(part)) {
+        const idx = mapNumeros[part];
+        if (!selectedIndices.includes(idx)) selectedIndices.push(idx);
+      } else {
+        options.forEach((opt, i) => {
+          if (opt.toLowerCase().startsWith(part) && !selectedIndices.includes(i)) {
+            selectedIndices.push(i);
+          }
+        });
+      }
+    });
+
+    return selectedIndices;
+  }
+
+  handleSpeechResult(event) {
+    let speechResult = event.results[event.results.length - 1][0].transcript;
+    speechResult = this.normalizeText(speechResult);
+    console.log('Reconocido:', speechResult);
+
+    const opciones = this.questions[this.currentQuestionIndex].options;
+    const isMultiple = Array.isArray(this.questions[this.currentQuestionIndex].correctAnswer);
+
+    const mapNumeros = {
+      'uno': 0, '1': 0,
+      'dos': 1, '2': 1,
+      'tres': 2, '3': 2,
+      'cuatro': 3, '4': 3
+    };
+
+    if (isMultiple) {
+      const seleccionadas = this.parseSpeechToOptions(speechResult, opciones, mapNumeros);
+
+      if (seleccionadas.length > 0) {
+        this.markOptions(seleccionadas);
+        this.userAnswers[this.currentQuestionIndex] = seleccionadas;
+        this.setFeedback(`Opciones seleccionadas: ${seleccionadas.map(i => opciones[i]).join(', ')}. Di "listo" para continuar.`);
+      } else if (speechResult.includes('listo') || speechResult.includes('termine') || speechResult.includes('terminé')) {
+        this.setFeedback('Respuesta registrada. Avanzando...');
+        setTimeout(() => this.avanzarPregunta(), 1000);
+      } else {
+        this.setFeedback('No se reconocieron opciones válidas. Por favor intenta de nuevo.');
+      }
+    } else {
+      // Respuesta única
+      let opcionSeleccionada = -1;
+
+      for (const key in mapNumeros) {
+        if (speechResult.includes(key)) {
+          opcionSeleccionada = mapNumeros[key];
+          break;
+        }
+      }
+
+      if (opcionSeleccionada === -1) {
+        for (let i = 0; i < opciones.length; i++) {
+          if (speechResult.includes(opciones[i].toLowerCase().slice(0, 10))) {
+            opcionSeleccionada = i;
+            break;
+          }
+        }
+      }
+
+      if (opcionSeleccionada >= 0) {
+        this.markOptions([opcionSeleccionada]);
+        this.userAnswers[this.currentQuestionIndex] = opcionSeleccionada;
+        this.setFeedback(this.translations.answerRegistered || 'Respuesta registrada. Avanzando...');
+        setTimeout(() => this.avanzarPregunta(), 1000);
+      } else {
+        this.setFeedback(this.translations.recognitionFailed || 'No se pudo reconocer la opción. Por favor intenta de nuevo.');
+      }
+    }
+  }
+
+  markOptions(indices) {
+    // Marca las opciones en el DOM
+    indices.forEach(i => {
+      const input = this.quizForm.querySelector(`input[name="option"][value="${i}"]`);
+      if (input) input.checked = true;
+    });
+  }
+
+  handleRecognitionError(event) {
+    let mensajeError;
+
+    switch (event.error) {
+      case 'no-speech':
+        setTimeout(() => {
+          if (this.modoVozActivo) this.recognition.start();
+        }, 1000);
+        mensajeError = 'No se detectó voz. Intenta hablar más claramente.';
+        break;
+      case 'audio-capture':
+        mensajeError = 'No se detectó micrófono. Verifica tu dispositivo.';
+        break;
+      case 'not-allowed':
+      case 'permission-denied':
+        mensajeError = 'Permiso de micrófono denegado.';
+        this.modoVozActivo = false;
+        this.nextBtn.style.display = 'inline-block';
+        this.btnActivarVoz.style.display = 'inline-block';
+        this.btnActivarVoz.disabled = true;
+        if (this.recognition) this.recognition.stop();
+        break;
+      default:
+        mensajeError = 'Ocurrió un error en el reconocimiento de voz.';
+    }
+
+    console.error(mensajeError);
+    this.setFeedback(mensajeError);
+    this.isRecognizing = false;
+  }
+
+  loadLanguageData(lang) {
+    let data;
+    switch (lang) {
+      case 'es':
+        data = data_es;
+        if (this.recognition) this.recognition.lang = 'es-ES';
+        break;
+      case 'en':
+        data = data_en;
+        if (this.recognition) this.recognition.lang = 'en-US';
+        break;
+      case 'pt':
+        data = data_pt;
+        if (this.recognition) this.recognition.lang = 'pt-PT';
+        break;
+      default:
+        data = data_en;
+        if (this.recognition) this.recognition.lang = 'en-US';
+    }
+    this.questions = data.questions;
+    this.translations = data.texts;
+    this.userAnswers = new Array(this.questions.length).fill(null);
+    this.currentQuestionIndex = 0;
+    this.timeLeft = 2400;
+    this.updateTimerDisplay();
+    this.renderQuestion();
+    this.updateNextButtonText();
+    this.setFeedback('');
+    this.modoVozActivo = false;
+    this.nextBtn.style.display = 'inline-block';
+    this.btnActivarVoz.style.display = 'inline-block';
+    if (this.recognition) this.recognition.stop();
+  }
+
+  renderQuestion() {
+    const q = this.questions[this.currentQuestionIndex];
+    this.questionsContainer.innerHTML = '';
+
+    // Título
+    const questionTitle = document.createElement('h2');
+    questionTitle.textContent = `${this.currentQuestionIndex + 1}. ${q.question}`;
+    this.questionsContainer.appendChild(questionTitle);
+
+    // Imágenes
+    const questionDiv = document.createElement('div');
+    if (Array.isArray(q.urlImages) && q.urlImages.length > 0) {
+      q.urlImages.forEach(imgSrc => {
+        const imgContainer = document.createElement('div');
+        imgContainer.classList.add('image-container');
+        imgContainer.style.margin = '1em 0';
+        imgContainer.style.width = '100%';
+        imgContainer.style.height = '200px';
+        imgContainer.style.backgroundImage = `url('${imgSrc}')`;
+        imgContainer.style.backgroundSize = 'contain';
+        imgContainer.style.backgroundRepeat = 'no-repeat';
+        imgContainer.style.backgroundPosition = 'center';
+        questionDiv.appendChild(imgContainer);
+      });
+    } else if (typeof q.urlImage === 'string' && q.urlImage.trim() !== '') {
+      const imgContainer = document.createElement('div');
+      imgContainer.classList.add('image-container');
+      imgContainer.style.margin = '1em 0';
+      imgContainer.style.width = '100%';
+      imgContainer.style.height = '200px';
+      imgContainer.style.backgroundImage = `url('${q.urlImage}')`;
+      imgContainer.style.backgroundSize = 'contain';
+      imgContainer.style.backgroundRepeat = 'no-repeat';
+      imgContainer.style.backgroundPosition = 'center';
+      questionDiv.appendChild(imgContainer);
+    }
+    this.questionsContainer.appendChild(questionDiv);
+
+    // Opciones
+    const isMultiple = Array.isArray(q.correctAnswer);
+    const optionsDiv = document.createElement('div');
+    optionsDiv.classList.add('options');
+
+    q.options.forEach((option, i) => {
+      const optionElement = this.createOption(
+        isMultiple ? 'checkbox' : 'radio',
+        'option', // nombre consistente para inputs
+        i,
+        option,
+        this.isOptionSelected(i, isMultiple),
+        () => this.handleOptionChange(i, isMultiple, optionsDiv)
+      );
+      optionsDiv.appendChild(optionElement);
+    });
+
+    this.questionsContainer.appendChild(optionsDiv);
+  }
+
+  createOption(type, name, value, labelText, checked, onChange) {
+    const wrapper = document.createElement('div');
+    wrapper.style.display = 'flex';
+    wrapper.style.alignItems = 'center';
+    wrapper.style.gap = '8px';
+    wrapper.style.marginBottom = '16px';
+
+    const input = document.createElement('input');
+    input.type = type;
+    input.name = name;
+    input.value = value;
+    input.id = `${name}_opt${value}`;
+    input.checked = checked;
+    input.style.margin = '0';
+    input.style.alignSelf = 'center';
+    input.addEventListener('change', onChange);
+
+    const label = document.createElement('label');
     label.htmlFor = input.id;
-    label.innerHTML = option;
-
-    const wrapper = document.createElement("div");
-    wrapper.style.display = "flex"; // Usar flexbox para alinear el input y el label
-    wrapper.style.alignItems = "center"; // Alinear verticalmente al centro
-    wrapper.style.gap = "8px"; // Espacio entre input y label
-    // Añadir estilos específicos al input para mejorar el alineamiento
-    input.style.margin = "0";
-    input.style.alignSelf = "center"; // Asegurar que el input esté centrado verticalmente
-    // Añadir estilos al label para mejor disposición
-    label.style.display = "flex";
-    label.style.alignItems = "center";
-    label.style.margin = "0";
-
-     // Añadir espacio hacia abajo entre este wrapper y el siguiente
-    wrapper.style.marginBottom = "16px"; // Espacio hacia abajo
+    label.textContent = labelText;
+    label.style.margin = '0';
+    label.style.display = 'flex';
+    label.style.alignItems = 'center';
 
     wrapper.appendChild(input);
     wrapper.appendChild(label);
-    optionsDiv.appendChild(wrapper);
 
-    // Restaurar respuestas seleccionadas previamente
-    if (esMultiple) {
-      const selected = userAnswers[index] || [];
-      if (selected.includes(i)) input.checked = true;
-      input.addEventListener("change", () => {
-        const seleccionados = Array.from(optionsDiv.querySelectorAll(`input[name="question-${index}"]`))
-          .filter(cb => cb.checked)
-          .map(cb => parseInt(cb.value));
-        userAnswers[index] = seleccionados;
-      });
+    return wrapper;
+  }
+
+  isOptionSelected(index, isMultiple) {
+    if (isMultiple) {
+      const selected = this.userAnswers[this.currentQuestionIndex] || [];
+      return selected.includes(index);
     } else {
-      if (userAnswers[index] === i) input.checked = true;
-      input.addEventListener("change", () => {
-        userAnswers[index] = parseInt(input.value);
-      });
+      return this.userAnswers[this.currentQuestionIndex] === index;
     }
-  });
+  }
 
-  questionDiv.appendChild(optionsDiv);
-  container.appendChild(questionDiv);
-
-  // Botones de navegación
-  document.getElementById("next-btn").textContent = index === questions.length - 1 ? "Finalizar" : "Siguiente";
- 
- // document.getElementById("submit-btn").style.display = index === questions.length - 1 ? "block" : "none";
-  //document.getElementById("prev-btn").disabled = index === 0;
-}
-
-function startTimer() {
-  timer = setInterval(() => {
-    console.log("Tiempo restante:", timeLeft); // Para depuración
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      alert("¡El tiempo se ha agotado!");
-      evaluateQuiz();
+  handleOptionChange(index, isMultiple, optionsDiv) {
+    if (isMultiple) {
+      const selectedOptions = Array.from(optionsDiv.querySelectorAll('input[name="option"]:checked'))
+        .map(cb => parseInt(cb.value));
+      this.userAnswers[this.currentQuestionIndex] = selectedOptions;
     } else {
-      timeLeft--;
-      updateTimerDisplay();
+      this.userAnswers[this.currentQuestionIndex] = index;
     }
-  }, 1000);
-}
-
-// Función para actualizar la visualización del temporizador
-function updateTimerDisplay() {
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
-  document.getElementById("timer").textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-}
-
-// Función para evaluar el cuestionario
-function arraysEqual(a, b) {
-  return Array.isArray(a) && Array.isArray(b) &&
-    a.length === b.length &&
-    a.every(val => b.includes(val));
-}
-
-function evaluateQuiz() {
-  const results = [];
-  questions.forEach((q, index) => {
-    const userResponse = userAnswers[index];
-    const correct = Array.isArray(q.correctAnswer)
-      ? arraysEqual(userResponse, q.correctAnswer)
-      : userResponse === q.correctAnswer;
-    results.push({ isCorrect: correct });
-  });
-
-  const score = results.filter(r => r.isCorrect).length;
-  const total = questions.length;
-  const percentage = (score / total) * 100;
-
-  displayResults(percentage);
-}
-
-// Función para mostrar los resultados
-function displayResults(percentage) {
-  const modal = document.getElementById("result-modal");
-  const message = document.getElementById("result-message");
-  const restartBtn = document.getElementById("restart-btn");
-
-  // Mostrar u ocultar el contenido del cuestionario según la calificación
-  if (percentage >= 70) {
-    const scoreDiv = document.createElement("div");
-    scoreDiv.innerHTML = `<h2>Resultado: ${score} / ${total} (${percentage.toFixed(2)}%)</h2>`;
-    container.appendChild(scoreDiv);
-
-    message.innerHTML = `
-      <h2>¡Felicidades!</h2>
-      <p>Has obtenido una calificación de ${percentage.toFixed(2)}%.</p>
-      <p>Puedes obtener tu certificado enviando un comprobante de pago de <strong>10 USD</strong> a educacion@frecuenciagamer.com.</p>
-    `;
-    restartBtn.style.display = "none";
-  } else {
-    // Mostrar solo el mensaje del modal
-    container.innerHTML = "";
-    message.innerHTML = `
-      <h2>Resultado insuficiente</h2>
-      <p>Obtuviste ${percentage.toFixed(2)}%. Necesitas al menos 70 % para obtener el certificado.</p>
-      <p>¡Te animamos a intentarlo nuevamente!</p>
-    `;
-    restartBtn.style.display = "inline-block";
-    restartBtn.onclick = () => location.reload();
   }
 
-  // Mostrar el modal
-  modal.style.display = "block";
-}
+  updateNextButtonText() {
+    this.nextBtn.textContent = (this.currentQuestionIndex === this.questions.length - 1)
+      ? this.translations.finish
+      : this.translations.next;
+  }
 
-// Iniciar el cronómetro y renderizar la primera pregunta al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-  renderQuestion(currentQuestionIndex);
-  startTimer(); // Iniciar el cronómetro al cargar el cuestionario
-  updateTimerDisplay(); // Mostrar el tiempo inicial
+  avanzarPregunta() {
+    const q = this.questions[this.currentQuestionIndex];
+    const isMultiple = Array.isArray(q.correctAnswer);
 
-  // Controlar la visibilidad de la pestaña
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === 'hidden') {
-      alert("¡Cuidado! Si cambias de pestaña, puedes perder la prueba.");
+    if (isMultiple) {
+      const selectedOptions = this.userAnswers[this.currentQuestionIndex] || [];
+      if (selectedOptions.length === 0) {
+        this.setFeedback(this.translations.selectAnswer || 'Por favor, selecciona al menos una respuesta.');
+        return;
+      }
+    } else {
+      const selected = this.userAnswers[this.currentQuestionIndex];
+      if (selected === null || selected === undefined) {
+        this.setFeedback(this.translations.selectAnswer || 'Por favor, selecciona una respuesta.');
+        return;
+      }
     }
-  });
-});
 
-// Evento para el botón "Siguiente"
-document.getElementById("next-btn").addEventListener("click", () => {
-  const selected = document.querySelector(`input[name="question-${currentQuestionIndex}"]:checked`);
-  if (!selected) {
-    alert("Por favor, selecciona una respuesta antes de continuar.");
-    return;
+    this.currentQuestionIndex++;
+    if (this.currentQuestionIndex < this.questions.length) {
+      this.renderQuestion();
+      this.updateNextButtonText();
+      this.setFeedback(this.modoVozActivo ? (this.translations.listeningFeedback || 'Escuchando... por favor responde con el número o texto de la opción.') : '');
+    } else {
+      clearInterval(this.timer);
+      this.setFeedback('');
+      this.mostrarResultados();
+      if (this.recognition) this.recognition.stop();
+    }
   }
 
-  if (currentQuestionIndex < questions.length - 1) {
-    currentQuestionIndex++;
-    renderQuestion(currentQuestionIndex);
-  } else {
-    clearInterval(timer);
-    const results = evaluateQuiz();
-    displayResults(percentage);
-  }
-});
+  mostrarResultados() {
+    let totalPoints = 0;
+    let userPoints = 0;
 
-// Evento para el botón "Anterior"
-document.getElementById("prev-btn").addEventListener("click", () => {
-  if (currentQuestionIndex > 0) {
-    currentQuestionIndex--;
-    renderQuestion(currentQuestionIndex);
-  }
-});
+    this.questions.forEach((q, index) => {
+      const correctAnswer = q.correctAnswer;
+      const userAnswer = this.userAnswers[index];
 
-// Evento para el botón "Enviar"
-document.getElementById("submit-btn").addEventListener("click", () => {
-  clearInterval(timer); // Detener el cronómetro al enviar
-  evaluateQuiz(); // Evaluar el cuestionario
-});
+      if (Array.isArray(correctAnswer)) {
+        totalPoints += correctAnswer.length;
+        if (Array.isArray(userAnswer)) {
+          userAnswer.forEach(ans => {
+            if (correctAnswer.includes(ans)) userPoints++;
+          });
+        }
+      } else {
+        totalPoints++;
+        if (userAnswer === correctAnswer) userPoints++;
+      }
+    });
 
-// Evento para cerrar el modal
-document.getElementById("close-modal").addEventListener("click", () => {
-  document.getElementById("result-modal").style.display = "none";
-});
+    const scorePercent = (userPoints / totalPoints) * 100;
 
-// Evento para reiniciar el cuestionario
-document.getElementById("restart-btn").addEventListener("click", () => {
-  location.reload();
-});
+    let mensaje = '';
+    if (scorePercent >= 70) {
+      mensaje = `<h2>${this.translations.congratulations}</h2>
+      <p>${this.translations.scoreMessage.replace('{{score}}', scorePercent.toFixed(2))}</p>
+      <p>${this.translations.certificateInfo}</p>`;
+      this.restartBtn.style.display = 'none';
+    } else {
+      mensaje = `<h2>${this.translations.insufficientScore}</h2>
+      <p>${this.translations.scoreMessage.replace('{{score}}', scorePercent.toFixed(2))}</p>
+      <p>${this.translations.tryAgain}</p>`;
+      this.restartBtn.style.display = 'inline-block';
+    }
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".next-btn").addEventListener("click", onNextClick);
-});
-
-function onNextClick() {
-  const selected = document.querySelector(`input[name="question-${currentQuestionIndex}"]:checked`);
-  if (!selected) {
-    alert("Por favor, selecciona una respuesta antes de continuar.");
-    return;
+    this.resultMessage.innerHTML = mensaje;
+    this.resultModal.style.display = 'flex';
   }
 
-  userAnswers[currentQuestionIndex] = parseInt(selected.value);
+  updateTimerDisplay() {
+    const minutes = Math.floor(this.timeLeft / 60);
+    const seconds = this.timeLeft % 60;
+    this.timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }
 
-  if (currentQuestionIndex < questions.length - 1) {
-    currentQuestionIndex++;
-    renderQuestion(currentQuestionIndex);
-  } else {
-    clearInterval(timer);
-    evaluateQuiz();
-    displayResults();
+  startTimer() {
+    if (this.timer) clearInterval(this.timer);
+    this.timer = setInterval(() => {
+      if (this.timeLeft <= 0) {
+        clearInterval(this.timer);
+        this.setFeedback(this.translations.timeUp || '¡Tiempo agotado!');
+        this.mostrarResultados();
+        if (this.recognition) this.recognition.stop();
+      } else {
+        this.timeLeft--;
+        this.updateTimerDisplay();
+      }
+    }, 1000);
+  }
+
+  reiniciarQuiz() {
+    this.resultModal.style.display = 'none';
+    this.userAnswers = new Array(this.questions.length).fill(null);
+    this.currentQuestionIndex = 0;
+    this.timeLeft = 2400;
+    this.updateTimerDisplay();
+    this.renderQuestion();
+    this.updateNextButtonText();
+    this.startTimer();
+    this.modoVozActivo = false;
+    this.nextBtn.style.display = 'inline-block';
+    this.btnActivarVoz.style.display = 'inline-block';
+    this.setFeedback('');
+    if (this.recognition) this.recognition.stop();
+  }
+
+  async requestMicPermission() {
+    if (this.hasRequestedMicPermission) return true;
+    try {
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+      this.hasRequestedMicPermission = true;
+      this.setFeedback(this.translations.micPermissionGranted || 'Permiso de micrófono concedido.');
+      return true;
+    } catch (err) {
+      console.error('Permiso de micrófono denegado:', err);
+      this.setFeedback(this.translations.micPermissionDenied || 'Permiso de micrófono denegado. El modo de voz no puede activarse.');
+      this.btnActivarVoz.disabled = true;
+      return false;
+    }
+  }
+
+  addEventListeners() {
+    this.nextBtn.addEventListener('click', () => {
+      if (!this.modoVozActivo) this.avanzarPregunta();
+    });
+
+    this.btnActivarVoz.addEventListener('click', async () => {
+      if (!this.recognition) {
+        alert('Reconocimiento de voz no soportado en este navegador.');
+        return;
+      }
+      const permissionGranted = await this.requestMicPermission();
+            if (!permissionGranted) return;
+
+      this.modoVozActivo = true;
+      this.nextBtn.style.display = 'none';
+      this.btnActivarVoz.style.display = 'none';
+      this.setFeedback(this.translations.voiceModeActivated || 'Modo voz activado. Por favor responde con el número o texto de la opción.');
+
+      if (!this.isRecognizing) {
+        this.recognition.start();
+      }
+    });
+
+    this.restartBtn.addEventListener('click', () => {
+      this.reiniciarQuiz();
+    });
+
+    this.closeModalBtn.addEventListener('click', () => {
+      if (this.currentQuestionIndex < this.questions.length) {
+        this.resultModal.style.display = 'none';
+        if (this.recognition) this.recognition.stop();
+      } else {
+        this.reiniciarQuiz();
+      }
+    });
+
+    this.languageSelector.addEventListener('change', (e) => {
+      this.loadLanguageData(e.target.value);
+    });
   }
 }
 
-function displayResults() {
-  const container = document.getElementById("questions-container");
-  container.innerHTML = "";
-
-  const score = userAnswers.filter((answer, index) => answer === questions[index].correctAnswer).length;
-  const total = questions.length;
-  const percentage = (score / total) * 100;
-
-  const scoreDiv = document.createElement("div");
-  /*scoreDiv.innerHTML = `<h2>Resultado: ${score} / ${total} (${percentage.toFixed(2)}%)</h2>`;
-  container.appendChild(scoreDiv);*/
-
-  const message = document.getElementById("result-message");
-  const restartBtn = document.getElementById("restart-btn");
-
-  if (percentage >= 70) {
-
-    /*   message.innerHTML = `
-         <h2>¡Felicidades!</h2>
-         <p>Has obtenido una calificación de ${percentage.toFixed(2)}%.</p>
-         <p>Puedes obtener tu certificado enviando una captura de pantalla de la nota obtenida y un comprobante de pago de <strong>10 USD</strong> a <strong>educacion@frecuenciagamer.com </strong>.</p>
-       `;
-       restartBtn.style.display = "none";*/
-
-    scoreDiv.innerHTML = `
-      <h2>¡Felicidades!</h2>
-      <p>Has obtenido una calificación de ${percentage.toFixed(2)}%.</p>
-      <p>Puedes obtener tu certificado enviando una captura de pantalla de la nota obtenida y un comprobante de pago de <strong>10 USD</strong> a <strong>educacion@frecuenciagamer.com </strong>.</p>
-    `;
-    container.appendChild(scoreDiv);
-
-  } else {
-    /*  message.innerHTML = `
-        <h2>Resultado</h2>
-        <p>Obtuviste ${percentage.toFixed(2)}%. Necesitas al menos 70 % para obtener el certificado.</p>
-        <p>¡Te animamos a intentarlo nuevamente!</p>
-      `;*/
-
-    scoreDiv.innerHTML = `
-      <h2>Resultado</h2>
-      <p>Obtuviste ${percentage.toFixed(2)}%. Necesitas al menos 70 % para obtener el certificado.</p>
-      <p>¡Te animamos a intentarlo nuevamente!</p>
-    `;
-    container.appendChild(scoreDiv);
-
-    restartBtn.style.display = "inline-block";
-    restartBtn.onclick = () => location.reload();
-  }
-
-  const modal = document.getElementById("result-modal");
-  modal.style.display = "block";
-
-  document.getElementById("close-modal").addEventListener("click", () => {
-    modal.style.display = "none";
-
-  });
-}
+// Inicialización al cargar el DOM
+document.addEventListener('DOMContentLoaded', () => {
+  const quizApp = new QuizApp();
+  quizApp.init();
+});

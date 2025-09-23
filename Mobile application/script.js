@@ -1,783 +1,538 @@
-const questions= [
-  {
-    question: "Eres el especialista de calidad en un equipo de desarrollo de aplicaciones móviles. ¿Para cuál de las siguientes actividades se utilizarían los datos de analítica móvil dentro de la estrategia o el plan de pruebas?",
-    options: [
-      "Definir la base de usuarios esperada de la aplicación.",
-      "Derivar niveles de prueba, casos de prueba y datos de prueba.",
-      "Seleccionar el portafolio de dispositivos y priorización para la ejecución de pruebas.",
-      "Seleccionar el tipo de aplicación y modelo de desarrollo a seguir."
-    ],
-    correctAnswer: 2, // Selección de dispositivos y prioridades de prueba
-    urlImage: ""
-  },
-  {
-    question: "Tu equipo está desarrollando una aplicación gratuita que recopila noticias públicas de fuentes seleccionadas por el usuario, para que tenga un solo lugar donde leer toda su información favorita.\nSegún esta información, ¿cuál de los siguientes modelos de negocio es el MÁS apropiado?",
-    options: [
-      "Aplicación freemium.",
-      "Aplicación basada en publicidad.",
-      "Aplicación de pago.",
-      "Aplicación basada en transacciones."
-    ],
-    correctAnswer: 1, // Modelo basado en publicidad
-    urlImage: ""
-  },
-  {
-  question: "¿Cuál de las siguientes afirmaciones es verdadera para los teléfonos básicos?",
-  options: [
-    "Los teléfonos básicos ofrecen un soporte limitado para la instalación de aplicaciones.",
-    "Los teléfonos básicos son similares a los teléfonos inteligentes, pero más grandes.",
-    "Los teléfonos básicos son la próxima generación de teléfonos inteligentes, con funcionalidad extendida.",
-    "Los teléfonos básicos tienen cámaras, GPS y otros sensores integrados."
-  ],
-  correctAnswer: 1,
-  urlImage: " "
-},
-  {
-    question: "Tu equipo desarrolla un juego para Android que utiliza muchas funcionalidades del dispositivo, como cámara, GPS y orientación.\n¿Cuál de los siguientes tipos de aplicación es el MÁS adecuado si es esencial el uso preciso de funciones específicas del dispositivo?",
-    options: [
-      "Aplicación híbrida.",
-      "Aplicación web móvil.",
-      "Aplicación nativa.",
-      "Aplicación de escritorio."
-    ],
-    correctAnswer: 2, // Aplicación nativa
-    urlImage: ""
-  },
-  {
-    question: "Tu equipo desarrolla una aplicación para iOS que se utiliza para registrar usuarios, sus correos electrónicos y direcciones físicas. Los datos se transfieren a un servidor y los usuarios registrados reciben muestras de productos físicos enviadas por correo convencional.\n¿Cuáles de las siguientes decisiones arquitectónicas son las DOS MÁS apropiadas para esta app?",
-    options: [
-      "Siempre conectado (Always Connected)",
-      "Aplicación nativa (Native app)",
-      "Almacenar y reenviar (Store and forward)",
-      "Datos celulares (Cellular data)",
-      "Aplicación web (Web app)"
-    ],
-    correctAnswer: [1, 2], // Native app y Store and Forward
-    urlImage: ""
-  },
-  {
-    question: "Tus datos de analítica indican que todos tus usuarios utilizan iPhone.\n¿Cuál de las siguientes decisiones es la MÁS adecuada para tu estrategia de pruebas si se trata de una aplicación de bajo riesgo?",
-    options: [
-      "Usar servicio de acceso remoto a dispositivos.",
-      "Usar estrategia de plataforma única.",
-      "Usar estrategia de cobertura máxima.",
-      "Usar solo simuladores de iOS."
-    ],
-    correctAnswer: 1, // Plataforma única
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál de las siguientes NO es un desafío al probar aplicaciones móviles?",
-    options: [
-      "Parámetros de comando desconocidos al iniciar la aplicación que alteran su comportamiento.",
-      "Usuarios y grupos de usuarios diversos.",
-      "Múltiples tipos de red y proveedores de red.",
-      "No disponibilidad de dispositivos recién lanzados que obliga al uso de emuladores/simuladores."
-    ],
-    correctAnswer: 0, // Parámetros desconocidos de inicio
-    urlImage: ""
-  },
-  {
-    question: "Una empresa ha decidido usar pruebas mediante pruebas colaborativas.\n¿Cuál de los siguientes riesgos se mitiga con esta decisión?",
-    options: [
-      "No disponibilidad de actores clave durante el desarrollo.",
-      "Costo de soporte para múltiples plataformas.",
-      "No disponibilidad de dispositivos importantes durante las pruebas.",
-      "Buenas reseñas en la tienda de aplicaciones del proveedor de la plataforma."
-    ],
-    correctAnswer: 2, // Acceso a dispositivos variados vía crowdtesting
-    urlImage: ""
-  },
-  {
-    question: "Cuando se prueba una aplicación nativa que utiliza diferentes funciones del dispositivo, ¿cuál de los siguientes dispositivos de hardware es el MENOS necesario enfocar durante las pruebas?",
-    options: [
-      "Módulo WLAN",
-      "Altavoces integrados",
-      "Cámara integrada",
-      "Acceso a auriculares"
-    ],
-    correctAnswer: 0, 
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál de los siguientes NO es un efecto potencial del sobrecalentamiento de un dispositivo móvil durante las pruebas?",
-    options: [
-      "La aplicación se vuelve lenta",
-      "Las funcionalidades de la aplicación dejan de funcionar",
-      "Desinstalación de la app",
-      "Funcionamiento incorrecto de las aplicaciones"
-    ],
-    correctAnswer: 2, // La desinstalación no ocurre automáticamente
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál de las siguientes afirmaciones NO es un escenario válido para probar un dispositivo móvil en relación con sensores de entrada?",
-    options: [
-      "Verificar la calidad de la señal GPS recibida",
-      "Probar la funcionalidad correcta del giroscopio",
-      "Validar los datos proporcionados por el sensor de movimiento",
-      "Tamaño correcto de pantalla en modos vertical y horizontal"
-    ],
-    correctAnswer: 3, // Pantalla no es sensor de entrada
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál de las siguientes opciones contiene pruebas que SOLO están relacionadas con distintos métodos de entrada?",
-    options: [
-      "Deslizar para cambiar de pantalla, doble toque en un botón, escanear un código QR, grabar audio",
-      "Tomar una foto con la cámara, usar un teclado virtual, imprimir el contenido de una pantalla, usar coordenadas GPS",
-      "Arrastrar un objeto en la pantalla, abrir otra aplicación, capturar imágenes, enviar un SMS a un amigo",
-      "Mostrar datos de geolocalización, realizar mediciones de distancia, usar una app de control remoto, capturar videos de internet"
-    ],
-    correctAnswer: 0, // Solo la opción A contiene métodos de entrada directos
-    urlImage: ""
-  },
-  {
-    question: "Trabajas como tester móvil para una empresa que desarrolla una app de navegación. Uno de los requisitos es que la app funcione en modos vertical y horizontal manteniendo las mismas funciones de forma precisa.\n¿Cuáles de los siguientes aspectos son los MEJORES a considerar para verificar el funcionamiento correcto al cambiar la orientación de la pantalla?",
-    options: [
-      "Sensor de movimiento, problemas de seguridad, precisión de los datos de salida",
-      "Problemas de usabilidad, retención de datos de entrada, mantenimiento del estado actual",
-      "Varias transiciones en orientación de pantalla, problemas de rendimiento, funcionalidades de la interfaz de usuario",
-      "Interrupciones de WLAN, problemas de renderizado en la interfaz gráfica, pérdida de datos ingresados"
-    ],
-    correctAnswer: 1, // Usabilidad, retención de estado y datos son clave al rotar pantalla
-    urlImage: ""
-  },
-  {
-    question: `Trabajas como gestor de pruebas en un banco que está desarrollando una nueva versión de su software de banca en línea, el cual se realiza como una aplicación web. Durante la preparación de pruebas adecuadas, estás enfocándote en la tolerancia a fallos frente a interrupciones iniciadas por el usuario.\n¿Cuál de los siguientes escenarios de prueba elegirías como el MEJOR para este propósito?",
-    
-      "Mostrar advertencias de batería baja",
-      "Configurar los dispositivos móviles en modo de espera",
-      "Aceptar llamadas de voz entrantes",
-      "Notificación de poca memoria",
-      "Configurar el dispositivo en modo no molestar"`,
-      options: [
-        " i – ii – iii",
-        "i – ii – iv",
-        "ii – iii – iv",
-        "ii – iii – v"
-    ],
-    correctAnswer: 3,
-    urlImage: ""
-  },
-  {
-    question: "Una compañía de seguros de salud lanzó una versión actualizada de su app para clientes. La actualización incluye una función que escanea una factura de farmacia y la envía directamente a la aseguradora para el pago. Sin embargo, los clientes reportaron que al instalar la actualización, la cámara no podía activarse para escanear las facturas. El error fue reportado y corregido. Ahora se deben preparar nuevas pruebas y realizar re-pruebas.\n¿Cuál de las siguientes pruebas ejecutarías como la MÁS IMPORTANTE en este escenario?",
-    options: [
-      "Prueba de rendimiento",
-      "Prueba de accesibilidad",
-      "Prueba de permisos de acceso",
-      "Prueba de instalación"
-    ],
-    correctAnswer: 2, // Prueba de permisos de acceso
-    urlImage: ""
-  },
-  {
-    question: `Tu empresa ofrece una app de mensajería de noticias que incluye una función de notificación para mostrar noticias de última hora. Las notificaciones tienen enlaces profundos a las páginas relevantes de noticias. Algunos usuarios se quejaron recientemente de demoras en las notificaciones o que no se mostraban. El problema fue identificado y corregido. Como tester móvil, ¿qué pruebas funcionales realizarías para validar que la versión corregida funcione correctamente?",
-    
-      "Mostrar correctamente la notificación cuando la app está en segundo plano",
-      "Ejecutar la aplicación con batería baja",
-      "Probar el rendimiento de la app al mostrar la notificación",
-      "Realizar pruebas de usabilidad relacionadas con la versión corregida",
-      "Probar el enlace profundo a la página correcta de noticias"`,
-    options: [
-      "i – iv – v ",
-      "i – ii – iv ",
-      "i – ii – v ",
-      "ii – iii – iv"
-    ],
-    correctAnswer: 2,
-    urlImage: ""
-  },
-  {
-    question: "Tu empresa está desarrollando una nueva versión de una app híbrida para comparación de precios. Esta app contiene funcionalidades avanzadas en enlaces de acceso rápido. Como tester móvil, tu tarea es verificar que estos enlaces funcionen correctamente sin fallos.\n¿Cuál de los siguientes enfoques es el MEJOR?",
-    options: [
-      "Verificar el comportamiento correcto de la funcionalidad force-touch en una app iOS",
-      "Asegurar la presencia de marcadores favoritos en Chrome móvil bajo Android",
-      "Verificar que todas las teclas de hardware del dispositivo funcionen correctamente",
-      "Utilizar una herramienta adecuada para identificar enlaces rotos en la app web móvil"
-    ],
-    correctAnswer: 0,
-    urlImage: ""
-  },
-  {
-    question: "Estás probando una app nativa para iOS que utiliza varios sensores.\n¿Cuál de los siguientes tipos de prueba NO aplica?",
-    options: [
-      "Prueba de rendimiento",
-      "Prueba de uso de funciones del dispositivo",
-      "Prueba entre navegadores",
-      "Prueba de compatibilidad entre dispositivos"
-    ],
-    correctAnswer: 2, // Cross-browser testing no aplica a apps nativas
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál de las siguientes es una prueba típica para evaluar la interoperabilidad con versiones del sistema operativo?",
-    options: [
-      "Pruebas de seguridad",
-      "Pruebas de rendimiento",
-      "Pruebas de estándares de accesibilidad",
-      "Pruebas de compatibilidad con versiones anteriores"
-    ],
-    correctAnswer: 3, // Compatibilidad hacia atrás = interoperabilidad con versiones OS
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál es el objetivo PRINCIPAL al realizar pruebas de coexistencia de un sistema bajo prueba (SUT) con otras aplicaciones en el dispositivo?",
-    options: [
-      "Verificar que el SUT no dañe ningún dato del usuario",
-      "Identificar problemas de seguridad existentes en el dispositivo",
-      "Evaluar problemas de usabilidad en el SUT",
-      "Comprobar si el SUT cumple con los estándares de accesibilidad"
-    ],
-    correctAnswer: 0, // Proteger datos del usuario es clave en coexistencia
-    urlImage: ""
-  },
-  {
-    question: "Estás desarrollando un enfoque de pruebas de conectividad en distintos tipos de dispositivos móviles.\n¿Cuál de las siguientes opciones NO debería estar dentro del alcance de estas pruebas?",
-    options: [
-      "Cambiar de GSM a modo avión y volver a GSM",
-      "Iniciar una transacción de pago mediante NFC",
-      "Usar Bluetooth para emparejar con un dispositivo portátil",
-      "Conectar un cable USB a una fuente de alimentación"
-    ],
-    correctAnswer: 3, // El suministro eléctrico no es parte de pruebas de conectividad
-    urlImage: ""
-  },
-  {
-    question: "Se te ha asignado la tarea de realizar pruebas de instalación para una app Android.\n¿Cuál de las siguientes pruebas NO debería utilizarse?",
-    options: [
-      "Ejecutar App-Installer.exe",
-      "Instalar conectando el dispositivo a una PC y ejecutando comandos",
-      "Instalación desde el programa beta de Google Play",
-      "Sideloading proporcionando el paquete de instalación en una tarjeta SD y ejecutando desde el sistema de archivos"
-    ],
-    correctAnswer: 0, // App-Installer.exe no es relevante para Android
-    urlImage: ""
-  },
-  {
-    question: "¿Cuáles de las siguientes SON DOS problemas potenciales de seguridad en aplicaciones móviles?",
-    options: [
-      "Inyección de código a través de campos de entrada.",
-      "Transferencia de datos sin cifrado.",
-      "La app no responde después de una interrupción.",
-      "Problemas de renderizado al cambiar la orientación del dispositivo.",
-      "Superposición de elementos en pantalla en dispositivos pequeños."
-    ],
-    correctAnswer: [0, 1], // Inyección y datos sin cifrar son riesgos clave
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál de las siguientes opciones se utilizaría más probablemente para realizar una prueba de rendimiento sobre el comportamiento temporal de una app?",
-    options: [
-      "Una versión instrumentada para obtener métricas cronométricas exactas.",
-      "Un generador de carga para observar el comportamiento del servidor bajo carga intensa.",
-      "Ejecutar la app en un emulador/simulador.",
-      "Un dispositivo y un cronómetro para medir el rendimiento."
-    ],
-    correctAnswer: 0, // Instrumented build = análisis preciso del tiempo
-    urlImage: ""
-  },
-  {
-    question: "Se te ha asignado realizar una prueba de usabilidad para una aplicación móvil. ¿Cuál de los siguientes pasos NO deberías realizar?",
-    options: [
-      "Pedir al gerente que ordene una sesión de laboratorio de usabilidad.",
-      "Probar la app para verificar que cumple con las guías de interfaz de usuario de la plataforma.",
-      "Activar la función de voz en el dispositivo.",
-      "Conocer las expectativas de diseño y experiencia visual de la plataforma."
-    ],
-    correctAnswer: 2, // No se necesita pedir laboratorio como parte obligatoria
-    urlImage: ""
-  },
-  {
-    question: "¿Qué significa el acrónimo \"CRUD\" en el contexto de pruebas de validación de datos?",
-    options: [
-      "Copiar, Renombrar, Actualizar, Eliminar.",
-      "Crear, Leer, Deshacer, Eliminar.",
-      "Crear, Leer, Actualizar, Eliminar.",
-      "Crear, Leer, Deshacer, Desplegar."
-    ],
-    correctAnswer: 2, // Create, Read, Update, Delete: correcto en pruebas de datos
-    urlImage: ""
-  },
-  {
-  question: "Estás realizando pruebas de internacionalización. Mientras ejecutas las pruebas, ves en parte cadenas pseudo y en parte cadenas en inglés. ¿Cuál de las siguientes es la causa más probable?",
-  options: [
-    "Faltan traducciones.",
-    "Cadenas en inglés codificadas de forma rígida.",
-    "Configuraciones de idioma incorrectas del dispositivo.",
-    "Algo salió mal durante la construcción."
-  ],
-  correctAnswer: 2,
-  urlImage: " "
-},
-  {
-    question: "¿Por qué deben realizarse pruebas de accesibilidad?",
-    options: [
-      "Para determinar si la app es usable por usuarios con diferentes necesidades.",
-      "Porque lo requiere la W3C y los proveedores de plataformas.",
-      "Para realizar pruebas completas de la aplicación.",
-      "Porque existen casos de prueba genéricos que deben ejecutarse en todas las apps."
-    ],
-    correctAnswer: 0, // Usabilidad para diferentes perfiles de usuario es clave
-    urlImage: ""
-  },
-  {
-    question: "Eres tester en un equipo que desarrolla una app móvil. El equipo ha terminado la versión actual y la ha lanzado a la tienda de aplicaciones. ¿Cuál es tu siguiente actividad?",
-    options: [
-      "Archivar artefactos de prueba.",
-      "Realizar pruebas posteriores al lanzamiento.",
-      "Pruebas de aprobación en tienda de apps.",
-      "Cierre del ciclo de pruebas."
-    ],
-    correctAnswer: 1, // Post-release testing para validar comportamiento en producción
-    urlImage: ""
-  },
-  {
-    question: "Eres nuevo en un equipo que realiza pruebas en apps móviles. Tu líder de equipo te pide que pruebes entradas por una hora, funciones por una hora, interrupciones por una hora, etc. ¿Qué está aplicando?",
-    options: [
-      "Gestión de pruebas basada en riesgos.",
-      "Delegación de responsabilidades de su trabajo.",
-      "Gestión de pruebas de rendimiento.",
-      "Gestión de pruebas basada en sesiones."
-    ],
-    correctAnswer: 3, // Session-Based Test Management organiza pruebas por bloques temporales
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál de las siguientes es un método efectivo para pruebas de campo?",
-    options: [
-      "Usar recorridos como técnica de pruebas exploratorias.",
-      "Usar un laboratorio interno de dispositivos para ejecutar pruebas en diferentes smartphones.",
-      "Usar un enfoque basado en la nube.",
-      "Usar una herramienta de prueba para ejecutar pruebas automatizadas en navegadores móviles."
-    ],
-    correctAnswer:2,
-    urlImage: ""
-  },
-  {
-    question: "¿Por qué es común que los proyectos de apps móviles inviertan la Pirámide de Pruebas?",
-    options: [
-      "Las pruebas unitarias son más complicadas en apps móviles. Por lo tanto, es conveniente tener pocas pruebas unitarias.",
-      "Falta de herramientas para pruebas unitarias e integración en aplicaciones móviles.",
-      "Las aplicaciones móviles son siempre monolíticas. Por lo tanto, todo se puede probar a nivel de sistema y no hay necesidad de pruebas en niveles inferiores.",
-      "Las aplicaciones móviles requieren muchas pruebas manuales, como pruebas de usabilidad o pruebas de campo."
-    ],
-    correctAnswer: 3,
-  },
-  {
-    question: "¿Cuál de las siguientes afirmaciones es correcta sobre los entornos de desarrollo utilizados para desarrollar aplicaciones móviles?",
-    options: [
-      "Los desarrolladores de iOS usan Visual Studio IDE como su entorno de desarrollo.",
-      "Los desarrolladores de Android usan Universal Studio IDE mientras que los de iOS usan Xcode como su entorno de desarrollo.",
-      "Los desarrolladores de Android usan Xcode como su entorno de desarrollo.",
-      "Los desarrolladores de iOS usan Xcode IDE como su entorno de desarrollo."
-    ],
-    correctAnswer: 3, // iOS = Xcode IDE
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál de las siguientes NO es una tarea que típicamente se pueda realizar usando un SDK (kit de desarrollo de software) para aplicaciones móviles?",
-    options: [
-      "Tomar capturas de pantalla.",
-      "Diseñar casos de prueba.",
-      "Enviar eventos aleatorios a la aplicación.",
-      "Crear dispositivos virtuales."
-    ],
-    correctAnswer: 1, // El diseño de casos de prueba no es una función del SDK, sino del tester
-    urlImage: ""
-  },
-  {
-  question: "Estás asignado como tester para una aplicación móvil con una arquitectura cliente-servidor. Para aprovechar mejor el equipo disponible, la empresa decide usar la PC del empleado sin que la aplicación esté conectada a un servidor real, con el fin de probar las características básicas en las primeras etapas de prueba. ¿Cuál de las siguientes arquitecturas recomendarías que el desarrollador de la aplicación Android debería usar en las primeras etapas de desarrollo para verificar la idoneidad funcional de las características básicas?",
-  options: [
-    "Tener el emulador del servidor instalado en la PC del desarrollador y el simulador de la aplicación móvil instalado en un dispositivo real.",
-    "Tener el simulador de la aplicación móvil instalado en uno de los emuladores de Dispositivos Virtuales Android (AVD) y el emulador del servidor instalado en la PC del desarrollador.",
-    "Tener el simulador del servidor instalado en la PC del desarrollador y la aplicación móvil instalada en uno de los emuladores de AVD.",
-    "Tener el simulador del servidor y la aplicación móvil emulada instalados directamente en la PC del desarrollador."
-  ],
-  correctAnswer: 2,
-  urlImage: ""
-  },
-  {
-    question: "Eres el gestor de pruebas en la división de banca digital de una empresa Fintech. Se está actualizando una app móvil Android que incorpora un nuevo mecanismo de seguridad con huella digital y reconocimiento facial.\n¿Cuál de los siguientes enfoques representa el MEJOR método para configurar tu laboratorio de pruebas para esta mejora?",
-    options: [
-      "Configurar un laboratorio remoto para probar la nueva app en la mayor cantidad posible de dispositivos.",
-      "Configurar un laboratorio local para probar de forma efectiva las funciones específicas del dispositivo relacionadas con la seguridad.",
-      "Configurar un laboratorio remoto para cubrir muchos dispositivos y uno local para maximizar la cobertura posible.",
-      "Configurar un laboratorio remoto con diversos dispositivos Android de distintos fabricantes y ahorrar dinero."
-    ],
-    correctAnswer: 1, // opción b: laboratorio local necesario para pruebas biométricas reales
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál de las siguientes afirmaciones NO distingue correctamente entre los enfoques comunes de automatización en pruebas móviles?",
-    options: [
-      "El enfoque de pruebas basado en agentes es mejor para ejecutar apps web móviles, mientras que las pruebas en dispositivos son mejores para todo tipo de apps móviles.",
-      "El enfoque basado en agentes utiliza una cadena enviada por el navegador para simular un navegador en particular, mientras que el enfoque de dispositivo debe ejecutarse en un dispositivo móvil específico.",
-      "Las apps nativas se prueban mejor con herramientas generales de automatización para aplicaciones web, mientras que las apps móviles requieren herramientas específicas.",
-      "El enfoque basado en agentes simula las características del navegador, mientras que el enfoque basado en dispositivos opera sobre el navegador real."
-    ],
-    correctAnswer: 2, // opción c: incorrecta, las apps nativas NO se prueban con herramientas web
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál de las siguientes afirmaciones es VERDADERA respecto a los métodos de scripting utilizados en la automatización de pruebas móviles?",
-    options: [
-      "La creación de scripts mediante identificación de objetos es más rápida que la basada en reconocimiento visual (OCR/Texto), lo que reduce el tiempo total de ejecución de pruebas.",
-      "El scripting basado en objetos es el método más confiable para generar código de automatización porque permite que el framework identifique objetos móviles sin depender del dispositivo en prueba.",
-      "El método de scripting por identificación de objetos aumenta el esfuerzo de mantenimiento cuando hay cambios frecuentes en el código de la aplicación que afectan las imágenes base.",
-      "Confiar en el reconocimiento de texto (OCR) y aprendizaje de objetos no implica riesgo para la fiabilidad o robustez de la automatización de pruebas."
-    ],
-    correctAnswer: 1, // El scripting basado en objetos ofrece mayor confiabilidad
-    urlImage: ""
-  },
-  {
-    question: "¿Cuál de las siguientes NO es una consideración importante al evaluar herramientas de automatización para pruebas móviles?",
-    options: [
-      "El nivel de habilidad en automatización de los testers que utilizarán la herramienta.",
-      "Requisitos y complejidades como el uso de FaceID, huellas dactilares y chatbots en la app.",
-      "Es importante considerar los requisitos y complejidades de automatización.",
-      "La capacidad del framework de pruebas para operar de forma independiente a otras herramientas existentes en la organización."
-    ],
-    correctAnswer:3,
-  },
-  {
-    question: "¿Cuál de las siguientes afirmaciones MENOS respalda el uso de un laboratorio de pruebas remoto?",
-    options: [
-      "Las pruebas en etapas finales del desarrollo que requieren ejecutar en el laboratorio completo de dispositivos se realizan mejor en un laboratorio remoto.",
-      "Un laboratorio remoto probablemente cubra un conjunto reducido de configuraciones recientes de dispositivos/SO para validar rápidamente las fases de diseño inicial.",
-      "Los laboratorios remotos aseguran una variedad suficiente de dispositivos y sistemas operativos para que los equipos tengan diversidad en las pruebas.",
-      "Los laboratorios remotos son más adecuados para ejecuciones a gran escala porque están diseñados para minimizar problemas de estabilidad en el proceso."
-    ],
-    correctAnswer: 1, // Opción B indica cobertura limitada, lo cual es una limitación
-    urlImage: ""
+class QuizApp {
+  constructor() {
+    // Estado
+    this.questions = [];
+    this.translations = {};
+    this.currentQuestionIndex = 0;
+    this.userAnswers = [];
+    this.modoVozActivo = false;
+    this.isRecognizing = false;
+    this.timer = null;
+    this.timeLeft = 2400; // 40 minutos en segundos
+    this.recognition = null;
+    this.hasRequestedMicPermission = false;
+
+    // DOM Elements
+    this.quizForm = document.getElementById('quiz-form');
+    this.questionsContainer = document.getElementById('questions-container');
+    this.nextBtn = document.getElementById('next-btn');
+    this.timerEl = document.getElementById('timer');
+    this.resultModal = document.getElementById('result-modal');
+    this.resultMessage = document.getElementById('result-message');
+    this.restartBtn = document.getElementById('restart-btn');
+    this.closeModalBtn = document.getElementById('close-modal');
+    this.languageSelector = document.getElementById('language');
+
+    // Elementos dinámicos
+    this.feedbackEl = null;
+    this.btnActivarVoz = null;
   }
-];
 
-let currentQuestionIndex = 0;
-let timer;
-let timeLeft = 2400; // 40 minutos en segundos
-const userAnswers = new Array(questions.length).fill(null);
+  init() {
+    this.createDynamicElements();
+    this.setupSpeechRecognition();
+    this.addEventListeners();
+    this.loadLanguageData(this.languageSelector.value);
+    this.startTimer();
+  }
 
-// Función para renderizar la pregunta actual
-function renderQuestion(index) {
-  const container = document.getElementById("questions-container");
-  container.innerHTML = ""; // Limpiar el contenedor
+  createDynamicElements() {
+    // Crear feedbackEl
+    this.feedbackEl = document.createElement('div');
+    this.feedbackEl.style.fontStyle = 'italic';
+    this.feedbackEl.style.marginTop = '10px';
+    this.questionsContainer.parentNode.insertBefore(this.feedbackEl, this.questionsContainer.nextSibling);
 
-  const q = questions[index];
-  const questionDiv = document.createElement("div");
-  questionDiv.classList.add("question");
-  const formattedText = q.question.replace(/\n/g, "<br>");
+    // Crear botón activar voz
+    this.btnActivarVoz = document.createElement('button');
+    this.btnActivarVoz.type = 'button';
+    this.btnActivarVoz.id = 'btn-activar-voz';
+    this.btnActivarVoz.textContent = 'Contestar por voz';
+    this.btnActivarVoz.style.marginLeft = '10px';
+    this.nextBtn.parentNode.appendChild(this.btnActivarVoz);
+  }
 
-  const esMultiple = Array.isArray(q.correctAnswer); // Detecta si hay más de una respuesta correcta
+  setupSpeechRecognition() {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert('Tu navegador no soporta reconocimiento de voz.');
+      this.nextBtn.disabled = true;
+      this.btnActivarVoz.disabled = true;
+      return;
+    }
 
-  questionDiv.innerHTML = `
-  <h2 style="white-space: normal;">${index + 1}. ${formattedText}</h2>
-  ${
-  Array.isArray(q.urlImages) && q.urlImages.length > 0
-    ? q.urlImages.map(
-        (imgSrc) => `
-          <div class="image-container" style="margin: 1em 0;">
-            <div style="
-              width: 100%;
-              height: 200px;
-              background-image: url('${imgSrc}');
-              background-size: contain;
-              background-repeat: no-repeat;
-              background-position: center;
-            "></div>
-          </div>
-        `
-      ).join("")
-    : (typeof q.urlImage === "string" && q.urlImage.trim() !== ""
-        ? `
-          <div class="image-container" style="margin: 1em 0;">
-            <div style="
-              width: 100%;
-              height: 200px;
-              background-image: url('${q.urlImage}');
-              background-size: contain;
-              background-repeat: no-repeat;
-              background-position: center;
-            "></div>
-          </div>
-        `
-        : "")
-}
-`;
+    this.recognition = new SpeechRecognition();
+    this.recognition.lang = 'en-US'; // Se actualizará dinámicamente
+    this.recognition.interimResults = false;
+    this.recognition.maxAlternatives = 1;
+    this.recognition.continuous = true;
 
-  const optionsDiv = document.createElement("div");
-  optionsDiv.classList.add("options");
+    this.recognition.addEventListener('start', () => {
+      this.isRecognizing = true;
+      this.setFeedback(this.translations.listeningFeedback || 'Escuchando...');
+    });
 
-  q.options.forEach((option, i) => {
-    const input = document.createElement("input");
-    input.type = esMultiple ? "checkbox" : "radio";
-    input.name = `question-${index}`;
-    input.value = i;
-    input.id = `q${index}_opt${i}`;
+    this.recognition.addEventListener('end', () => {
+      this.isRecognizing = false;
+      if (this.modoVozActivo && this.currentQuestionIndex < this.questions.length) {
+        // Reiniciar automáticamente para mejor UX
+        this.recognition.start();
+        this.setFeedback(this.translations.listeningFeedback || 'Escuchando...');
+      }
+    });
 
-    const label = document.createElement("label");
+    this.recognition.addEventListener('result', (event) => this.handleSpeechResult(event));
+
+    this.recognition.addEventListener('error', (event) => this.handleRecognitionError(event));
+  }
+
+  setFeedback(message) {
+    this.feedbackEl.textContent = message;
+  }
+
+  normalizeText(text) {
+    return text.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // elimina tildes
+      .replace(/[.,!?¡¿]$/g, '') // elimina puntuación final
+      .trim();
+  }
+
+  parseSpeechToOptions(speechText, options, mapNumeros) {
+    const delimiters = /,| y también | y |opciones |opcion | /;
+    const parts = speechText.split(delimiters)
+      .map(s => this.normalizeText(s))
+      .filter(Boolean);
+
+    const selectedIndices = [];
+
+    parts.forEach(part => {
+      if (mapNumeros.hasOwnProperty(part)) {
+        const idx = mapNumeros[part];
+        if (!selectedIndices.includes(idx)) selectedIndices.push(idx);
+      } else {
+        options.forEach((opt, i) => {
+          if (opt.toLowerCase().startsWith(part) && !selectedIndices.includes(i)) {
+            selectedIndices.push(i);
+          }
+        });
+      }
+    });
+
+    return selectedIndices;
+  }
+
+  handleSpeechResult(event) {
+    let speechResult = event.results[event.results.length - 1][0].transcript;
+    speechResult = this.normalizeText(speechResult);
+    console.log('Reconocido:', speechResult);
+
+    const opciones = this.questions[this.currentQuestionIndex].options;
+    const isMultiple = Array.isArray(this.questions[this.currentQuestionIndex].correctAnswer);
+
+    const mapNumeros = {
+      'uno': 0, '1': 0,
+      'dos': 1, '2': 1,
+      'tres': 2, '3': 2,
+      'cuatro': 3, '4': 3
+    };
+
+    if (isMultiple) {
+      const seleccionadas = this.parseSpeechToOptions(speechResult, opciones, mapNumeros);
+
+      if (seleccionadas.length > 0) {
+        this.markOptions(seleccionadas);
+        this.userAnswers[this.currentQuestionIndex] = seleccionadas;
+        this.setFeedback(`Opciones seleccionadas: ${seleccionadas.map(i => opciones[i]).join(', ')}. Di "listo" para continuar.`);
+      } else if (speechResult.includes('listo') || speechResult.includes('termine') || speechResult.includes('terminé')) {
+        this.setFeedback('Respuesta registrada. Avanzando...');
+        setTimeout(() => this.avanzarPregunta(), 1000);
+      } else {
+        this.setFeedback('No se reconocieron opciones válidas. Por favor intenta de nuevo.');
+      }
+    } else {
+      // Respuesta única
+      let opcionSeleccionada = -1;
+
+      for (const key in mapNumeros) {
+        if (speechResult.includes(key)) {
+          opcionSeleccionada = mapNumeros[key];
+          break;
+        }
+      }
+
+      if (opcionSeleccionada === -1) {
+        for (let i = 0; i < opciones.length; i++) {
+          if (speechResult.includes(opciones[i].toLowerCase().slice(0, 10))) {
+            opcionSeleccionada = i;
+            break;
+          }
+        }
+      }
+
+      if (opcionSeleccionada >= 0) {
+        this.markOptions([opcionSeleccionada]);
+        this.userAnswers[this.currentQuestionIndex] = opcionSeleccionada;
+        this.setFeedback(this.translations.answerRegistered || 'Respuesta registrada. Avanzando...');
+        setTimeout(() => this.avanzarPregunta(), 1000);
+      } else {
+        this.setFeedback(this.translations.recognitionFailed || 'No se pudo reconocer la opción. Por favor intenta de nuevo.');
+      }
+    }
+  }
+
+  markOptions(indices) {
+    // Marca las opciones en el DOM
+    indices.forEach(i => {
+      const input = this.quizForm.querySelector(`input[name="option"][value="${i}"]`);
+      if (input) input.checked = true;
+    });
+  }
+
+  handleRecognitionError(event) {
+    let mensajeError;
+
+    switch (event.error) {
+      case 'no-speech':
+        setTimeout(() => {
+          if (this.modoVozActivo) this.recognition.start();
+        }, 1000);
+        mensajeError = 'No se detectó voz. Intenta hablar más claramente.';
+        break;
+      case 'audio-capture':
+        mensajeError = 'No se detectó micrófono. Verifica tu dispositivo.';
+        break;
+      case 'not-allowed':
+      case 'permission-denied':
+        mensajeError = 'Permiso de micrófono denegado.';
+        this.modoVozActivo = false;
+        this.nextBtn.style.display = 'inline-block';
+        this.btnActivarVoz.style.display = 'inline-block';
+        this.btnActivarVoz.disabled = true;
+        if (this.recognition) this.recognition.stop();
+        break;
+      default:
+        mensajeError = 'Ocurrió un error en el reconocimiento de voz.';
+    }
+
+    console.error(mensajeError);
+    this.setFeedback(mensajeError);
+    this.isRecognizing = false;
+  }
+
+  loadLanguageData(lang) {
+    let data;
+    switch (lang) {
+      case 'es':
+        data = data_es;
+        if (this.recognition) this.recognition.lang = 'es-ES';
+        break;
+      case 'en':
+        data = data_en;
+        if (this.recognition) this.recognition.lang = 'en-US';
+        break;
+      case 'pt':
+        data = data_pt;
+        if (this.recognition) this.recognition.lang = 'pt-PT';
+        break;
+      default:
+        data = data_en;
+        if (this.recognition) this.recognition.lang = 'en-US';
+    }
+    this.questions = data.questions;
+    this.translations = data.texts;
+    this.userAnswers = new Array(this.questions.length).fill(null);
+    this.currentQuestionIndex = 0;
+    this.timeLeft = 2400;
+    this.updateTimerDisplay();
+    this.renderQuestion();
+    this.updateNextButtonText();
+    this.setFeedback('');
+    this.modoVozActivo = false;
+    this.nextBtn.style.display = 'inline-block';
+    this.btnActivarVoz.style.display = 'inline-block';
+    if (this.recognition) this.recognition.stop();
+  }
+
+  renderQuestion() {
+    const q = this.questions[this.currentQuestionIndex];
+    this.questionsContainer.innerHTML = '';
+
+    // Título
+    const questionTitle = document.createElement('h2');
+    questionTitle.textContent = `${this.currentQuestionIndex + 1}. ${q.question}`;
+    this.questionsContainer.appendChild(questionTitle);
+
+    // Imágenes
+    const questionDiv = document.createElement('div');
+    if (Array.isArray(q.urlImages) && q.urlImages.length > 0) {
+      q.urlImages.forEach(imgSrc => {
+        const imgContainer = document.createElement('div');
+        imgContainer.classList.add('image-container');
+        imgContainer.style.margin = '1em 0';
+        imgContainer.style.width = '100%';
+        imgContainer.style.height = '200px';
+        imgContainer.style.backgroundImage = `url('${imgSrc}')`;
+        imgContainer.style.backgroundSize = 'contain';
+        imgContainer.style.backgroundRepeat = 'no-repeat';
+        imgContainer.style.backgroundPosition = 'center';
+        questionDiv.appendChild(imgContainer);
+      });
+    } else if (typeof q.urlImage === 'string' && q.urlImage.trim() !== '') {
+      const imgContainer = document.createElement('div');
+      imgContainer.classList.add('image-container');
+      imgContainer.style.margin = '1em 0';
+      imgContainer.style.width = '100%';
+      imgContainer.style.height = '200px';
+      imgContainer.style.backgroundImage = `url('${q.urlImage}')`;
+      imgContainer.style.backgroundSize = 'contain';
+      imgContainer.style.backgroundRepeat = 'no-repeat';
+      imgContainer.style.backgroundPosition = 'center';
+      questionDiv.appendChild(imgContainer);
+    }
+    this.questionsContainer.appendChild(questionDiv);
+
+    // Opciones
+    const isMultiple = Array.isArray(q.correctAnswer);
+    const optionsDiv = document.createElement('div');
+    optionsDiv.classList.add('options');
+
+    q.options.forEach((option, i) => {
+      const optionElement = this.createOption(
+        isMultiple ? 'checkbox' : 'radio',
+        'option', // nombre consistente para inputs
+        i,
+        option,
+        this.isOptionSelected(i, isMultiple),
+        () => this.handleOptionChange(i, isMultiple, optionsDiv)
+      );
+      optionsDiv.appendChild(optionElement);
+    });
+
+    this.questionsContainer.appendChild(optionsDiv);
+  }
+
+  createOption(type, name, value, labelText, checked, onChange) {
+    const wrapper = document.createElement('div');
+    wrapper.style.display = 'flex';
+    wrapper.style.alignItems = 'center';
+    wrapper.style.gap = '8px';
+    wrapper.style.marginBottom = '16px';
+
+    const input = document.createElement('input');
+    input.type = type;
+    input.name = name;
+    input.value = value;
+    input.id = `${name}_opt${value}`;
+    input.checked = checked;
+    input.style.margin = '0';
+    input.style.alignSelf = 'center';
+    input.addEventListener('change', onChange);
+
+    const label = document.createElement('label');
     label.htmlFor = input.id;
-    label.innerHTML = option;
-
-    const wrapper = document.createElement("div");
-    wrapper.style.display = "flex"; // Usar flexbox para alinear el input y el label
-    wrapper.style.alignItems = "center"; // Alinear verticalmente al centro
-    wrapper.style.gap = "8px"; // Espacio entre input y label
-    // Añadir estilos específicos al input para mejorar el alineamiento
-    input.style.margin = "0";
-    input.style.alignSelf = "center"; // Asegurar que el input esté centrado verticalmente
-    // Añadir estilos al label para mejor disposición
-    label.style.display = "flex";
-    label.style.alignItems = "center";
-    label.style.margin = "0";
-
-     // Añadir espacio hacia abajo entre este wrapper y el siguiente
-    wrapper.style.marginBottom = "16px"; // Espacio hacia abajo
+    label.textContent = labelText;
+    label.style.margin = '0';
+    label.style.display = 'flex';
+    label.style.alignItems = 'center';
 
     wrapper.appendChild(input);
     wrapper.appendChild(label);
-    optionsDiv.appendChild(wrapper);
 
-    // Restaurar respuestas seleccionadas previamente
-    if (esMultiple) {
-      const selected = userAnswers[index] || [];
-      if (selected.includes(i)) input.checked = true;
-      input.addEventListener("change", () => {
-        const seleccionados = Array.from(optionsDiv.querySelectorAll(`input[name="question-${index}"]`))
-          .filter(cb => cb.checked)
-          .map(cb => parseInt(cb.value));
-        userAnswers[index] = seleccionados;
-      });
+    return wrapper;
+  }
+
+  isOptionSelected(index, isMultiple) {
+    if (isMultiple) {
+      const selected = this.userAnswers[this.currentQuestionIndex] || [];
+      return selected.includes(index);
     } else {
-      if (userAnswers[index] === i) input.checked = true;
-      input.addEventListener("change", () => {
-        userAnswers[index] = parseInt(input.value);
-      });
+      return this.userAnswers[this.currentQuestionIndex] === index;
     }
-  });
+  }
 
-  questionDiv.appendChild(optionsDiv);
-  container.appendChild(questionDiv);
-
-  // Botones de navegación
-  document.getElementById("next-btn").textContent = index === questions.length - 1 ? "Finalizar" : "Siguiente";
- 
- // document.getElementById("submit-btn").style.display = index === questions.length - 1 ? "block" : "none";
-  //document.getElementById("prev-btn").disabled = index === 0;
-}
-
-function startTimer() {
-  timer = setInterval(() => {
-    console.log("Tiempo restante:", timeLeft); // Para depuración
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      alert("¡El tiempo se ha agotado!");
-      evaluateQuiz();
+  handleOptionChange(index, isMultiple, optionsDiv) {
+    if (isMultiple) {
+      const selectedOptions = Array.from(optionsDiv.querySelectorAll('input[name="option"]:checked'))
+        .map(cb => parseInt(cb.value));
+      this.userAnswers[this.currentQuestionIndex] = selectedOptions;
     } else {
-      timeLeft--;
-      updateTimerDisplay();
+      this.userAnswers[this.currentQuestionIndex] = index;
     }
-  }, 1000);
-}
-
-// Función para actualizar la visualización del temporizador
-function updateTimerDisplay() {
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
-  document.getElementById("timer").textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-}
-
-// Función para evaluar el cuestionario
-function arraysEqual(a, b) {
-  return Array.isArray(a) && Array.isArray(b) &&
-    a.length === b.length &&
-    a.every(val => b.includes(val));
-}
-
-function evaluateQuiz() {
-  const results = [];
-  questions.forEach((q, index) => {
-    const userResponse = userAnswers[index];
-    const correct = Array.isArray(q.correctAnswer)
-      ? arraysEqual(userResponse, q.correctAnswer)
-      : userResponse === q.correctAnswer;
-    results.push({ isCorrect: correct });
-  });
-
-  const score = results.filter(r => r.isCorrect).length;
-  const total = questions.length;
-  const percentage = (score / total) * 100;
-
-  displayResults(percentage);
-}
-
-// Función para mostrar los resultados
-function displayResults(percentage) {
-  const modal = document.getElementById("result-modal");
-  const message = document.getElementById("result-message");
-  const restartBtn = document.getElementById("restart-btn");
-
-  // Mostrar u ocultar el contenido del cuestionario según la calificación
-  if (percentage >= 70) {
-    const scoreDiv = document.createElement("div");
-    scoreDiv.innerHTML = `<h2>Resultado: ${score} / ${total} (${percentage.toFixed(2)}%)</h2>`;
-    container.appendChild(scoreDiv);
-
-    message.innerHTML = `
-      <h2>¡Felicidades!</h2>
-      <p>Has obtenido una calificación de ${percentage.toFixed(2)}%.</p>
-      <p>Puedes obtener tu certificado enviando un comprobante de pago de <strong>10 USD</strong> a educacion@frecuenciagamer.com.</p>
-    `;
-    restartBtn.style.display = "none";
-  } else {
-    // Mostrar solo el mensaje del modal
-    container.innerHTML = "";
-    message.innerHTML = `
-      <h2>Resultado insuficiente</h2>
-      <p>Obtuviste ${percentage.toFixed(2)}%. Necesitas al menos 70 % para obtener el certificado.</p>
-      <p>¡Te animamos a intentarlo nuevamente!</p>
-    `;
-    restartBtn.style.display = "inline-block";
-    restartBtn.onclick = () => location.reload();
   }
 
-  // Mostrar el modal
-  modal.style.display = "block";
-}
+  updateNextButtonText() {
+    this.nextBtn.textContent = (this.currentQuestionIndex === this.questions.length - 1)
+      ? this.translations.finish
+      : this.translations.next;
+  }
 
-// Iniciar el cronómetro y renderizar la primera pregunta al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-  renderQuestion(currentQuestionIndex);
-  startTimer(); // Iniciar el cronómetro al cargar el cuestionario
-  updateTimerDisplay(); // Mostrar el tiempo inicial
+  avanzarPregunta() {
+    const q = this.questions[this.currentQuestionIndex];
+    const isMultiple = Array.isArray(q.correctAnswer);
 
-  // Controlar la visibilidad de la pestaña
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === 'hidden') {
-      alert("¡Cuidado! Si cambias de pestaña, puedes perder la prueba.");
+    if (isMultiple) {
+      const selectedOptions = this.userAnswers[this.currentQuestionIndex] || [];
+      if (selectedOptions.length === 0) {
+        this.setFeedback(this.translations.selectAnswer || 'Por favor, selecciona al menos una respuesta.');
+        return;
+      }
+    } else {
+      const selected = this.userAnswers[this.currentQuestionIndex];
+      if (selected === null || selected === undefined) {
+        this.setFeedback(this.translations.selectAnswer || 'Por favor, selecciona una respuesta.');
+        return;
+      }
     }
-  });
-});
 
-// Evento para el botón "Siguiente"
-document.getElementById("next-btn").addEventListener("click", () => {
-  const selected = document.querySelector(`input[name="question-${currentQuestionIndex}"]:checked`);
-  if (!selected) {
-    alert("Por favor, selecciona una respuesta antes de continuar.");
-    return;
+    this.currentQuestionIndex++;
+    if (this.currentQuestionIndex < this.questions.length) {
+      this.renderQuestion();
+      this.updateNextButtonText();
+      this.setFeedback(this.modoVozActivo ? (this.translations.listeningFeedback || 'Escuchando... por favor responde con el número o texto de la opción.') : '');
+    } else {
+      clearInterval(this.timer);
+      this.setFeedback('');
+      this.mostrarResultados();
+      if (this.recognition) this.recognition.stop();
+    }
   }
 
-  if (currentQuestionIndex < questions.length - 1) {
-    currentQuestionIndex++;
-    renderQuestion(currentQuestionIndex);
-  } else {
-    clearInterval(timer);
-    const results = evaluateQuiz();
-    displayResults(percentage);
-  }
-});
+  mostrarResultados() {
+    let totalPoints = 0;
+    let userPoints = 0;
 
-// Evento para el botón "Anterior"
-document.getElementById("prev-btn").addEventListener("click", () => {
-  if (currentQuestionIndex > 0) {
-    currentQuestionIndex--;
-    renderQuestion(currentQuestionIndex);
-  }
-});
+    this.questions.forEach((q, index) => {
+      const correctAnswer = q.correctAnswer;
+      const userAnswer = this.userAnswers[index];
 
-// Evento para el botón "Enviar"
-document.getElementById("submit-btn").addEventListener("click", () => {
-  clearInterval(timer); // Detener el cronómetro al enviar
-  evaluateQuiz(); // Evaluar el cuestionario
-});
+      if (Array.isArray(correctAnswer)) {
+        totalPoints += correctAnswer.length;
+        if (Array.isArray(userAnswer)) {
+          userAnswer.forEach(ans => {
+            if (correctAnswer.includes(ans)) userPoints++;
+          });
+        }
+      } else {
+        totalPoints++;
+        if (userAnswer === correctAnswer) userPoints++;
+      }
+    });
 
-// Evento para cerrar el modal
-document.getElementById("close-modal").addEventListener("click", () => {
-  document.getElementById("result-modal").style.display = "none";
-});
+    const scorePercent = (userPoints / totalPoints) * 100;
 
-// Evento para reiniciar el cuestionario
-document.getElementById("restart-btn").addEventListener("click", () => {
-  location.reload();
-});
+    let mensaje = '';
+    if (scorePercent >= 70) {
+      mensaje = `<h2>${this.translations.congratulations}</h2>
+      <p>${this.translations.scoreMessage.replace('{{score}}', scorePercent.toFixed(2))}</p>
+      <p>${this.translations.certificateInfo}</p>`;
+      this.restartBtn.style.display = 'none';
+    } else {
+      mensaje = `<h2>${this.translations.insufficientScore}</h2>
+      <p>${this.translations.scoreMessage.replace('{{score}}', scorePercent.toFixed(2))}</p>
+      <p>${this.translations.tryAgain}</p>`;
+      this.restartBtn.style.display = 'inline-block';
+    }
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".next-btn").addEventListener("click", onNextClick);
-});
-
-function onNextClick() {
-  const selected = document.querySelector(`input[name="question-${currentQuestionIndex}"]:checked`);
-  if (!selected) {
-    alert("Por favor, selecciona una respuesta antes de continuar.");
-    return;
+    this.resultMessage.innerHTML = mensaje;
+    this.resultModal.style.display = 'flex';
   }
 
-  userAnswers[currentQuestionIndex] = parseInt(selected.value);
+  updateTimerDisplay() {
+    const minutes = Math.floor(this.timeLeft / 60);
+    const seconds = this.timeLeft % 60;
+    this.timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }
 
-  if (currentQuestionIndex < questions.length - 1) {
-    currentQuestionIndex++;
-    renderQuestion(currentQuestionIndex);
-  } else {
-    clearInterval(timer);
-    evaluateQuiz();
-    displayResults();
+  startTimer() {
+    if (this.timer) clearInterval(this.timer);
+    this.timer = setInterval(() => {
+      if (this.timeLeft <= 0) {
+        clearInterval(this.timer);
+        this.setFeedback(this.translations.timeUp || '¡Tiempo agotado!');
+        this.mostrarResultados();
+        if (this.recognition) this.recognition.stop();
+      } else {
+        this.timeLeft--;
+        this.updateTimerDisplay();
+      }
+    }, 1000);
+  }
+
+  reiniciarQuiz() {
+    this.resultModal.style.display = 'none';
+    this.userAnswers = new Array(this.questions.length).fill(null);
+    this.currentQuestionIndex = 0;
+    this.timeLeft = 2400;
+    this.updateTimerDisplay();
+    this.renderQuestion();
+    this.updateNextButtonText();
+    this.startTimer();
+    this.modoVozActivo = false;
+    this.nextBtn.style.display = 'inline-block';
+    this.btnActivarVoz.style.display = 'inline-block';
+    this.setFeedback('');
+    if (this.recognition) this.recognition.stop();
+  }
+
+  async requestMicPermission() {
+    if (this.hasRequestedMicPermission) return true;
+    try {
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+      this.hasRequestedMicPermission = true;
+      this.setFeedback(this.translations.micPermissionGranted || 'Permiso de micrófono concedido.');
+      return true;
+    } catch (err) {
+      console.error('Permiso de micrófono denegado:', err);
+      this.setFeedback(this.translations.micPermissionDenied || 'Permiso de micrófono denegado. El modo de voz no puede activarse.');
+      this.btnActivarVoz.disabled = true;
+      return false;
+    }
+  }
+
+  addEventListeners() {
+    this.nextBtn.addEventListener('click', () => {
+      if (!this.modoVozActivo) this.avanzarPregunta();
+    });
+
+    this.btnActivarVoz.addEventListener('click', async () => {
+      if (!this.recognition) {
+        alert('Reconocimiento de voz no soportado en este navegador.');
+        return;
+      }
+      const permissionGranted = await this.requestMicPermission();
+            if (!permissionGranted) return;
+
+      this.modoVozActivo = true;
+      this.nextBtn.style.display = 'none';
+      this.btnActivarVoz.style.display = 'none';
+      this.setFeedback(this.translations.voiceModeActivated || 'Modo voz activado. Por favor responde con el número o texto de la opción.');
+
+      if (!this.isRecognizing) {
+        this.recognition.start();
+      }
+    });
+
+    this.restartBtn.addEventListener('click', () => {
+      this.reiniciarQuiz();
+    });
+
+    this.closeModalBtn.addEventListener('click', () => {
+      if (this.currentQuestionIndex < this.questions.length) {
+        this.resultModal.style.display = 'none';
+        if (this.recognition) this.recognition.stop();
+      } else {
+        this.reiniciarQuiz();
+      }
+    });
+
+    this.languageSelector.addEventListener('change', (e) => {
+      this.loadLanguageData(e.target.value);
+    });
   }
 }
 
-function displayResults() {
-  const container = document.getElementById("questions-container");
-  container.innerHTML = "";
-
-  const score = userAnswers.filter((answer, index) => answer === questions[index].correctAnswer).length;
-  const total = questions.length;
-  const percentage = (score / total) * 100;
-
-  const scoreDiv = document.createElement("div");
-  /*scoreDiv.innerHTML = `<h2>Resultado: ${score} / ${total} (${percentage.toFixed(2)}%)</h2>`;
-  container.appendChild(scoreDiv);*/
-
-  const message = document.getElementById("result-message");
-  const restartBtn = document.getElementById("restart-btn");
-
-  if (percentage >= 70) {
-
-    /*   message.innerHTML = `
-         <h2>¡Felicidades!</h2>
-         <p>Has obtenido una calificación de ${percentage.toFixed(2)}%.</p>
-         <p>Puedes obtener tu certificado enviando una captura de pantalla de la nota obtenida y un comprobante de pago de <strong>10 USD</strong> a <strong>educacion@frecuenciagamer.com </strong>.</p>
-       `;
-       restartBtn.style.display = "none";*/
-
-    scoreDiv.innerHTML = `
-      <h2>¡Felicidades!</h2>
-      <p>Has obtenido una calificación de ${percentage.toFixed(2)}%.</p>
-      <p>Puedes obtener tu certificado enviando una captura de pantalla de la nota obtenida y un comprobante de pago de <strong>10 USD</strong> a <strong>educacion@frecuenciagamer.com </strong>.</p>
-    `;
-    container.appendChild(scoreDiv);
-
-  } else {
-    /*  message.innerHTML = `
-        <h2>Resultado</h2>
-        <p>Obtuviste ${percentage.toFixed(2)}%. Necesitas al menos 70 % para obtener el certificado.</p>
-        <p>¡Te animamos a intentarlo nuevamente!</p>
-      `;*/
-
-    scoreDiv.innerHTML = `
-      <h2>Resultado</h2>
-      <p>Obtuviste ${percentage.toFixed(2)}%. Necesitas al menos 70 % para obtener el certificado.</p>
-      <p>¡Te animamos a intentarlo nuevamente!</p>
-    `;
-    container.appendChild(scoreDiv);
-
-    restartBtn.style.display = "inline-block";
-    restartBtn.onclick = () => location.reload();
-  }
-
-  const modal = document.getElementById("result-modal");
-  modal.style.display = "block";
-
-  document.getElementById("close-modal").addEventListener("click", () => {
-    modal.style.display = "none";
-
-  });
-}
+// Inicialización al cargar el DOM
+document.addEventListener('DOMContentLoaded', () => {
+  const quizApp = new QuizApp();
+  quizApp.init();
+});
