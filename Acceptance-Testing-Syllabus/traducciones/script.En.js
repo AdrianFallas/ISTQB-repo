@@ -480,6 +480,16 @@ Which of the following statements is true regarding this BPMN model?`,
     "insufficientScore": "Insufficient score",
     "tryAgain": "We encourage you to try again!",
     "result": "Result",
-    "restart": "Restart"
+    "restart": "Restart",
+    "listeningFeedback": "Listening...",
+    "answerRegistered": "Answer registered.",
+    "reconigtionFailed": "Could not recognize. Please try again.",
+    "selectAnswer": "Please select the correct option(s).",
+    "micPermissionDenied": "Microphone permission denied. Please allow microphone access and reload the page.",
+    "micPermissionGranted": "Microphone permission granted.",
+    "voiceModeActivated": "Voice mode activated.",
+    "voiceModeDeactivated": "Voice mode deactivated. Please respond with the number or text of the option.",
+    "loading": "Loading...",
+    "errorLoading": "Error loading the quiz. Please try again later."
   }
 }

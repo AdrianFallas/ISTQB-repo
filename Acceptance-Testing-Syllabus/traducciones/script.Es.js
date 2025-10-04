@@ -480,6 +480,16 @@ Has dibujado el siguiente modelo de proceso de negocio usando BPMN 2.0.
     "insufficientScore": "Resultado insuficiente",
     "tryAgain": "¡Te animamos a intentarlo nuevamente!",
     "result": "Resultado",
-    "restart": "Reiniciar"
+    "restart": "Reiniciar",
+    "listeningFeedback": "Escuchando...",
+    "answerRegistered": "Respuesta registrada.",
+    "reconigtionFailed": "No se pudo reconocer. Por favor, intenta de nuevo.",
+    "selectAnswer": " Seleccione por favor la o las opciones correctas",
+    "micPermissionDenied": "Permiso de micrófono denegado. Por favor, permite el acceso al micrófono y recarga la página.",
+    "micPermissionGranted": "Permiso de micrófono concedido.",
+    "voiceModeActivated": "Modo de voz activado.",
+    "voiceModeDeactivated": "Modo voz activado. Por favor responde con el número o texto de la opción.",
+    "loading": "Cargando...",
+    "errorLoading": "Error al cargar el cuestionario. Por favor, intenta de nuevo más tarde."
   }
 }

@@ -98,7 +98,7 @@ class QuizApp {
   }
 
   parseSpeechToOptions(speechText, options, mapNumeros) {
-    const delimiters = /,| y también | y |opciones |opcion | /;
+    const delimiters = /,| y también | y |opciones |opcion |option | and also | and | options |/;
     const parts = speechText.split(delimiters)
       .map(s => this.normalizeText(s))
       .filter(Boolean);
@@ -129,11 +129,11 @@ class QuizApp {
     const opciones = this.questions[this.currentQuestionIndex].options;
     const isMultiple = Array.isArray(this.questions[this.currentQuestionIndex].correctAnswer);
 
-    const mapNumeros = {
-      'uno': 0, '1': 0,
-      'dos': 1, '2': 1,
-      'tres': 2, '3': 2,
-      'cuatro': 3, '4': 3
+     const mapNumeros = {
+      'uno': 0, '1': 0 , 'one':0,
+      'dos': 1, '2': 1, 'two': 1,
+      'tres': 2, '3': 2, 'three' : 2,
+      'cuatro': 3, '4': 3, 'four' : 3
     };
 
     if (isMultiple) {
