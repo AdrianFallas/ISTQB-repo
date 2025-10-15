@@ -1,4 +1,37 @@
 /* Estilos Generales */
+.voz-button {
+    position: absolute; /* Fijo en top-left del contenedor padre */
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #007bff; /* Color azul ejemplo, ajusta a tu tema */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    z-index: 10; /* Encima de otros elementos */
+    transition: background 0.3s ease;
+}
+
+.voz-button:hover {
+    background: #0056b3; /* Efecto hover para feedback */
+}
+
+.voz-button:active::after { /* Visual para "desactivado" si modoVozActivo es true */
+    content: ' (Desactivado)';
+}
+
+.mic-icon {
+    width: 20px;
+    height: 20px;
+    max-width: 30px; /* Coincide con tu estilo original */
+}
+
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9; /* Color de fondo */
@@ -11,15 +44,6 @@ body {
     position: relative; /* Necesario para el posicionamiento de otros elementos */
 }
 
-.container {
-    max-width: 800px; /* Ancho máximo del contenedor */
-    margin: auto;
-    background: #fff; /* Fondo blanco */
-    padding: 30px; /* Aumentar el padding para más espacio */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave */
-    border-radius: 8px; /* Bordes redondeados */
-    width: 90%; /* Ancho responsivo */
-}
 
 h1 {
     text-align: center; /* Centrar el título */
@@ -99,6 +123,18 @@ button:active {
 .incorrect {
     color: red; /* Color para respuestas incorrectas */
     font-weight: bold; /* Negrita para respuestas incorrectas */
+}
+
+.container {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: auto;
+    background: #fff; /* Fondo blanco */
+    padding: 30px; /* Aumentar el padding para más espacio */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    border-radius: 8px; /* Bordes redondeados */
+    width: 90%; /* Ancho responsivo */
+    position: relative; /* Para que absolute se ancle aquí */
+    padding-top: 50px; /* Espacio para el botón en top-left */
 }
 
 /* Media Queries para Responsividad */

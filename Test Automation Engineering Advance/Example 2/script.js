@@ -21,18 +21,20 @@ class QuizApp {
     this.resultMessage = document.getElementById('result-message');
     this.restartBtn = document.getElementById('restart-btn');
     this.closeModalBtn = document.getElementById('close-modal');
-    this.languageSelector = document.getElementById('language');
+    const params = new URLSearchParams(window.location.search);
+    const idioma = params.get('lang') || 'es';
+    this.languageSelector = idioma;
+    this.btnActivarVoz = document.getElementById('btn-activar-voz');
 
     // Elementos dinámicos
     this.feedbackEl = null;
-    this.btnActivarVoz = null;
   }
 
   init() {
     this.createDynamicElements();
     this.setupSpeechRecognition();
     this.addEventListeners();
-    this.loadLanguageData(this.languageSelector.value);
+    this.loadLanguageData(this.languageSelector);
     this.startTimer();
   }
 
@@ -42,14 +44,6 @@ class QuizApp {
     this.feedbackEl.style.fontStyle = 'italic';
     this.feedbackEl.style.marginTop = '10px';
     this.questionsContainer.parentNode.insertBefore(this.feedbackEl, this.questionsContainer.nextSibling);
-
-    // Crear botón activar voz
-    this.btnActivarVoz = document.createElement('button');
-    this.btnActivarVoz.type = 'button';
-    this.btnActivarVoz.id = 'btn-activar-voz';
-    this.btnActivarVoz.textContent = 'Contestar por voz';
-    this.btnActivarVoz.style.marginLeft = '10px';
-    this.nextBtn.parentNode.appendChild(this.btnActivarVoz);
   }
 
   setupSpeechRecognition() {
@@ -129,12 +123,13 @@ class QuizApp {
     const opciones = this.questions[this.currentQuestionIndex].options;
     const isMultiple = Array.isArray(this.questions[this.currentQuestionIndex].correctAnswer);
 
-     const mapNumeros = {
+    const mapNumeros = {
       'uno': 0, '1': 0 , 'one':0,
       'dos': 1, '2': 1, 'two': 1,
       'tres': 2, '3': 2, 'three' : 2,
       'cuatro': 3, '4': 3, 'four' : 3
     };
+
     if (isMultiple) {
       const seleccionadas = this.parseSpeechToOptions(speechResult, opciones, mapNumeros);
 
@@ -499,7 +494,7 @@ class QuizApp {
         return;
       }
       const permissionGranted = await this.requestMicPermission();
-            if (!permissionGranted) return;
+      if (!permissionGranted) return;
 
       this.modoVozActivo = true;
       this.nextBtn.style.display = 'none';
@@ -524,9 +519,7 @@ class QuizApp {
       }
     });
 
-    this.languageSelector.addEventListener('change', (e) => {
-      this.loadLanguageData(e.target.value);
-    });
+
   }
 }
 
