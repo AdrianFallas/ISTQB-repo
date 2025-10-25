@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academy | Business Analysis & Acceptance Testing</title>
+  <style>
+    :root {
+      --primary: #007bff;
+      --light-bg: #f8f9fa;
+      --text-dark: #2f3640;
+      --border-color: #e0e0e0;
+      --hover-bg: #eef5ff;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      display: flex;
+      height: 100vh;
+    }
+
+    .content {
+      flex: 3;
+      padding: 40px;
+      overflow-y: auto;
+      background-color: var(--card-bg);
+      box-shadow: inset -1px 0 0 var(--border-color);
+    }
+
+    .content h1 {
+      font-size: 26px;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .content h2 {
+      font-size: 20px;
+      margin-top: 25px;
+    }
+
+    .content p {
+      line-height: 1.7;
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    .sidebar {
+      flex: 1;
+      background-color: var(--light-bg);
+      padding: 25px 20px;
+      border-left: 1px solid var(--border-color);
+      box-shadow: -2px 0 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidebar h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .menu-item {
+      background-color: var(--card-bg);
+      padding: 12px 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .menu-item:hover {
+      background-color: var(--hover-bg);
+    }
+
+    .menu-item.active {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: scale(1.02);
+    }
+
+    .menu-item .check {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .menu-item.active .check {
+      background-color: white;
+      border-color: white;
+    }
+
+    .menu-item.active .check::after {
+      content: "✓";
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #c4c4c4;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        border-left: none;
+        border-bottom: 1px solid var(--border-color);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content" id="content">
+    <h1>Introducción y Fundamentos</h1>
+    <p>Selecciona una sección en el panel derecho para visualizar su contenido.</p>
+  </div>
+
+  <div class="sidebar">
+    <h3>ISTQB</h3>
+    <div class="menu-item" onclick="showSection('1', this)">
+      <span>Acceptance</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('2', this)">
+      <span>Agile Technical Tester</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('3', this)">
+      <span>Agile Testing</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('4', this)">
+      <span>AI</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('5', this)">
+      <span>Automotive Software</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('6', this)">
+      <span>Gambling</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('7', this)">
+      <span>Game</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('8', this)">
+      <span>Iot Mobile</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('9', this)">
+      <span>Mobile Application</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('10', this)">
+      <span>Model Based</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('11', this)">
+      <span>Performance</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('12', this)">
+      <span>Security Advence</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('13', this)">
+      <span>Security Test Engenineer</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('14', this)">
+      <span>Technical Test Analyst</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('15', this)">
+      <span>Test Analyst Advance</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('16', this)">
+      <span>Test Automation Engineering Advance</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('17', this)">
+      <span>Test Automation Strategy</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('18', this)">
+      <span>Test Management Advance</span>
+      <div class="check"></div>
+    </div>
+    <div class="menu-item" onclick="showSection('19', this)">
+      <span>Usability</span>
+      <div class="check"></div>
+    </div>
+  </div>
+ <script src="script.js"></script>
+ <script src="./traducciones/script.Es.js"></script>
+ <script src="./traducciones/script.En.js"></script>
+</body>
+</html>
+

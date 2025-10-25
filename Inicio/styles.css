@@ -1,0 +1,108 @@
+  /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    padding-top: 12em;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f5f7fa;
+    color: #333;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  /* Contenedor cards */
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 50em;
+    margin: 0 auto;
+  }
+
+  /* Card común */
+  .card {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+    padding: 20px;
+    position: relative;
+    border-top: 5px solid #1074bc; /* azul top border */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Link "View Lessons" */
+  .card a.view-lessons {
+    font-weight: 700;
+    color: #1074bc;
+    text-decoration: none;
+  }
+  .card a.view-lessons:hover {
+    text-decoration: underline;
+  }
+  /* Botón */
+  .card button {
+    align-self: center;
+    background: transparent;
+    border: 2px solid #1074bc;
+    color: #1074bc;
+    font-weight: 600;
+    font-size: 1em;
+    padding: 8px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .card button:hover {
+    background-color: #1074bc;
+    color: #fff;
+  }
+
+  /* Estilos para el modal */
+#modalIdioma {
+    border: none;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#modalIdioma::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.opciones-idioma {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.opciones-idioma button {
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+}
+
+.opciones-idioma button:hover {
+    background: #1074bc;
+    color: #fff;
+
+}
+
+  /* Responsive */
+  @media (max-width: 500px){
+    body {
+      margin: 10px;
+    }
+    .cards-container {
+      grid-template-columns: 1fr;
+    }
+  }
