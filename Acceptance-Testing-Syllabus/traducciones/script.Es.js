@@ -484,12 +484,13 @@ Has dibujado el siguiente modelo de proceso de negocio usando BPMN 2.0.
     "listeningFeedback": "Escuchando...",
     "answerRegistered": "Respuesta registrada.",
     "reconigtionFailed": "No se pudo reconocer. Por favor, intenta de nuevo.",
-    "selectAnswer": " Seleccione por favor la o las opciones correctas",
     "micPermissionDenied": "Permiso de micrófono denegado. Por favor, permite el acceso al micrófono y recarga la página.",
     "micPermissionGranted": "Permiso de micrófono concedido.",
     "voiceModeActivated": "Modo de voz activado.",
     "voiceModeDeactivated": "Modo voz activado. Por favor responde con el número o texto de la opción.",
     "loading": "Cargando...",
-    "errorLoading": "Error al cargar el cuestionario. Por favor, intenta de nuevo más tarde."
+    "errorLoading": "Error al cargar el cuestionario. Por favor, intenta de nuevo más tarde.",
+    "nameQuiz": "Acceptance Testing Syllabus"
   }
 }
+window.data_es = data_es;

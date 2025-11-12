@@ -13,6 +13,7 @@ class QuizApp {
     this.hasRequestedMicPermission = false;
 
     // DOM Elements
+    this.questionsNameEl = document.getElementById('questions-name');
     this.quizForm = document.getElementById('quiz-form');
     this.questionsContainer = document.getElementById('questions-container');
     this.nextBtn = document.getElementById('next-btn');
@@ -22,6 +23,7 @@ class QuizApp {
     this.restartBtn = document.getElementById('restart-btn');
     this.closeModalBtn = document.getElementById('close-modal');
     const params = new URLSearchParams(window.location.search);
+    this.quizType = params.get('name') || 'acceptance';  // Tipo de quiz (ej. 'acceptance' o 'performance/example1')
     const idioma = params.get('lang') || 'es';
     this.languageSelector = idioma;
     this.btnActivarVoz = document.getElementById('btn-activar-voz');
@@ -30,13 +32,37 @@ class QuizApp {
     this.feedbackEl = null;
   }
 
-  init() {
+   async init() {
+    await this.loadTranslationScript();  // Carga dinámica del script de traducciones
     this.createDynamicElements();
     this.setupSpeechRecognition();
     this.addEventListeners();
-    this.loadLanguageData(this.languageSelector);
+    this.loadLanguageData();
+    this.questionsNameEl.innerText = this.translations.nameQuiz || 'Quiz';
     this.startTimer();
   }
+
+// Nuevo método: Carga dinámica del archivo de traducciones
+  async loadTranslationScript() {
+    const scriptPath = `../${this.quizType}/traducciones/script.${this.languageSelector}.js`;  // Ej. './acceptance/traducciones/es.js'
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = scriptPath;
+      script.onload = () => {
+        // Verifica y mapea la variable global existente (ej. data_es) a window.quizData
+        const globalVarName = `data_${this.languageSelector}`;  // ej. 'data_es'
+        if (window[globalVarName]) {
+          window.quizData = window[globalVarName];  // Asigna data_es a window.quizData
+          resolve();
+        } else {
+          reject(new Error(`Datos de traducción no encontrados en el script cargado. Verifica que ${globalVarName} esté definido en ${scriptPath}.`));
+        }
+      };
+      script.onerror = () => reject(new Error(`Error al cargar ${scriptPath}`));
+      document.head.appendChild(script);
+    });
+  }
+  
 
   createDynamicElements() {
     // Crear feedbackEl
@@ -213,27 +239,13 @@ class QuizApp {
     this.isRecognizing = false;
   }
 
-  loadLanguageData(lang) {
-    let data;
-    switch (lang) {
-      case 'es':
-        data = data_es;
-        if (this.recognition) this.recognition.lang = 'es-ES';
-        break;
-      case 'en':
-        data = data_en;
-        if (this.recognition) this.recognition.lang = 'en-US';
-        break;
-      case 'pt':
-        data = data_pt;
-        if (this.recognition) this.recognition.lang = 'pt-PT';
-        break;
-      default:
-        data = data_en;
-        if (this.recognition) this.recognition.lang = 'en-US';
+  loadLanguageData() {
+    if (!window.quizData) {
+      console.error('Datos de traducción no disponibles.');
+      return;
     }
-    this.questions = data.questions;
-    this.translations = data.texts;
+    this.questions = window.quizData.questions;
+    this.translations = window.quizData.texts;
     this.userAnswers = new Array(this.questions.length).fill(null);
     this.currentQuestionIndex = 0;
     this.timeLeft = 2400;
@@ -265,7 +277,7 @@ class QuizApp {
         imgContainer.style.margin = '1em 0';
         imgContainer.style.width = '100%';
         imgContainer.style.height = '200px';
-        imgContainer.style.backgroundImage = `url('${imgSrc}')`;
+        imgContainer.style.backgroundImage = `url('../${this.quizType}/${imgSrc}')`; 
         imgContainer.style.backgroundSize = 'contain';
         imgContainer.style.backgroundRepeat = 'no-repeat';
         imgContainer.style.backgroundPosition = 'center';
@@ -277,7 +289,7 @@ class QuizApp {
       imgContainer.style.margin = '1em 0';
       imgContainer.style.width = '100%';
       imgContainer.style.height = '200px';
-      imgContainer.style.backgroundImage = `url('${q.urlImage}')`;
+      imgContainer.style.backgroundImage = `url('../${this.quizType}/${q.urlImage}')`;
       imgContainer.style.backgroundSize = 'contain';
       imgContainer.style.backgroundRepeat = 'no-repeat';
       imgContainer.style.backgroundPosition = 'center';

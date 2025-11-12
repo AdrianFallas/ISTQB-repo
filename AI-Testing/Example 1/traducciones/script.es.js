@@ -9,7 +9,7 @@ const data_es = {
         "Algoritmo de búsqueda"
       ],
       correctAnswer: 1,
-      urlImage: ""
+      urlImage: " "
     },
     {
       "question": "¿Cuál de los siguientes es un tipo de sistema de IA con capacidades similares a las habilidades cognitivas humanas? (1 punto)",
@@ -462,6 +462,8 @@ const data_es = {
     "voiceModeActivated": "Modo de voz activado.",
     "voiceModeDeactivated": "Modo voz activado. Por favor responde con el número o texto de la opción.",
     "loading": "Cargando...",
-    "errorLoading": "Error al cargar el cuestionario. Por favor, intenta de nuevo más tarde."
+    "errorLoading": "Error al cargar el cuestionario. Por favor, intenta de nuevo más tarde.",
+    "nameQuiz": "AI Testing Example 1"
   }
 }
+window.data_es = data_es;

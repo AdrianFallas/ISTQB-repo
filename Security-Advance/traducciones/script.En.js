@@ -535,6 +535,8 @@ const data_en = {
         "voiceModeActivated": "Voice mode activated.",
         "voiceModeDeactivated": "Voice mode deactivated. Please respond with the number or text of the option.",
         "loading": "Loading...",
-        "errorLoading": "Error loading the quiz. Please try again later."
-    }
+        "errorLoading": "Error loading the quiz. Please try again later.",
+    "nameQuiz": "Security Advanced Test"
+  }
 }
+window.data_en = data_en;

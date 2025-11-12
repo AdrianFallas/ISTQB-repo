@@ -535,6 +535,8 @@ const data_es = {
     "voiceModeActivated": "Modo de voz activado.",
     "voiceModeDeactivated": "Modo voz activado. Por favor responde con el número o texto de la opción.",
     "loading": "Cargando...",
-    "errorLoading": "Error al cargar el cuestionario. Por favor, intenta de nuevo más tarde."
-    }
+    "errorLoading": "Error al cargar el cuestionario. Por favor, intenta de nuevo más tarde.",
+    "nameQuiz": "Security Advanced"
+  }
 }
+window.data_es = data_es;

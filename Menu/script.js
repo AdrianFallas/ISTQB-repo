@@ -1,46 +1,42 @@
-
-const modalIdioma = document.getElementById('modalIdioma');
+// Variables globales (si necesitas más, agrégalas aquí)
 let urlDestino = ''; // Variable para guardar la URL temporalmente
+const params = new URLSearchParams(window.location.search);
+const idioma = params.get('lang') || 'es';
 
-function toggleDropdown(element) {
-    const isExpanded = element.getAttribute('aria-expanded') === 'true';
-    element.setAttribute('aria-expanded', !isExpanded);
-    element.querySelector('.dropdown-content').style.display = isExpanded ? 'none' : 'block';
-    element.querySelector('.arrow').innerText = isExpanded ? '▸' : '▾';
-}
-
-function navigateTo(url) {
-    urlDestino = url; // Guarda la URL de destino
-    modalIdioma.showModal(); // Muestra el modal
-}
-
-function redirigir(idioma) {
-    modalIdioma.close(); // Cierra el modal
-    const urlFinal = `${urlDestino}?lang=${idioma}`; // Concatena el idioma a la URL guardada
-    window.location.href = urlFinal; // Redirige
-}
-
-// Escuchador de eventos para los botones dentro del modal
-document.querySelector('.opciones-idioma').addEventListener('click', (event) => {
-    if (event.target.tagName === 'BUTTON') {
-        const idiomaSeleccionado = event.target.dataset.lang;
-        redirigir(idiomaSeleccionado);
-    }
-});
-
-// Toggles dropdown open/close
+// Función unificada para toggle de dropdowns
 function toggleDropdown(dropdownElem) {
     const isOpen = dropdownElem.classList.contains('open');
+    
+    // Cierra todos los dropdowns abiertos antes de abrir el actual
+    document.querySelectorAll('.dropdown-card.open').forEach(openDropdown => {
+        if (openDropdown !== dropdownElem) {
+            openDropdown.classList.remove('open');
+            openDropdown.setAttribute('aria-expanded', 'false');
+            openDropdown.querySelector('.arrow').innerText = '▸'; // Flecha cerrada
+        }
+    });
+    
+    // Toggle del dropdown actual
     if (isOpen) {
         dropdownElem.classList.remove('open');
         dropdownElem.setAttribute('aria-expanded', 'false');
+        dropdownElem.querySelector('.arrow').innerText = '▸';
     } else {
         dropdownElem.classList.add('open');
         dropdownElem.setAttribute('aria-expanded', 'true');
+        dropdownElem.querySelector('.arrow').innerText = '▾';
     }
 }
 
-// Hacer accesible con teclado (Enter o space abre/cierra dropdown)
+// Función de navegación (sin cambios mayores)
+function navigateTo(url) {
+    urlDestino = url;
+    const urlFinal = `../Vista/index.html?name=${urlDestino}&lang=${idioma}`;
+    console.log('Redirigiendo a:', urlFinal);
+    window.location.href = urlFinal;
+}
+
+// Event listeners para accesibilidad
 document.querySelectorAll('.dropdown-card').forEach(dropdown => {
     dropdown.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -50,12 +46,12 @@ document.querySelectorAll('.dropdown-card').forEach(dropdown => {
     });
 });
 
-// Cerrar el dropdown al hacer clic fuera de él
+// Cerrar dropdowns al hacer clic fuera (mejorado para no interferir)
 window.addEventListener('click', (event) => {
-    document.querySelectorAll('.dropdown-card').forEach(dropdown => {
+    document.querySelectorAll('.dropdown-card.open').forEach(dropdown => {
         if (!dropdown.contains(event.target)) {
+            dropdown.classList.remove('open');
             dropdown.setAttribute('aria-expanded', 'false');
-            dropdown.querySelector('.dropdown-content').style.display = 'none';
             dropdown.querySelector('.arrow').innerText = '▸';
         }
     });
