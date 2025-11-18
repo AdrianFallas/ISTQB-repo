@@ -2,6 +2,8 @@
 let urlDestino = ''; // Variable para guardar la URL temporalmente
 const params = new URLSearchParams(window.location.search);
 const idioma = params.get('lang') || 'es';
+let universalTranslations = {}; // Para almacenar traducciones universales
+
 
 // Función unificada para toggle de dropdowns
 function toggleDropdown(dropdownElem) {
@@ -56,3 +58,46 @@ window.addEventListener('click', (event) => {
         }
     });
 });
+
+ async function loadUniversalTranslations() {
+       const scriptPath = `../Utility/Traducciones/script.${idioma}.js`; // Ruta al archivo
+       return new Promise((resolve, reject) => {
+           const script = document.createElement('script');
+           script.src = scriptPath;
+           script.onload = () => {
+               const globalVarName = `${idioma}Translations`; // ej. 'esTranslations'
+               if (window[globalVarName] && window[globalVarName].texts) {
+                   universalTranslations = window[globalVarName].texts; // Asigna textos
+                   console.log('Traducciones universales cargadas:', universalTranslations);
+                   resolve();
+               } else {
+                   reject(new Error(`Traducciones universales no encontradas en ${scriptPath}.`));
+               }
+           };
+           script.onerror = () => reject(new Error(`Error al cargar ${scriptPath}`));
+           document.head.appendChild(script);
+       });
+   }
+
+    // Función para actualizar textos de botones
+   function updateButtonTexts() {
+       // Selecciona todos los botones en cards y dropdowns
+       const buttons = document.querySelectorAll('.card button, .dropdown-item button');
+       buttons.forEach(button => {
+           // Asume que todos los botones de navegación usan "goToCourse"
+           if (universalTranslations.goToQuiz) {
+               button.textContent = universalTranslations.goToQuiz || 'Go to course';
+           }
+       });
+   }
+
+     // Inicialización: Cargar traducciones y actualizar UI
+   document.addEventListener('DOMContentLoaded', async () => {
+       try {
+           await loadUniversalTranslations(); // Carga traducciones
+           updateButtonTexts(); // Actualiza textos de botones
+       } catch (error) {
+           console.error('Error cargando traducciones:', error);
+           // Fallback: Mantén textos por defecto
+       }
+   });

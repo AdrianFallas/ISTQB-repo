@@ -468,30 +468,6 @@ Which of the following statements is true regarding this BPMN model?`,
       correctAnswer: 2,
       urlImage: " "
     }
-  ],
-  "texts": {
-    "next": "Next",
-    "finish": "Finish",
-    "timeUp": "Time is up!",
-    "selectAnswer": "Please select an answer before continuing.",
-    "congratulations": "Congratulations!",
-    "scoreMessage": "You scored {{score}}%.",
-    "certificateInfo": "You can get your certificate by sending a payment receipt of <strong>10 USD</strong> to educacion@frecuenciagamer.com.",
-    "insufficientScore": "Insufficient score",
-    "tryAgain": "We encourage you to try again!",
-    "result": "Result",
-    "restart": "Restart",
-    "listeningFeedback": "Listening...",
-    "answerRegistered": "Answer registered.",
-    "reconigtionFailed": "Could not recognize. Please try again.",
-    "selectAnswer": "Please select the correct option(s).",
-    "micPermissionDenied": "Microphone permission denied. Please allow microphone access and reload the page.",
-    "micPermissionGranted": "Microphone permission granted.",
-    "voiceModeActivated": "Voice mode activated.",
-    "voiceModeDeactivated": "Voice mode deactivated. Please respond with the number or text of the option.",
-    "loading": "Loading...",
-    "errorLoading": "Error loading the quiz. Please try again later.",
-    "nameQuiz": "Acceptance Testing Syllabus"
-  }
+  ]
 }
 window.data_en = data_en;

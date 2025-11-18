@@ -13,6 +13,24 @@
     <h1>MENU</h1>
     <div class="cards-container" id="cardsContainer">
 
+      <!-- Dropdown: Fundation -->
+      <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Fundation">
+        <div class="card card-header" onclick="toggleDropdown(this.parentElement)">
+          <h3>Fundation</h3>
+          <span class="arrow">&#9656;</span>
+        </div>
+        <div class="dropdown-content">
+          <div class="dropdown-item">
+            <span>Fundation Example 1</span>
+            <button onclick="navigateTo('Fundation/Example 1')">Go</button>
+          </div>
+          <div class="dropdown-item">
+            <span>Fundation Example 2</span>
+            <button onclick="navigateTo('Fundation/Example 2')">Go</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Cards normales -->
       <div class="card">
         <h3>Acceptance Testing</h3>

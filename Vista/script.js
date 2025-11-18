@@ -27,22 +27,58 @@ class QuizApp {
     const idioma = params.get('lang') || 'es';
     this.languageSelector = idioma;
     this.btnActivarVoz = document.getElementById('btn-activar-voz');
+    this.microSpan = document.getElementById('micro');
+    this.homeSpan = document.getElementById('home');
+    this.btnHome = document.getElementById('btn-home');
 
     // Elementos dinámicos
     this.feedbackEl = null;
   }
 
-   async init() {
+  async init() {
+    await this.loadUniversalTranslations();  // Carga traducciones universales para botnes y mensajes generales
     await this.loadTranslationScript();  // Carga dinámica del script de traducciones
     this.createDynamicElements();
     this.setupSpeechRecognition();
     this.addEventListeners();
     this.loadLanguageData();
-    this.questionsNameEl.innerText = this.translations.nameQuiz || 'Quiz';
+    this.asignarTraducciones();
+    this.questionsNameEl.textContent = this.quizType || 'Quiz';
     this.startTimer();
   }
 
-// Nuevo método: Carga dinámica del archivo de traducciones
+  asignarTraducciones() {
+
+    this.microSpan.textContent = this.translations.answerByVoice || 'Contestar por voz';
+    this.homeSpan.textContent = this.translations.goToHome || 'Ir al inicio';
+    this.closeModalBtn.textContent = this.translations.close || 'Cerrar';
+    this.restartBtn.textContent = this.translations.restart || 'Reiniciar';
+  }
+
+  // Método para cargar traducciones universales (igual patrón que loadTranslationScript)
+  async loadUniversalTranslations() {
+    const scriptPath = `../Utility/Traducciones/script.${this.languageSelector}.js`;  // Ruta al archivo universal
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');  // Crea elemento <script> dinámicamente
+      script.src = scriptPath;  // Asigna la ruta del archivo
+      script.onload = () => {
+        // Verifica que el script haya definido la variable global (ej. window.esTranslations)
+        const globalVarName = `${this.languageSelector}Translations`;  // ej. 'esTranslations'
+        if (window[globalVarName] && window[globalVarName].texts) {
+          this.translations = window[globalVarName].texts;  // Asigna los textos
+          resolve();  // Resuelve la Promise si todo está bien
+        } else {
+          reject(new Error(`Traducciones universales no encontradas o mal definidas en ${scriptPath}. Verifica que ${globalVarName}.texts exista.`));
+        }
+      };
+      script.onerror = () => {
+        reject(new Error(`Error al cargar el archivo de traducciones universales desde ${scriptPath}.`));
+      };
+      document.head.appendChild(script);  // Agrega el script al DOM para que se cargue
+    });
+  }
+
+  // Carga dinámica del archivo de traducciones
   async loadTranslationScript() {
     const scriptPath = `../${this.quizType}/traducciones/script.${this.languageSelector}.js`;  // Ej. './acceptance/traducciones/es.js'
     return new Promise((resolve, reject) => {
@@ -62,7 +98,7 @@ class QuizApp {
       document.head.appendChild(script);
     });
   }
-  
+
 
   createDynamicElements() {
     // Crear feedbackEl
@@ -72,6 +108,7 @@ class QuizApp {
     this.questionsContainer.parentNode.insertBefore(this.feedbackEl, this.questionsContainer.nextSibling);
   }
 
+// reconocimiento de voz
   setupSpeechRecognition() {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
@@ -150,10 +187,10 @@ class QuizApp {
     const isMultiple = Array.isArray(this.questions[this.currentQuestionIndex].correctAnswer);
 
     const mapNumeros = {
-      'uno': 0, '1': 0 , 'one':0,
+      'uno': 0, '1': 0, 'one': 0,
       'dos': 1, '2': 1, 'two': 1,
-      'tres': 2, '3': 2, 'three' : 2,
-      'cuatro': 3, '4': 3, 'four' : 3
+      'tres': 2, '3': 2, 'three': 2,
+      'cuatro': 3, '4': 3, 'four': 3
     };
 
     if (isMultiple) {
@@ -245,7 +282,6 @@ class QuizApp {
       return;
     }
     this.questions = window.quizData.questions;
-    this.translations = window.quizData.texts;
     this.userAnswers = new Array(this.questions.length).fill(null);
     this.currentQuestionIndex = 0;
     this.timeLeft = 2400;
@@ -277,7 +313,7 @@ class QuizApp {
         imgContainer.style.margin = '1em 0';
         imgContainer.style.width = '100%';
         imgContainer.style.height = '200px';
-        imgContainer.style.backgroundImage = `url('../${this.quizType}/${imgSrc}')`; 
+        imgContainer.style.backgroundImage = `url('../${this.quizType}/${imgSrc}')`;
         imgContainer.style.backgroundSize = 'contain';
         imgContainer.style.backgroundRepeat = 'no-repeat';
         imgContainer.style.backgroundPosition = 'center';
@@ -495,6 +531,7 @@ class QuizApp {
     }
   }
 
+
   addEventListeners() {
     this.nextBtn.addEventListener('click', () => {
       if (!this.modoVozActivo) this.avanzarPregunta();
@@ -527,13 +564,23 @@ class QuizApp {
         this.resultModal.style.display = 'none';
         if (this.recognition) this.recognition.stop();
       } else {
-        this.reiniciarQuiz();
+        this.irAInicio();
       }
+    });
+
+    this.btnHome.addEventListener('click', () => {
+      this.irAInicio();
     });
 
 
   }
+
+  irAInicio() {
+    window.location.href = '../index.html';
+  }
+
 }
+
 
 // Inicialización al cargar el DOM
 document.addEventListener('DOMContentLoaded', () => {
