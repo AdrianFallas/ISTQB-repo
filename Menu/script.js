@@ -1,4 +1,4 @@
-// Variables globales (si necesitas más, agrégalas aquí)
+// Variables globales y configuración
 let urlDestino = ''; // Variable para guardar la URL temporalmente
 const params = new URLSearchParams(window.location.search);
 const idioma = params.get('lang') || 'es';
@@ -30,11 +30,11 @@ function toggleDropdown(dropdownElem) {
     }
 }
 
-// Función de navegación (sin cambios mayores)
+// Función de navegación
 function navigateTo(url) {
     urlDestino = url;
-    const urlFinal = `../Vista/index.html?name=${urlDestino}&lang=${idioma}`;
-    console.log('Redirigiendo a:', urlFinal);
+    const urlFinal= `../Utility/Instructions/Instructions.html?name=${urlDestino}&lang=${idioma}`;
+    //const urlFinal = `../Vista/index.html?name=${urlDestino}&lang=${idioma}`;
     window.location.href = urlFinal;
 }
 
@@ -48,7 +48,7 @@ document.querySelectorAll('.dropdown-card').forEach(dropdown => {
     });
 });
 
-// Cerrar dropdowns al hacer clic fuera (mejorado para no interferir)
+// Cerrar dropdowns al hacer clic fuera de ellos
 window.addEventListener('click', (event) => {
     document.querySelectorAll('.dropdown-card.open').forEach(dropdown => {
         if (!dropdown.contains(event.target)) {
