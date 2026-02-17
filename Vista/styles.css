@@ -159,7 +159,7 @@ button:active {
 }
 
 /* Media Queries para Responsividad */
-@media (max-width: 600px) {
+@media (max-width: 738px) {
     h1 {
         margin-top: 3em; /* Más espacio superior para el título en pantallas pequeñas */
         font-size: 1.5em; /* Tamaño de fuente más pequeño en pantallas pequeñas */
