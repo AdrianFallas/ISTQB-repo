@@ -8,7 +8,7 @@ class QuizApp {
     this.modoVozActivo = false;
     this.isRecognizing = false;
     this.timer = null;
-    this.timeLeft = 2400; // 40 minutos en segundos
+    this.timeLeft = 3600; // 60 minutos en segundos
     this.recognition = null;
     this.hasRequestedMicPermission = false;
 
@@ -284,7 +284,7 @@ class QuizApp {
     this.questions = window.quizData.questions;
     this.userAnswers = new Array(this.questions.length).fill(null);
     this.currentQuestionIndex = 0;
-    this.timeLeft = 2400;
+    //this.timeLeft = 2400;
     this.updateTimerDisplay();
     this.renderQuestion();
     this.updateNextButtonText();
@@ -504,7 +504,7 @@ class QuizApp {
     this.resultModal.style.display = 'none';
     this.userAnswers = new Array(this.questions.length).fill(null);
     this.currentQuestionIndex = 0;
-    this.timeLeft = 2400;
+    this.timeLeft = 3600; // Reinicia a 60 minutos
     this.updateTimerDisplay();
     this.renderQuestion();
     this.updateNextButtonText();
