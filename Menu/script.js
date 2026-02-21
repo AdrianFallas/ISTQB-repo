@@ -33,7 +33,7 @@ function toggleDropdown(dropdownElem) {
 // Función de navegación
 function navigateTo(url) {
     urlDestino = url;
-    const urlFinal= `../Utility/Instructions/Instructions.html?name=${urlDestino}&lang=${idioma}`;
+    const urlFinal= `../Vista/Instructions/Instructions.html?name=${urlDestino}&lang=${idioma}`;
     //const urlFinal = `../Vista/index.html?name=${urlDestino}&lang=${idioma}`;
     window.location.href = urlFinal;
 }

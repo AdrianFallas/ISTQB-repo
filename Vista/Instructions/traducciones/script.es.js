@@ -6,7 +6,7 @@ const data_es = {
                 "Lee cada pregunta cuidadosamente antes de responder.",
                 "Selecciona la respuesta o respuestas que consideres correctas según corresponda.",
                 "El Quiz consta de 40 preguntas.",
-                "Tienes un límite de tiempo de 40 minutos para completar el Quiz.",
+                "Tienes un límite de tiempo según el nivel de dificultad que selecciones.",
                 "Pasas el Quiz si obtienes al menos 70 puntos.",
                 "Al finalizar el Quiz, recibirás tu puntuación.",
                 "Si obtuvistes 70 puntos o más, Obtendras el certificado de aprobación de ISTQB. Caso contrario, no te preocupes, puedes intentarlo nuevamente para mejorar tu puntuación.",

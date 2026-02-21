@@ -24,6 +24,7 @@ window.esTranslations = {
     goToQuiz: "Realizar",
     goToHome: "Ir al inicio",
     answerByVoice: "Responder por voz",
-    close: "Cerrar"
+    close: "Cerrar",
+    selectDifficultLevel: "Por favor, selecciona un nivel de dificultad."
   }
 };

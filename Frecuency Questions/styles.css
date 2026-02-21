@@ -186,9 +186,10 @@ button:active {
     }
 
     #btn-home, .voz-button {
+    display: flex;
+    align-items: center;
     font-size: 0.9em;   /* más pequeño */
     padding: 6px 8px;   /* menos espacio interno */
-    width: 5em;
     height: 3.5em;
     }
     

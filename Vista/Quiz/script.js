@@ -7,8 +7,8 @@ class QuizApp {
     this.userAnswers = [];
     this.modoVozActivo = false;
     this.isRecognizing = false;
-    this.timer = null;
     this.timeLeft = 3600; // 60 minutos en segundos
+    this.timer = null;
     this.recognition = null;
     this.hasRequestedMicPermission = false;
 
@@ -25,6 +25,7 @@ class QuizApp {
     const params = new URLSearchParams(window.location.search);
     this.quizType = params.get('name') || 'acceptance';  // Tipo de quiz (ej. 'acceptance' o 'performance/example1')
     const idioma = params.get('lang') || 'es';
+    this.dificultyLevel = params.get('difficulty') || 'easy';
     this.languageSelector = idioma;
     this.btnActivarVoz = document.getElementById('btn-activar-voz');
     this.microSpan = document.getElementById('micro');
@@ -57,7 +58,7 @@ class QuizApp {
 
   // Método para cargar traducciones universales (igual patrón que loadTranslationScript)
   async loadUniversalTranslations() {
-    const scriptPath = `../Utility/Traducciones/script.${this.languageSelector}.js`;  // Ruta al archivo universal
+    const scriptPath = `../../Utility/Traducciones/script.${this.languageSelector}.js`;  // Ruta al archivo universal
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');  // Crea elemento <script> dinámicamente
       script.src = scriptPath;  // Asigna la ruta del archivo
@@ -80,7 +81,7 @@ class QuizApp {
 
   // Carga dinámica del archivo de traducciones
   async loadTranslationScript() {
-    const scriptPath = `../${this.quizType}/traducciones/script.${this.languageSelector}.js`;  // Ej. './acceptance/traducciones/es.js'
+    const scriptPath = `../../${this.quizType}/traducciones/script.${this.languageSelector}.js`;  // Ej. './acceptance/traducciones/es.js'
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src = scriptPath;
@@ -262,8 +263,6 @@ class QuizApp {
       case 'permission-denied':
         mensajeError = 'Permiso de micrófono denegado.';
         this.modoVozActivo = false;
-        this.nextBtn.style.display = 'inline-block';
-        this.btnActivarVoz.style.display = 'inline-block';
         this.btnActivarVoz.disabled = true;
         if (this.recognition) this.recognition.stop();
         break;
@@ -284,14 +283,10 @@ class QuizApp {
     this.questions = window.quizData.questions;
     this.userAnswers = new Array(this.questions.length).fill(null);
     this.currentQuestionIndex = 0;
-    //this.timeLeft = 2400;
-    this.updateTimerDisplay();
     this.renderQuestion();
     this.updateNextButtonText();
     this.setFeedback('');
     this.modoVozActivo = false;
-    this.nextBtn.style.display = 'inline-block';
-    this.btnActivarVoz.style.display = 'inline-block';
     if (this.recognition) this.recognition.stop();
   }
 
@@ -313,7 +308,7 @@ class QuizApp {
         imgContainer.style.margin = '1em 0';
         imgContainer.style.width = '100%';
         imgContainer.style.height = '200px';
-        imgContainer.style.backgroundImage = `url('../${this.quizType}/${imgSrc}')`;
+        imgContainer.style.backgroundImage = `url('../../${this.quizType}/${imgSrc}')`;
         imgContainer.style.backgroundSize = 'contain';
         imgContainer.style.backgroundRepeat = 'no-repeat';
         imgContainer.style.backgroundPosition = 'center';
@@ -325,7 +320,7 @@ class QuizApp {
       imgContainer.style.margin = '1em 0';
       imgContainer.style.width = '100%';
       imgContainer.style.height = '200px';
-      imgContainer.style.backgroundImage = `url('../${this.quizType}/${q.urlImage}')`;
+      imgContainer.style.backgroundImage = `url('../../${this.quizType}/${q.urlImage}')`;
       imgContainer.style.backgroundSize = 'contain';
       imgContainer.style.backgroundRepeat = 'no-repeat';
       imgContainer.style.backgroundPosition = 'center';
@@ -486,6 +481,19 @@ class QuizApp {
   }
 
   startTimer() {
+    switch (this.dificultyLevel) {
+      case 'easy':
+        this.timeLeft = 3600; // 60 minutos
+        break;
+      case 'medium':
+        this.timeLeft = 2700; // 45 minutos
+        break;
+      case 'hard':
+        this.timeLeft = 1800; // 30 minutos
+        break;
+      default:
+        this.timeLeft = 3600; // Valor por defecto
+    }
     if (this.timer) clearInterval(this.timer);
     this.timer = setInterval(() => {
       if (this.timeLeft <= 0) {
@@ -504,14 +512,11 @@ class QuizApp {
     this.resultModal.style.display = 'none';
     this.userAnswers = new Array(this.questions.length).fill(null);
     this.currentQuestionIndex = 0;
-    this.timeLeft = 3600; // Reinicia a 60 minutos
+    this.startTimer();
     this.updateTimerDisplay();
     this.renderQuestion();
     this.updateNextButtonText();
-    this.startTimer();
     this.modoVozActivo = false;
-    this.nextBtn.style.display = 'inline-block';
-    this.btnActivarVoz.style.display = 'inline-block';
     this.setFeedback('');
     if (this.recognition) this.recognition.stop();
   }
@@ -576,7 +581,7 @@ class QuizApp {
   }
 
   irAInicio() {
-    window.location.href = '../index.html';
+    window.location.href = '../../index.html';
   }
 
 }

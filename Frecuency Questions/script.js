@@ -25,7 +25,7 @@ class QuizApp {
     this.addEventListeners();
     this.loadLanguageData();
     this.asignarTraducciones();
-    this.questionsNameEl.textContent = this.translations.instructions || 'Instrucciones';
+    this.questionsNameEl.textContent = this.translations.instructions || 'Preguntas Frecuentes';
   }
 
   asignarTraducciones() {
@@ -35,7 +35,7 @@ class QuizApp {
 
   // Método para cargar traducciones universales (igual patrón que loadTranslationScript)
   async loadUniversalTranslations() {
-    const scriptPath = `../Traducciones/script.${this.languageSelector}.js`;  // Ruta al archivo universal
+    const scriptPath = `../Utility/Traducciones/script.${this.languageSelector}.js`;  // Ruta al archivo universal
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');  // Crea elemento <script> dinámicamente
       script.src = scriptPath;  // Asigna la ruta del archivo
@@ -118,7 +118,6 @@ class QuizApp {
     this.questionsContainer.appendChild(questionDiv);
     
     // Opciones
-    const isMultiple = Array.isArray(q.correctAnswer);
     const optionsDiv = document.createElement('div');
     optionsDiv.classList.add('instructions');
 
@@ -132,7 +131,7 @@ class QuizApp {
     this.questionsContainer.appendChild(optionsDiv);
   }
 
-  createOption(numeroInstructions,labelText) {
+  createOption(numberQuestion,labelText) {
     const wrapper = document.createElement('div');
     wrapper.style.display = 'flex';
     wrapper.style.alignItems = 'center';
@@ -140,7 +139,7 @@ class QuizApp {
     wrapper.style.marginBottom = '16px';
 
     const label = document.createElement('label');
-    label.textContent = `${numeroInstructions + 1}) ${labelText}`;
+    label.textContent = `Respuesta # ${numberQuestion + 1}) ${labelText}`;
     label.style.margin = '0';
     label.style.display = 'flex';
     label.style.alignItems = 'center';
@@ -151,18 +150,25 @@ class QuizApp {
   }
 
 
-  updateNextButtonText() {
-    this.nextBtn.textContent = this.translations.next;
+ updateNextButtonText() {
+    this.nextBtn.textContent = (this.currentQuestionIndex === this.questions.length - 1)
+      ? this.translations.finish
+      : this.translations.next;
   }
 
-  avanzarAQuiz() {
-    const nextPage = `../../Vista/index.html?name=${this.quizType}&lang=${this.languageSelector}`;
-    window.location.href = nextPage;
+  nextFrecuencyQuestion() {
+    this.currentQuestionIndex++;
+    if (this.currentQuestionIndex < this.questions.length) {
+      this.renderQuestion();
+      this.updateNextButtonText();
+      }else {
+        this.irAInicio();
+      }
   }
 
   addEventListeners() {
     this.nextBtn.addEventListener('click', () => {
-      if (!this.modoVozActivo) this.avanzarAQuiz();
+      if (!this.modoVozActivo) this.nextFrecuencyQuestion();
     });
 
     this.btnHome.addEventListener('click', () => {
@@ -173,7 +179,7 @@ class QuizApp {
   }
 
   irAInicio() {
-    window.location.href = '../../index.html';
+    window.location.href = '../index.html';
   }
 
 }
