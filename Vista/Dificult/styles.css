@@ -58,18 +58,7 @@ h1 {
     margin-bottom: 20px; /* Espacio debajo del título */
 }
 
-#language-selector {
-    margin-bottom: 20px; /* Espacio debajo del selector de idioma */
-    text-align: center; /* Centrar el selector */
-}
 
-#language {
-    padding: 10px; /* Espaciado interno del selector */
-    font-size: 16px; /* Tamaño del texto del selector */
-    border: 1px solid #ccc; /* Borde del selector */
-    border-radius: 5px; /* Bordes redondeados */
-    background-color: #f9f9f9; /* Color de fondo del selector */
-}
 
 #timer {
     font-size: 24px; /* Tamaño del texto del cronómetro */
@@ -79,22 +68,31 @@ h1 {
     right: 20px; /* Espacio desde la derecha */
     z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
 }
-#btn-home {
+#btn-home, #language {
     font-size: 1em; /* Tamaño del texto del */
     position: absolute; /* Posicionamiento fijo */
     top: 10px; /* Espacio desde la parte superior */
-    left: 50%; /* Posición horizontal centrada */
-    transform: translateX(-50%); /* Centrar horizontalmente */
-    background: #007bff; /* Color azul ejemplo, ajusta a tu tema */
-    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     border: none;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
+    font-size: 1em; /* Tamaño del texto del botón */
     transition: background 0.3s ease;
+ }
+
+#btn-home {
+    background: #007bff; /* Color azul ejemplo, ajusta a tu tema */
+    color: white;
 }
 
+#language {
+    border: #333 solid 1px; /* Borde para el selector de idioma */
+    left: 70%; /* Posición horizontal centrada */
+    z-index: 1000;
+}
 .question {
     margin: 20px 0; /* Espaciado entre preguntas */
     padding: 15px; /* Espaciado interno para las preguntas */
@@ -149,13 +147,47 @@ button:active {
 .container {
     max-width: 800px; /* Ancho máximo del contenedor */
     margin: auto;
-    background: #fff; /* Fondo blanco */
     padding: 30px; /* Aumentar el padding para más espacio */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave */
     border-radius: 8px; /* Bordes redondeados */
     width: 90%; /* Ancho responsivo */
     position: relative; /* Para que absolute se ancle aquí */
     padding-top: 50px; /* Espacio para el botón en top-left */
+ background-color: white;
+    color: black;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+  .dark-mode-icon, .btn-dark-mode {
+    filter: invert(1); /* Invierte los colores del icono para que se vea bien en modo oscuro */
+  }
+}
+
+.btn-dark-mode {
+    width: 30px;
+    height: 30px;
+    max-width: 40px; /* Coincide con tu estilo original */
+    position: relative;
+    top: -3em;
+    left: 50%;
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.dark-mode-icon{ 
+    width: 20px;
+    height: 20px;
+    max-width: 30px; /* Coincide con tu estilo original */
+    cursor: pointer;
+    text-align: center;
 }
 
 /* Media Queries para Responsividad */
@@ -182,7 +214,8 @@ button:active {
     }
 
     #language {
-        width: 100%; /* Hacer que el selector ocupe todo el ancho */
+        left: 85%; /* Posición horizontal centrada */
+        transform: translateX(-70%); /* Centrar horizontalmente */
     }
 
     #btn-home, .voz-button {
@@ -193,6 +226,9 @@ button:active {
     height: 3.5em;
     }
     
+    .btn-dark-mode{
+        top: -1.5em; /* Ajustar posición del botón en pantallas pequeñas */
+    }
 
     
 }

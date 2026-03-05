@@ -12,6 +12,12 @@ function navigateTo(url) {
    // modalIdioma.showModal(); // Muestra el modal
 }
 
+
+  function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+
 function redirigir(idioma) {
     //modalIdioma.close(); // Cierra el modal
     const urlFinal = `${urlDestino}?lang=${idioma}`; // Concatena el idioma a la URL guardada

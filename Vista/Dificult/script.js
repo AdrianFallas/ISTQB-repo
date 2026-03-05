@@ -227,6 +227,10 @@ class QuizApp {
 
 }
 
+  function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
 
 // Inicialización al cargar el DOM
 document.addEventListener('DOMContentLoaded', () => {

@@ -10,11 +10,21 @@
 
 <body>
   <div class="container">
+
+    <button class="btn-dark-mode" onclick="myFunction()"><img class="dark-mode-icon"
+        src="../Utility/Imagenes/dark-mode.png" alt="Toggle dark mode"></button>
+
+
+    <select id="language">
+      <option value="es">Esp</option>
+      <option value="en">Eng</option>
+      <option value="pt">Port</option>
+    </select>
     <h1>MENU</h1>
     <div class="cards-container" id="cardsContainer">
 
       <!-- Dropdown: Fundation -->
-      <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Fundation">
+      <!--       <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Fundation">
         <div class="card card-header" onclick="toggleDropdown(this.parentElement)">
           <h3>Fundation</h3>
           <span class="arrow">&#9656;</span>
@@ -38,9 +48,18 @@
             <button onclick="navigateTo('Fundation/Example 4')">Go</button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Cards normales -->
+
+      <div class="card">
+        <h3>Fondation</h3>
+        <button onclick="navigateTo('Fundation/Example 1')">Go to course</button>
+        <!--<span class="checkmark" title="Completed">&#10004;</span>-->
+      </div>
+
+
+
       <div class="card">
         <h3>Acceptance Testing</h3>
         <button onclick="navigateTo('Acceptance-Testing')">Go to course</button>
@@ -60,7 +79,7 @@
       </div>
 
       <!-- Dropdown: AI Testing -->
-      <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú AI Testing">
+      <!-- <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú AI Testing">
         <div class="card card-header" onclick="toggleDropdown(this.parentElement)">
           <h3>AI Testing</h3>
           <span class="arrow">&#9656;</span>
@@ -75,6 +94,12 @@
             <button onclick="navigateTo('AI-Testing/Example 2')">Go</button>
           </div>
         </div>
+      </div> -->
+
+      <div class="card">
+        <h3>AI Testing</h3>
+        <button onclick="navigateTo('AI-Testing/Example 1')">Go to course</button>
+        <!--<span class="checkmark" title="Completed">&#10004;</span>-->
       </div>
 
       <div class="card">
@@ -115,7 +140,7 @@
       </div>
 
       <!-- Dropdown: Performance Testing -->
-      <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú Performance Testing">
+      <!-- <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú Performance Testing">
         <div class="card card-header" onclick="toggleDropdown(this.parentElement)">
           <h3>Performance Testing</h3>
           <span class="arrow">&#9656;</span>
@@ -130,6 +155,12 @@
             <button onclick="navigateTo('Performance Testing/Example 2')">Go</button>
           </div>
         </div>
+      </div> -->
+
+      <div class="card">
+        <h3>Performance Testing</h3>
+        <button onclick="navigateTo('Performance Testing/Example 1')">Go to course</button>
+        <!--<span class="checkmark" title="Completed">&#10004;</span>-->
       </div>
 
       <div class="card">
@@ -145,7 +176,7 @@
       </div>
 
       <!-- Dropdown: Test Analyst Advance -->
-      <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú Test Analyst Advance">
+      <!-- <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú Test Analyst Advance">
         <div class="card card-header" onclick="toggleDropdown(this.parentElement)">
           <h3>Test Analyst Advance</h3>
           <span class="arrow">&#9656;</span>
@@ -160,10 +191,16 @@
             <button onclick="navigateTo('Test Analyst Advance/Example 2')">Go</button>
           </div>
         </div>
+      </div> -->
+
+      <div class="card">
+        <h3>Test Analyst Advance</h3>
+        <button onclick="navigateTo('Test Analyst Advance/Example 1')">Go to course</button>
+        <!--<span class="checkmark" title="Completed">&#10004;</span>-->
       </div>
 
       <!-- Dropdown: Test Automation Engineering -->
-      <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú Test Automation Engineering">
+      <!-- <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú Test Automation Engineering">
         <div class="card card-header" onclick="toggleDropdown(this.parentElement)">
           <h3>Test Automation Engineering</h3>
           <span class="arrow">&#9656;</span>
@@ -178,10 +215,16 @@
             <button onclick="navigateTo('Test Automation Engineering Advance/Example 2')">Go</button>
           </div>
         </div>
+      </div> -->
+
+      <div class="card">
+        <h3>Test Automation Engineering Advance</h3>
+        <button onclick="navigateTo('Test Automation Engineering Advance/Example 1')">Go to course</button>
+        <!--<span class="checkmark" title="Completed">&#10004;</span>-->
       </div>
 
       <!-- Dropdown: Test Automation Strategy -->
-      <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú Test Automation Strategy">
+      <!-- <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú Test Automation Strategy">
         <div class="card card-header" onclick="toggleDropdown(this.parentElement)">
           <h3>Test Automation Strategy</h3>
           <span class="arrow">&#9656;</span>
@@ -196,10 +239,16 @@
             <button onclick="navigateTo('Test Automation Strategy/Example 2')">Go</button>
           </div>
         </div>
+      </div> -->
+
+      <div class="card">
+        <h3>Test Automation Strategy</h3>
+        <button onclick="navigateTo('Test Automation Strategy/Example 1')">Go to course</button>
+        <!--<span class="checkmark" title="Completed">&#10004;</span>-->
       </div>
 
       <!-- Dropdown: Test Management Advance -->
-      <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú Test Management Advance">
+      <!-- <div class="dropdown-card" tabindex="0" aria-expanded="false" aria-label="Menú Test Management Advance">
         <div class="card card-header" onclick="toggleDropdown(this.parentElement)">
           <h3>Test Management Advance</h3>
           <span class="arrow">&#9656;</span>
@@ -214,6 +263,12 @@
             <button onclick="navigateTo('Test Management-Advance/Example 2')">Go</button>
           </div>
         </div>
+      </div> -->
+
+      <div class="card">
+        <h3>Test Management Advance</h3>
+        <button onclick="navigateTo('Test Management-Advance/Example 1')">Go to course</button>
+        <!--<span class="checkmark" title="Completed">&#10004;</span>-->
       </div>
 
       <div class="card">

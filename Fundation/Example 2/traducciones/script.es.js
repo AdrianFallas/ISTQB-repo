@@ -439,7 +439,7 @@ const data_es = {
       ],
       "correctAnswer": 0, // Utilizar una herramienta de automatización que no será compatible en el futuro
       "urlImage": ""
-    }
+    },
 
 ],}
 window.data_es = data_es;

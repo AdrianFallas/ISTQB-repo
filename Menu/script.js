@@ -101,3 +101,7 @@ window.addEventListener('click', (event) => {
            // Fallback: Mantén textos por defecto
        }
    });
+  function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}

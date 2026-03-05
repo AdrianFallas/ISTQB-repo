@@ -86,10 +86,10 @@ quiero poder registrarme definiendo mi correo electrónico, nombre de usuario y 
 para convertirme en un jugador registrado.
 
 Propuestas de criterios de aceptación:
-i. se muestra un formulario de registro en pantalla.
-ii. el formulario está escrito en lenguaje Groovy; el cursor se ubica inicialmente en el campo ‘login’; al presionar TAB se mueve por ‘password’, ‘repeat password’, ‘mail’ y ‘repeat mail’.
-iii. no puedo registrarme si el nombre de usuario elegido ya está en uso.
-iv. tras completar el proceso de registro con éxito, se me notifica por correo electrónico.`,
+i. Se muestra un formulario de registro en pantalla.
+ii. El formulario está escrito en lenguaje Groovy; el cursor se ubica inicialmente en el campo ‘login’; al presionar TAB se mueve por ‘password’, ‘repeat password’, ‘mail’ y ‘repeat mail’.
+iii. No puedo registrarme si el nombre de usuario elegido ya está en uso.
+iv. Tras completar el proceso de registro con éxito, se me notifica por correo electrónico.`,
       options: [
         "a) solo i) y iii)",
         "b) solo ii)",
@@ -125,13 +125,15 @@ iv. tras completar el proceso de registro con éxito, se me notifica por correo 
       "question": `Supón que estás probando la funcionalidad de la interfaz de un ascensor. 
     Uno de los requisitos es que el ascensor solo funcione si el peso total de los pasajeros no excede los 200 kg. 
     Puede alcanzar los siguientes pisos: Planta Baja, 1er piso y 2do piso.
-    Quieres crear una prueba de aceptación usando el lenguaje Gherkin. Puedes usar las siguientes frases:
-    i- el peso total de los pasajeros es mayor a 200 kg
-    ii- el ascensor está en Planta Baja
-    iii- se presionó el botón '1er piso'
-    iv- el ascensor sube al 1er piso
-    v- un pasajero en el 2do piso llama al ascensor
-    vi- se muestra un mensaje ‘demasiados pasajeros’
+    Quieres crear una prueba de aceptación usando el lenguaje Gherkin.
+
+    Puedes usar las siguientes frases:
+    i- El peso total de los pasajeros es mayor a 200 kg
+    ii- El ascensor está en Planta Baja
+    iii- Se presionó el botón '1er piso'
+    iv- El ascensor sube al 1er piso
+    v- Un pasajero en el 2do piso llama al ascensor
+    vi- Se muestra un mensaje ‘demasiados pasajeros’
 
     ¿Cuál de las siguientes declaraciones asigna correctamente las construcciones DADO/CUANDO/ENTONCES con la frase correspondiente para crear un caso de prueba correcto?`,
       options: [

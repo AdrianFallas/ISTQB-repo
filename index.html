@@ -9,31 +9,40 @@
 </head>
 
 <body>
+
   <div class="container">
+    <button class="btn-dark-mode" onclick="myFunction()"><img class="dark-mode-icon"
+        src="./Utility/Imagenes/dark-mode.png" alt="Toggle dark mode"></button>
+
+    <select id="language">
+      <option value="es">Esp</option>
+      <option value="en">Eng</option>
+      <option value="pt">Port</option>
+    </select>
     <h1>Capacitación en certificaciones de ISTQB</h1>
 
-   <div class="cards-container" id="cardsContainer">
-  <!-- Cards normales -->
-  <div class="card">
-    <button onclick="navigateTo('./Menu/index.html')">Realizar Prueba</button>
-    <!--<span class="checkmark" title="Completed">&#10004;</span>-->
-  </div>
-  
-  <div class="card">
-    <button onclick="navigateTo('./Aside/index.html')">Capacitarse</button>
-    <!--<span class="checkmark" title="Completed">&#10004;</span>-->
-  </div>
+    <div class="cards-container" id="cardsContainer">
+      <!-- Cards normales -->
+      <div class="card">
+        <button onclick="navigateTo('./Menu/index.html')">Realizar Prueba</button>
+        <!--<span class="checkmark" title="Completed">&#10004;</span>-->
+      </div>
+
+      <div class="card">
+        <button onclick="navigateTo('./Aside/index.html')">Capacitarse</button>
+        <!--<span class="checkmark" title="Completed">&#10004;</span>-->
+      </div>
 
 
-</div>
-<h1>Sección de Preguntas Frecuentes</h1>
-     <div class="cards-container" id="cardsContainer">
-    <div class="card">
-    <button onclick="navigateTo('./Frecuency Questions/index.html')">Preguntas Frecuentes</button>
     </div>
+    <h1>Sección de Preguntas Frecuentes</h1>
+    <div class="cards-container" id="cardsContainer">
+      <div class="card">
+        <button onclick="navigateTo('./Frecuency Questions/index.html')">Preguntas Frecuentes</button>
+      </div>
     </div>
-</div>
- <!--  <dialog id="modalIdioma">
+  </div>
+  <!--  <dialog id="modalIdioma">
     <h2>Selecciona tu idioma</h2>
     <h2>Select your language</h2>
     <div class="opciones-idioma">
@@ -42,7 +51,8 @@
     </div>
     
 </dialog> -->
-<script src="script.js"></script>
+  <script src="script.js">
+  </script>
 </body>
 
 </html>

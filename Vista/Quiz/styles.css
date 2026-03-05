@@ -15,14 +15,49 @@ body {
 .container {
     max-width: 800px; /* Ancho máximo del contenedor */
     margin: auto;
-    background: #fff; /* Fondo blanco */
     padding: 30px; /* Aumentar el padding para más espacio */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave */
     border-radius: 8px; /* Bordes redondeados */
     width: 90%; /* Ancho responsivo */
     position: relative; /* Para que absolute se ancle aquí */
     padding-top: 50px; /* Espacio para el botón en top-left */
+    background-color: white;
+    color: black;
 }
+
+.dark-mode {
+  background-color: black;
+  color: white;
+  .dark-mode-icon, .btn-dark-mode {
+    filter: invert(1); /* Invierte los colores del icono para que se vea bien en modo oscuro */
+  }
+}
+
+.btn-dark-mode {
+    width: 30px;
+    height: 30px;
+    max-width: 40px; /* Coincide con tu estilo original */
+    position: relative;
+    top: -3em;
+    left: 80%;
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.dark-mode-icon{ 
+    width: 20px;
+    height: 20px;
+    max-width: 30px; /* Coincide con tu estilo original */
+    cursor: pointer;
+    text-align: center;
+}
+
 
  #btn-home, .voz-button {
     font-size: 1em; /* Tamaño del texto del */
@@ -176,6 +211,11 @@ button:active {
 
     #language {
         width: 100%; /* Hacer que el selector ocupe todo el ancho */
+    }
+
+    .btn-dark-mode{
+        top: 10px; /* Ajustar posición del botón en pantallas pequeñas */
+        left: 90%;
     }
 
     #btn-home, .voz-button {

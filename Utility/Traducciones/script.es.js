@@ -25,6 +25,7 @@ window.esTranslations = {
     goToHome: "Ir al inicio",
     answerByVoice: "Responder por voz",
     close: "Cerrar",
-    selectDifficultLevel: "Por favor, selecciona un nivel de dificultad."
+    selectDifficultLevel: "Por favor, selecciona un nivel de dificultad.",
+    home: "Ir al inicio",
   }
 };

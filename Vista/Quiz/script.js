@@ -44,7 +44,7 @@ class QuizApp {
     this.addEventListeners();
     this.loadLanguageData();
     this.asignarTraducciones();
-    this.questionsNameEl.textContent = this.quizType || 'Quiz';
+    this.questionsNameEl.textContent = this.quizType.split('/').shift() || 'Quiz';
     this.startTimer();
   }
 
@@ -297,6 +297,7 @@ class QuizApp {
     // Título
     const questionTitle = document.createElement('h2');
     questionTitle.textContent = `${this.currentQuestionIndex + 1}. ${q.question}`;
+    questionTitle.style.whiteSpace = 'pre-line';
     this.questionsContainer.appendChild(questionTitle);
 
     // Imágenes
@@ -366,11 +367,13 @@ class QuizApp {
     input.addEventListener('change', onChange);
 
     const label = document.createElement('label');
+    label.style.cursor = 'pointer';
     label.htmlFor = input.id;
     label.textContent = labelText;
     label.style.margin = '0';
     label.style.display = 'flex';
     label.style.alignItems = 'center';
+    
 
     wrapper.appendChild(input);
     wrapper.appendChild(label);
@@ -521,20 +524,25 @@ class QuizApp {
     if (this.recognition) this.recognition.stop();
   }
 
-  async requestMicPermission() {
-    if (this.hasRequestedMicPermission) return true;
-    try {
-      await navigator.mediaDevices.getUserMedia({ audio: true });
-      this.hasRequestedMicPermission = true;
-      this.setFeedback(this.translations.micPermissionGranted || 'Permiso de micrófono concedido.');
-      return true;
-    } catch (err) {
-      console.error('Permiso de micrófono denegado:', err);
-      this.setFeedback(this.translations.micPermissionDenied || 'Permiso de micrófono denegado. El modo de voz no puede activarse.');
-      this.btnActivarVoz.disabled = true;
-      return false;
-    }
+async requestMicPermission() {
+  if (this.hasRequestedMicPermission) return true;
+  try {
+    await navigator.mediaDevices.getUserMedia({ audio: true });
+    this.hasRequestedMicPermission = true;
+    this.setFeedback(this.translations.micPermissionGranted || 'Permiso de micrófono concedido.');
+    return true;
+  } catch (err) {
+    console.error('Permiso de micrófono denegado:', err);
+    this.setFeedback(this.translations.micPermissionDenied || 'Permiso de micrófono denegado. El modo de voz no puede activarse.');
+    this.btnActivarVoz.disabled = true;
+    return false;
   }
+}
+
+myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}
 
 
   addEventListeners() {
@@ -579,6 +587,8 @@ class QuizApp {
 
 
   }
+
+  
 
   irAInicio() {
     window.location.href = '../../index.html';

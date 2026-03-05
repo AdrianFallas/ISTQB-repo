@@ -121,8 +121,8 @@ class QuizApp {
     const optionsDiv = document.createElement('div');
     optionsDiv.classList.add('instructions');
 
-    q.instructions.forEach((option, i) => {
-      const optionElement = this.createOption(i,
+    q.instructions.forEach((option) => {
+      const optionElement = this.createOption(
         option,
       );
       optionsDiv.appendChild(optionElement);
@@ -131,7 +131,7 @@ class QuizApp {
     this.questionsContainer.appendChild(optionsDiv);
   }
 
-  createOption(numberQuestion,labelText) {
+  createOption(labelText) {
     const wrapper = document.createElement('div');
     wrapper.style.display = 'flex';
     wrapper.style.alignItems = 'center';
@@ -139,7 +139,7 @@ class QuizApp {
     wrapper.style.marginBottom = '16px';
 
     const label = document.createElement('label');
-    label.textContent = `Respuesta # ${numberQuestion + 1}) ${labelText}`;
+    label.textContent = ` ${labelText}`;
     label.style.margin = '0';
     label.style.display = 'flex';
     label.style.alignItems = 'center';
@@ -152,7 +152,7 @@ class QuizApp {
 
  updateNextButtonText() {
     this.nextBtn.textContent = (this.currentQuestionIndex === this.questions.length - 1)
-      ? this.translations.finish
+      ? this.translations.home
       : this.translations.next;
   }
 
