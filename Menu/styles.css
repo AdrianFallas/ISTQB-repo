@@ -2,46 +2,78 @@
   * {
     box-sizing: border-box;
   }
+
   body {
     font-family: Arial, sans-serif;
     margin: 20px;
     background-color: white;
     color: black;
-}
-
-.dark-mode {
-  background-color: black;
-  color: white;
-  .dark-mode-icon, .btn-dark-mode {
-    filter: invert(1); /* Invierte los colores del icono para que se vea bien en modo oscuro */
   }
+
+  .container {
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: auto;
+    padding: 30px; /* Aumentar el padding para más espacio */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    border-radius: 8px; /* Bordes redondeados */
+    width: 90%; /* Ancho responsivo */
+    position: relative; /* Para que absolute se ancle aquí */
+    padding-top: 50px; /* Espacio para el botón en top-left */
+    background-color: white;
+    color: black;
 }
 
-.btn-dark-mode {
-    width: 30px;
-    height: 30px;
-    max-width: 40px; /* Coincide con tu estilo original */
-    position: relative;
-    top: -0.5em;
-    left: 20%;
-    background: white;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-.dark-mode-icon{ 
+  .home-icon {
     width: 20px;
     height: 20px;
     max-width: 30px; /* Coincide con tu estilo original */
+}
+
+
+  .dark-mode {
+   .container{
+    background-color: black;
+    color: white;
+    }
+   .card {
+      background-color: #333;
+      color: white;
+    }
+    .btn-dark-mode {
+      background-color: dodgerblue;
+
+    }
+  }
+
+  .btn-dark-mode {
+    width: 30px;
+    height: 30px;
+    max-width: 40px;
+    /* Coincide con tu estilo original */
+    position: relative;
+    top: -2.5em;
+    left: 50%;
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    /* Asegura que el botón esté por encima de otros elementos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .dark-mode-icon {
+    width: 20px;
+    height: 20px;
+    max-width: 30px;
+    /* Coincide con tu estilo original */
     cursor: pointer;
     text-align: center;
-}
-   #language {
+  }
+
+  #btn-home, #language {
     font-size: 1em; /* Tamaño del texto del */
     position: absolute; /* Posicionamiento fijo */
     top: 10px; /* Espacio desde la parte superior */
@@ -56,15 +88,22 @@
     transition: background 0.3s ease;
  }
 
+#btn-home {
+    background: #007bff; /* Color azul ejemplo, ajusta a tu tema */
+    color: white;
+}
+
 #language {
     border: #333 solid 1px; /* Borde para el selector de idioma */
-    left: 70%; /* Posición horizontal centrada */
+    left: 90%; /* Posición horizontal centrada */
     z-index: 1000;
 }
+
   h1 {
     text-align: center;
     margin-bottom: 10px;
   }
+
   p.description {
     text-align: center;
     margin-bottom: 30px;
@@ -84,21 +123,24 @@
   .card {
     background: #fff;
     border-radius: 6px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
     padding: 20px;
     position: relative;
-    border-top: 5px solid #1074bc; /* azul top border */
+    border-top: 5px solid #1074bc;
+    /* azul top border */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
   }
+
   /* Título */
   .card h3 {
     margin: 0 0 10px 0;
     font-size: 1.1em;
     font-weight: 700;
   }
+
   /* Descripción */
   .card p {
     margin: 0 0 15px 0;
@@ -106,15 +148,18 @@
     line-height: 1.4;
     color: #444;
   }
+
   /* Link "View Lessons" */
   .card a.view-lessons {
     font-weight: 700;
     color: #1074bc;
     text-decoration: none;
   }
+
   .card a.view-lessons:hover {
     text-decoration: underline;
   }
+
   /* Botón */
   .card button {
     align-self: center;
@@ -128,6 +173,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
+
   .card button:hover {
     background-color: #1074bc;
     color: #fff;
@@ -147,24 +193,29 @@
   .dropdown-card {
     cursor: pointer;
   }
-  .dropdown-card > .card-header {
+
+  .dropdown-card>.card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .dropdown-card > .card-header h3 {
+
+  .dropdown-card>.card-header h3 {
     margin: 0;
     font-size: 1.1em;
   }
+
   /* Flecha desplegable */
   .dropdown-card .arrow {
     font-size: 1.2em;
     user-select: none;
     transition: transform 0.3s ease;
   }
+
   .dropdown-card.open .arrow {
     transform: rotate(90deg);
   }
+
   /* Contenido desplegable */
   .dropdown-content {
     margin-top: 15px;
@@ -172,6 +223,7 @@
     flex-direction: column;
     gap: 12px;
   }
+
   .dropdown-card.open .dropdown-content {
     display: flex;
   }
@@ -186,6 +238,7 @@
     justify-content: space-between;
     align-items: center;
   }
+
   .dropdown-content .dropdown-item button {
     background: transparent;
     border: 2px solid #1074bc;
@@ -194,6 +247,7 @@
     padding: 6px 14px;
     font-size: 0.9em;
   }
+
   .dropdown-content .dropdown-item button:hover {
     background: #1074bc;
     color: #fff;
@@ -201,55 +255,65 @@
 
 
   /* Estilos para el modal */
-#modalIdioma {
+  #modalIdioma {
     border: none;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     top: 50%;
     transform: translateY(-50%);
-}
+  }
 
-#modalIdioma::backdrop {
+  #modalIdioma::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
-}
+  }
 
-.opciones-idioma {
+  .opciones-idioma {
     display: flex;
     justify-content: center;
     gap: 1rem;
-}
+  }
 
-.opciones-idioma button {
+  .opciones-idioma button {
     padding: 0.8rem 1.5rem;
     cursor: pointer;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f0f0f0;
-}
+  }
 
-.opciones-idioma button:hover {
+  .opciones-idioma button:hover {
     background: #1074bc;
     color: #fff;
 
-}
+  }
 
 
   /* Responsive */
-  @media (max-width: 500px){
+  @media (max-width: 500px) {
     body {
       margin: 10px;
     }
+
     .cards-container {
       grid-template-columns: 1fr;
     }
 
-    .btn-dark-mode{
-        top: 5px; /* Ajustar posición del botón en pantallas pequeñas */
+    .btn-dark-mode {
+      top: -3em;
+      /* Ajustar posición del botón en pantallas pequeñas */
     }
 
     #language {
         left: 85%; /* Posición horizontal centrada */
         transform: translateX(-70%); /* Centrar horizontalmente */
+    }
+
+    #btn-home {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;   /* más pequeño */
+    padding: 6px 8px;   /* menos espacio interno */
+    height: 3.5em;
     }
   }

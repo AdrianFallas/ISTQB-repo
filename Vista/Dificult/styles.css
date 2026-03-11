@@ -153,17 +153,24 @@ button:active {
     width: 90%; /* Ancho responsivo */
     position: relative; /* Para que absolute se ancle aquí */
     padding-top: 50px; /* Espacio para el botón en top-left */
- background-color: white;
+    background-color: white;
     color: black;
 }
 
-.dark-mode {
-  background-color: black;
-  color: white;
-  .dark-mode-icon, .btn-dark-mode {
-    filter: invert(1); /* Invierte los colores del icono para que se vea bien en modo oscuro */
+  .dark-mode {
+   .container{
+    background-color: black;
+    color: white;
+    }
+   .card {
+      background-color: #333;
+      color: white;
+    }
+    .btn-dark-mode {
+      background-color: dodgerblue;
+
+    }
   }
-}
 
 .btn-dark-mode {
     width: 30px;

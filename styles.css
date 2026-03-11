@@ -10,12 +10,19 @@
     color: black;
   }
   .dark-mode {
-  background-color: black;
-  color: white;
-  .dark-mode-icon, .btn-dark-mode {
-    filter: invert(1); /* Invierte los colores del icono para que se vea bien en modo oscuro */
+   .container{
+    background-color: black;
+    color: white;
+    }
+   .card {
+      background-color: #333;
+      color: white;
+    }
+    .btn-dark-mode {
+      background-color: dodgerblue;
+
+    }
   }
-}
 
 .btn-dark-mode {
     width: 30px;
