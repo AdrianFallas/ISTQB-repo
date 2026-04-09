@@ -3,7 +3,8 @@ let urlDestino = ''; // Variable para guardar la URL temporalmente
 const params = new URLSearchParams(window.location.search);
 const idioma = params.get('lang') || 'es';
 let universalTranslations = {}; // Para almacenar traducciones universales
-
+const homeSpan = document.getElementById('home');
+const btnHome = document.getElementById('btn-home');
 
 // Función unificada para toggle de dropdowns
 function toggleDropdown(dropdownElem) {
@@ -17,6 +18,8 @@ function toggleDropdown(dropdownElem) {
             openDropdown.querySelector('.arrow').innerText = '▸'; // Flecha cerrada
         }
     });
+
+
     
     // Toggle del dropdown actual
     if (isOpen) {
@@ -57,6 +60,7 @@ window.addEventListener('click', (event) => {
             dropdown.querySelector('.arrow').innerText = '▸';
         }
     });
+
 });
 
  async function loadUniversalTranslations() {
@@ -89,19 +93,48 @@ window.addEventListener('click', (event) => {
                button.textContent = universalTranslations.goToQuiz || 'Go to course';
            }
        });
+       const homeText = universalTranslations.home || 'Home';
+       if (homeSpan) {
+           homeSpan.textContent = homeText;
+       }
    }
+
+   if (btnHome) {
+    btnHome.addEventListener('click', () => {
+        irAInicio();
+    });
+}
 
      // Inicialización: Cargar traducciones y actualizar UI
    document.addEventListener('DOMContentLoaded', async () => {
        try {
            await loadUniversalTranslations(); // Carga traducciones
            updateButtonTexts(); // Actualiza textos de botones
+           
+           const theme = localStorage.getItem('theme') || 'light';
+           if (theme === 'dark') {
+               document.body.classList.add('dark-mode');
+           }
+           console.log("tema actual:", theme);
+
+
+
+           
        } catch (error) {
            console.error('Error cargando traducciones:', error);
            // Fallback: Mantén textos por defecto
        }
    });
-  function myFunction() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
+
+
+
+ function darkMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  const theme = element.classList.contains("dark-mode") ? "dark" : "light";
+  localStorage.setItem('theme', theme);
 }
+
+ function irAInicio() {
+    window.location.href = '../index.html';
+  }

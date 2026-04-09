@@ -31,6 +31,12 @@ class QuizApp {
     this.loadLanguageData();
     this.asignarTraducciones();
     this.questionsNameEl.textContent = this.translations.instructions || 'Dificultad';
+    const theme = localStorage.getItem('theme') || 'light';
+    if (theme === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+    console.log("tema actual:", theme);
+  
   }
 
     setFeedback(message) {
@@ -227,9 +233,11 @@ class QuizApp {
 
 }
 
-  function myFunction() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
+ function darkMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  const theme = element.classList.contains("dark-mode") ? "dark" : "light";
+  localStorage.setItem('theme', theme);
 }
 
 // Inicialización al cargar el DOM

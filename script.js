@@ -1,5 +1,11 @@
 //const modalIdioma = document.getElementById('modalIdioma');
 let urlDestino = ''; // Variable para guardar la URL temporalmente
+const theme = localStorage.getItem('theme') || 'light';
+    if (theme === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+    console.log("tema actual:", theme);
+  
 
 
 function navigateTo(url) {
@@ -13,10 +19,14 @@ function navigateTo(url) {
 }
 
 
-  function myFunction() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
+
+ function darkMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  const theme = element.classList.contains("dark-mode") ? "dark" : "light";
+  localStorage.setItem('theme', theme);
 }
+
 
 function redirigir(idioma) {
     //modalIdioma.close(); // Cierra el modal
