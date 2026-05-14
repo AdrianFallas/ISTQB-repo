@@ -14,7 +14,6 @@ class QuizApp {
     
 
     // DOM Elements
-    this.questionsNameEl = document.getElementById('questions-name');
     this.quizForm = document.getElementById('quiz-form');
     this.questionsContainer = document.getElementById('questions-container');
     this.nextBtn = document.getElementById('next-btn');
@@ -45,13 +44,11 @@ class QuizApp {
     this.addEventListeners();
     this.loadLanguageData();
     this.asignarTraducciones();
-    this.questionsNameEl.textContent = this.quizType.split('/').shift() || 'Quiz';
     this.startTimer();
     const theme = localStorage.getItem('theme') || 'light';
     if (theme === 'dark') {
       document.body.classList.add('dark-mode');
     }
-    console.log("tema actual:", theme);
   }
 
   asignarTraducciones() {
@@ -491,6 +488,9 @@ class QuizApp {
 
   startTimer() {
     switch (this.dificultyLevel) {
+      case 'beginner':
+        this.timeLeft = 0; // Sin tiempo de duración
+        break;
       case 'easy':
         this.timeLeft = 3600; // 60 minutos
         break;
@@ -505,7 +505,11 @@ class QuizApp {
     }
     if (this.timer) clearInterval(this.timer);
     this.timer = setInterval(() => {
-      if (this.timeLeft <= 0) {
+      if (this.dificultyLevel==='beginner') {
+        clearInterval(this.timer);
+        return;
+      }
+      if (this.timeLeft <= 0 && this.dificultyLevel !== 'beginner') {
         clearInterval(this.timer);
         this.setFeedback(this.translations.timeUp || '¡Tiempo agotado!');
         this.mostrarResultados();
@@ -590,8 +594,8 @@ async requestMicPermission() {
 
   
 
- irAInicio() {
-    window.location.href = '../../Home/index.html?lang=' + this.languageSelector + '&theme=' + (document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+  irAInicio() {
+    window.location.href = '../../Home/index.html';
   }
 
 }

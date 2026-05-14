@@ -198,13 +198,16 @@ class QuizApp {
         return;
       }
       switch (selected) {
-        case 0:
-          this.difficultyLevel = 'easy';
+         case 0:
+          this.difficultyLevel = 'beginner';
           break;
         case 1:
-          this.difficultyLevel = 'medium';
+          this.difficultyLevel = 'easy';
           break;
         case 2:
+          this.difficultyLevel = 'medium';
+          break;
+        case 3:
           this.difficultyLevel = 'hard';
           break;
         default:

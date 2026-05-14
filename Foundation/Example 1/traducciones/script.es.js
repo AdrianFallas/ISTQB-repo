@@ -295,7 +295,7 @@ const data_es = {
         "18"
       ],
       "correctAnswer": 2, // 13
-      "urlImage": "tabla preg 27.png"
+      "urlImage": "./imagenes/tabla preg 27.png"
     },
     {
       "question": "Se le ha dado el siguiente requisito:\nUn usuario debe iniciar sesión en el sistema con un nombre de usuario y contraseña válidos. Si no ingresa la combinación correcta tres veces, recibirá un error y tendrá que esperar 10 minutos antes de volver a intentarlo. La prueba termina cuando el usuario inicia sesión con éxito.\n¿Cuántos casos de prueba se necesitan para proporcionar una cobertura de transición de estados del 100%?",
@@ -393,7 +393,7 @@ const data_es = {
     "5 porque ese fue el consenso"
   ],
   "correctAnswer": 3, // 5 porque ese fue el consenso
-  "urlImage": ""
+  "urlImage": "./imagenes/tabla preg 36.png"
 },
 {
   "question": "Se le ha dado el siguiente conjunto de casos de prueba para ejecutar. Se le ha indicado que los ejecute en orden por riesgo y que complete las pruebas lo más rápido posible para proporcionar retroalimentación a los desarrolladores lo antes posible. Dada esta información, ¿cuál es el mejor orden para ejecutar estas pruebas?",
@@ -404,7 +404,7 @@ const data_es = {
     "6, 1, 3, 2, 4, 5"
   ],
   "correctAnswer": 0, // 2, 4, 5, 6, 1, 3
-  "urlImage": ""
+  "urlImage": "./imagenes/tabla preg 37.png"
 },
 {
   "question": "Ha estado probando software que se utilizará para rastrear compras con tarjeta de crédito. Ha encontrado un defecto que hace que el sistema se bloquee, pero solo si una persona ha realizado y anulado 10 compras seguidas. ¿Cuál es la calificación adecuada de prioridad y severidad para este defecto?",
