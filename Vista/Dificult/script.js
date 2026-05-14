@@ -16,9 +16,9 @@ class QuizApp {
     this.questionsContainer = document.getElementById('questions-container');
     this.nextBtn = document.getElementById('next-btn');
     const params = new URLSearchParams(window.location.search);
-    this.quizType = params.get('name') || 'Dificultad';  // Tipo de quiz (ej. 'Instructions' o 'performance/example1')
-    const idioma = params.get('lang') || 'es';
+    const idioma = params.get('lang') || localStorage.getItem('idioma') || 'es'; // Prioriza URL, luego localStorage, luego 'es'
     this.languageSelector = idioma;
+    this.quizType = params.get('name') || 'Dificultad';  // Tipo de quiz (ej. 'Instructions' o 'performance/example1')
     this.homeSpan = document.getElementById('home');
     this.btnHome = document.getElementById('btn-home');
   }
@@ -35,7 +35,6 @@ class QuizApp {
     if (theme === 'dark') {
       document.body.classList.add('dark-mode');
     }
-    console.log("tema actual:", theme);
   
   }
 
@@ -81,7 +80,7 @@ class QuizApp {
 
   // Carga dinámica del archivo de traducciones
   async loadTranslationScript() {
-    const scriptPath ='./traducciones/script.es.js';  // Ej. '../acceptance/traducciones/script.es.js'
+   const scriptPath = `./traducciones/script.${this.languageSelector}.js`;  // Ej. '../traducciones/script.es.js'
     //const scriptPath = `../${this.quizType}/traducciones/script.${this.languageSelector}.js`;  // Ej. './acceptance/traducciones/es.js'
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
@@ -227,8 +226,8 @@ class QuizApp {
 
   }
 
-  irAInicio() {
-    window.location.href = '../../index.html';
+ irAInicio() {
+    window.location.href = '../../Home/index.html?lang=' + this.languageSelector + '&theme=' + (document.body.classList.contains('dark-mode') ? 'dark' : 'light');
   }
 
 }

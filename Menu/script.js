@@ -1,7 +1,7 @@
 // Variables globales y configuración
 let urlDestino = ''; // Variable para guardar la URL temporalmente
 const params = new URLSearchParams(window.location.search);
-const idioma = params.get('lang') || 'es';
+const idioma = params.get('lang') || localStorage.getItem('idioma') || 'es'; // Prioriza URL, luego localStorage, luego 'es'
 let universalTranslations = {}; // Para almacenar traducciones universales
 const homeSpan = document.getElementById('home');
 const btnHome = document.getElementById('btn-home');
@@ -72,7 +72,6 @@ window.addEventListener('click', (event) => {
                const globalVarName = `${idioma}Translations`; // ej. 'esTranslations'
                if (window[globalVarName] && window[globalVarName].texts) {
                    universalTranslations = window[globalVarName].texts; // Asigna textos
-                   console.log('Traducciones universales cargadas:', universalTranslations);
                    resolve();
                } else {
                    reject(new Error(`Traducciones universales no encontradas en ${scriptPath}.`));
@@ -110,15 +109,11 @@ window.addEventListener('click', (event) => {
        try {
            await loadUniversalTranslations(); // Carga traducciones
            updateButtonTexts(); // Actualiza textos de botones
-           
+           updateMenuText(); // Actualiza texto del menú
            const theme = localStorage.getItem('theme') || 'light';
            if (theme === 'dark') {
                document.body.classList.add('dark-mode');
            }
-           console.log("tema actual:", theme);
-
-
-
            
        } catch (error) {
            console.error('Error cargando traducciones:', error);
@@ -126,6 +121,12 @@ window.addEventListener('click', (event) => {
        }
    });
 
+ function updateMenuText() {
+    const menuTitle = document.getElementById('menu-title');
+    if (menuTitle && universalTranslations.certified) {
+        menuTitle.textContent = universalTranslations.certified;
+    }   
+}
 
 
  function darkMode() {
@@ -136,5 +137,5 @@ window.addEventListener('click', (event) => {
 }
 
  function irAInicio() {
-    window.location.href = '../index.html';
+    window.location.href = '../Home/index.html?lang=' + idioma + '&theme=' + (document.body.classList.contains('dark-mode') ? 'dark' : 'light');
   }

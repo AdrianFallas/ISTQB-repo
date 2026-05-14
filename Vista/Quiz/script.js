@@ -590,8 +590,8 @@ async requestMicPermission() {
 
   
 
-  irAInicio() {
-    window.location.href = '../../index.html';
+ irAInicio() {
+    window.location.href = '../../Home/index.html?lang=' + this.languageSelector + '&theme=' + (document.body.classList.contains('dark-mode') ? 'dark' : 'light');
   }
 
 }

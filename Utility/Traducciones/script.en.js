@@ -25,6 +25,7 @@ window.enTranslations = {
     goToHome: "Go to home",
     answerByVoice: "Answer by voice",
     close: "Close",
-    selectDifficultLevel: "Please select a difficulty level."
+    selectDifficultLevel: "Please select a difficulty level.",
+    certified:"Certifications for Quality Assurance",
   }
 };

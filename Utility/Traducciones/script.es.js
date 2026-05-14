@@ -27,5 +27,6 @@ window.esTranslations = {
     close: "Cerrar",
     selectDifficultLevel: "Por favor, selecciona un nivel de dificultad.",
     home: "Ir al inicio",
+    certified:"Certificaciones de Pruebas de calidad",
   }
 };
