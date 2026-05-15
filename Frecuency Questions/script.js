@@ -179,7 +179,7 @@ class QuizApp {
   }
 
   irAInicio() {
-    window.location.href = '../Home/index.html?lang=' + this.languageSelector + '&theme=' + (document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    window.location.href = '../index.html?lang=' + this.languageSelector + '&theme=' + (document.body.classList.contains('dark-mode') ? 'dark' : 'light');
   }
 
 }

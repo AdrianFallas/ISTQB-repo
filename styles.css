@@ -9,6 +9,21 @@
     background-color: white;
     color: black;
   }
+
+    a {
+    color: #1074bc;
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    cursor: pointer;
+    z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+
   .dark-mode {
    .container{
     background-color: black;
@@ -24,13 +39,14 @@
     } 
   }
 
+
 .btn-dark-mode {
     width: 30px;
     height: 30px;
     max-width: 40px; /* Coincide con tu estilo original */
     position: absolute;
     top: 10px;
-    left: 20%;
+    left: 48%;
     background: white;
     border-radius: 5px;
     cursor: pointer;
