@@ -61,7 +61,7 @@ window.addEventListener('click', (event) => {
         }
     });
 
-});
+}); 
 
  async function loadUniversalTranslations() {
        const scriptPath = `../Utility/Traducciones/script.${idioma}.js`; // Ruta al archivo

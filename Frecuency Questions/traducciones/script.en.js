@@ -2,14 +2,14 @@ const data_en = {
     questions: [
         {
             question: "What is ISTQB and what is the purpose of its certification?",
-            instructions: [
+            answer: [
                 "It is an international organization that defines standards in software testing.",
                 "Its certifications validate knowledge and best practices in testing, recognized globally."
             ]
         },
         {
             question: "What are the available certification levels?",
-            instructions: [
+            answer: [
                 "Foundation Level (basic).",
                 "Advanced Level (analyst, test manager, technician).",
                 "Expert Level (strategy, process improvement, automation, etc.)."
@@ -17,14 +17,14 @@ const data_en = {
         },
         {
             question: "Who should get certified in ISTQB?",
-            instructions: [
+            answer: [
                 "QA professionals, testers, developers, project managers.",
                 "Anyone involved in ensuring software quality."
             ]
         },
         {
             question: "What are the requirements to take the exam?",
-            instructions: [
+            answer: [
                 "Foundation: No previous experience required.",
                 "Advanced: Practical experience in testing is recommended and Foundation certification is required.",
                 "Expert: Significant experience and previous certifications are required."
@@ -32,7 +32,7 @@ const data_en = {
         },
         {
             question: "How is the ISTQB Foundation exam structured?",
-            instructions: [
+            answer: [
                 "It consists of 40 questions.",
                 "There is a time limit depending on the level you choose.",
                 "You pass with a 70% score."
@@ -40,27 +40,27 @@ const data_en = {
         },
         {
             question: "Does the ISTQB certification have international validity?",
-            instructions: [
+            answer: [
                 "Yes, it is recognized in over 100 countries.",
                 "It is used as a standard in many technology companies."
             ]
         },
         {
             question: "How much does it cost to obtain the certification?",
-            instructions: [
+            answer: [
                 "Foundation: between 150 and 250 USD.",
                 "The advanced levels are more expensive."
             ]
         },
         {
             question: "Does the certification expire or do I need to renew it?",
-            instructions: [
+            answer: [
                 "It does not expire, once obtained, it is valid permanently."
             ]
         },
         {
             question: "What benefits does it provide for my professional career?",
-            instructions: [
+            answer: [
                 "Improves employability and credibility.",
                 "Increases promotion opportunities.",
                 "Strengthens knowledge and best practices in testing.",
@@ -69,14 +69,14 @@ const data_en = {
         },
         {
             question: "Are you an authorized center to administer the ISTQB exam?",
-            instructions: [
+            answer: [
                 "Yes, we have official accreditation.",
                 "We provide preparation courses and manage exam access in coordination with local boards."
             ]
         },
         {
             question: "Does the cost they offer include the official exam or just the preparation?",
-            instructions: [
+            answer: [
                 "We offer both options:",
                 "Complete package (course + official exam).",
                 "Just the course."
@@ -84,7 +84,7 @@ const data_en = {
         },
         {
             question: "What study modalities do you offer: in-person, virtual or hybrid?",
-            instructions: [
+            answer: [
                 "Live online courses.",
                 "Recorded for self-study.",
                 "In-person at our locations."
@@ -92,14 +92,14 @@ const data_en = {
         },
         {
             question: "Do you provide any additional certificates besides the official ISTQB certificate?",
-            instructions: [
+            answer: [
                 "Yes, we issue a participation certificate from our organization.", 
                 "In addition to the official ISTQB certificate upon passing the exam."
             ]
         },
         {
             question: "What payment options do you offer for enrollment?",
-            instructions: [
+            answer: [
                 "We accept payments by credit card.",
                 "Bank transfers.",
                 "Financing plans in installments."

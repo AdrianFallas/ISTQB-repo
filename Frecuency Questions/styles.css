@@ -169,7 +169,7 @@ button:active {
       background-color: dodgerblue;
 
     }
-  }
+    }
 
 .btn-dark-mode {
     width: 30px;
@@ -195,6 +195,64 @@ button:active {
     cursor: pointer;
     text-align: center;
 }
+
+.dropdown-card {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.card-header {
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #f8f9fa;
+  user-select: none;
+  min-height: 60px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.card-header:hover {
+  background: #e9ecef;
+}
+
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+}
+
+.dropdown-card.open .dropdown-content {
+  max-height: 500px; /* Suficiente para texto largo */
+}
+
+.dropdown-item {
+  padding: 24px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.answer {
+  margin: 0;
+  font-weight: 500;
+  color: #333;
+  white-space: pre-line;  /* ✅ CLAVE: Mantiene saltos de línea */
+  line-height: 1.7;       /* Espaciado perfecto */
+  font-size: 16px;
+  word-wrap: break-word;  /* Rompe palabras largas */
+}
+
+
 
 /* Media Queries para Responsividad */
 @media (max-width: 738px) {

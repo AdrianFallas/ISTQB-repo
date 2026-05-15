@@ -95,76 +95,102 @@ class QuizApp {
       .trim();
   }
 
+  // ✅ CAMBIO PRINCIPAL: Renderiza TODAS las preguntas
   loadLanguageData() {
     if (!window.quizData) {
       console.error('Datos de traducción no disponibles.');
       return;
     }
     this.questions = window.quizData.questions;
-    this.renderQuestion();
+
+    // ✅ RENDERIZA TODAS las preguntas en lugar de una sola
+    this.renderAllQuestions();
+
     this.updateNextButtonText();
     this.nextBtn.style.display = 'inline-block';
   }
 
-  renderQuestion() {
-    const q = this.questions[this.currentQuestionIndex];
-    this.questionsContainer.innerHTML = '';
+  // ✅ MÉTODO NUEVO: Renderiza todas las preguntas como dropdowns
+  renderAllQuestions() {
+    this.questionsContainer.innerHTML = ''; // Limpia contenedor
 
-    // Título
-    const questionTitle = document.createElement('h2');
-    const questionDiv = document.createElement('div');
-    questionTitle.textContent = q.question;
-    this.questionsContainer.appendChild(questionTitle);
-    this.questionsContainer.appendChild(questionDiv);
-    
-    // Opciones
-    const optionsDiv = document.createElement('div');
-    optionsDiv.classList.add('instructions');
+    // ✅ Crea un dropdown para CADA pregunta
+    this.questions.forEach((question, index) => {
+      const dropdownCard = this.createQuestionDropdown(question, index);
+      this.questionsContainer.appendChild(dropdownCard);
+    });
+  }
 
-    q.instructions.forEach((option) => {
-      const optionElement = this.createOption(
-        option,
-      );
-      optionsDiv.appendChild(optionElement);
+  // ✅ Método actualizado: Agrega índice para referencia
+  createQuestionDropdown(question, index) {
+    const dropdownCard = document.createElement('div');
+    dropdownCard.className = 'dropdown-card';
+    dropdownCard.tabIndex = 0;
+    dropdownCard.setAttribute('aria-expanded', 'false');
+    dropdownCard.setAttribute('aria-label', `Pregunta ${index + 1}: ${question.question}`);
+    console.log('Pregunta:', question.answer);
+    // ✅ DESPUÉS (funciona con null/undefined)
+    const formattedAnswer = (question.answer || 'Respuesta no disponible')
+      .toString()  // Convierte a string PRIMERO
+      .replace(/\n/g, '<br>');
+    console.log('Pregunta:', question.question);
+    console.log('Respuesta formateada:', formattedAnswer);
+
+    dropdownCard.innerHTML = `
+      <div class="card card-header" onclick="quizApp.toggleDropdown(this.parentElement)">
+        <div>
+          <h3>${question.question}</h3>
+        </div>
+        <span class="arrow">▸</span>
+      </div>
+      <div class="dropdown-content">
+        <div class="dropdown-item">
+          <p class="answer">${formattedAnswer}</p>
+        </div>
+      </div>
+    `;
+
+    return dropdownCard;
+  }
+
+  //Toggle del dropdown (ahora es método de la clase)
+  toggleDropdown(dropdownElem) {
+    const isOpen = dropdownElem.classList.contains('open');
+
+    // Cierra otros dropdowns
+    document.querySelectorAll('.dropdown-card.open').forEach(openDropdown => {
+      if (openDropdown !== dropdownElem) {
+        openDropdown.classList.remove('open');
+        openDropdown.setAttribute('aria-expanded', 'false');
+        openDropdown.querySelector('.arrow').innerText = '▸';
+      }
     });
 
-    this.questionsContainer.appendChild(optionsDiv);
-  }
-
-  createOption(labelText) {
-    const wrapper = document.createElement('div');
-    wrapper.style.display = 'flex';
-    wrapper.style.alignItems = 'center';
-    wrapper.style.gap = '8px';
-    wrapper.style.marginBottom = '16px';
-
-    const label = document.createElement('label');
-    label.textContent = ` ${labelText}`;
-    label.style.margin = '0';
-    label.style.display = 'flex';
-    label.style.alignItems = 'center';
-
-    wrapper.appendChild(label);
-
-    return wrapper;
+    // Toggle actual
+    if (isOpen) {
+      dropdownElem.classList.remove('open');
+      dropdownElem.setAttribute('aria-expanded', 'false');
+      dropdownElem.querySelector('.arrow').innerText = '▸';
+    } else {
+      dropdownElem.classList.add('open');
+      dropdownElem.setAttribute('aria-expanded', 'true');
+      dropdownElem.querySelector('.arrow').innerText = '▾';
+    }
   }
 
 
- updateNextButtonText() {
-    this.nextBtn.textContent = (this.currentQuestionIndex === this.questions.length - 1)
-      ? this.translations.home
-      : this.translations.next;
+
+  updateNextButtonText() {
+    this.nextBtn.textContent = this.translations.home
   }
 
   nextFrecuencyQuestion() {
-    this.currentQuestionIndex++;
-    if (this.currentQuestionIndex < this.questions.length) {
-      this.renderQuestion();
-      this.updateNextButtonText();
-      }else {
-        this.irAInicio();
-      }
+ 
+      this.irAInicio();
+
   }
+
+
 
   addEventListeners() {
     this.nextBtn.addEventListener('click', () => {
@@ -184,9 +210,31 @@ class QuizApp {
 
 }
 
+// Event Listeners globales (fuera de la clase)
+window.addEventListener('click', (event) => {
+  document.querySelectorAll('.dropdown-card.open').forEach(dropdown => {
+    if (!dropdown.contains(event.target)) {
+      dropdown.classList.remove('open');
+      dropdown.setAttribute('aria-expanded', 'false');
+      dropdown.querySelector('.arrow').innerText = '▸';
+    }
+  });
+});
 
-// Inicialización al cargar el DOM
+// Accesibilidad (Enter/Space)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    const dropdown = e.target.closest('.dropdown-card');
+    if (dropdown) {
+      e.preventDefault();
+      quizApp.toggleDropdown(dropdown);
+    }
+  }
+});
+
+
+// Inicialización
 document.addEventListener('DOMContentLoaded', () => {
-  const quizApp = new QuizApp();
+  window.quizApp = new QuizApp();
   quizApp.init();
 });
