@@ -11,6 +11,7 @@ class QuizApp {
     this.timer = null;
     this.recognition = null;
     this.hasRequestedMicPermission = false;
+    this.answeredQuestions = new Set();
     
 
     // DOM Elements
@@ -293,7 +294,25 @@ class QuizApp {
     if (this.recognition) this.recognition.stop();
   }
 
+  ramdomizeQuestions() {
+    const questionable = false;
+    const constrandomizeQuestions = 0;
+    while (!this.questionable && this.answeredQuestions.size < 40) {
+    this.constrandomizeQuestions = Math.floor(Math.random() * this.questions.length);
+    if (!this.answeredQuestions.has(this.constrandomizeQuestions)) {
+      this.questionable = true;
+      this.answeredQuestions.add(this.constrandomizeQuestions);
+    }
+    }
+    this.questionable = false;
+
+    return this.constrandomizeQuestions;
+
+  }
+
   renderQuestion() {
+
+    this.currentQuestionIndex = this.ramdomizeQuestions();
     const q = this.questions[this.currentQuestionIndex];
     this.questionsContainer.innerHTML = '';
 
@@ -427,8 +446,7 @@ class QuizApp {
       }
     }
 
-    this.currentQuestionIndex++;
-    if (this.currentQuestionIndex < this.questions.length) {
+    if (this.answeredQuestions.size < 40) {
       this.renderQuestion();
       this.updateNextButtonText();
       this.setFeedback(this.modoVozActivo ? (this.translations.listeningFeedback || 'Escuchando... por favor responde con el número o texto de la opción.') : '');
@@ -527,6 +545,7 @@ class QuizApp {
     this.currentQuestionIndex = 0;
     this.startTimer();
     this.updateTimerDisplay();
+    this.answeredQuestions.clear();
     this.renderQuestion();
     this.updateNextButtonText();
     this.modoVozActivo = false;

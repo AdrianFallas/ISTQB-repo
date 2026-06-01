@@ -30,7 +30,7 @@ class QuizApp {
     this.addEventListeners();
     this.loadLanguageData();
     this.asignarTraducciones();
-    this.questionsNameEl.textContent = this.translations.instructions || 'Dificultad';
+    this.questionsNameEl.textContent = this.translations.difficulty || 'Dificultad';
     const theme = localStorage.getItem('theme') || 'light';
     if (theme === 'dark') {
       document.body.classList.add('dark-mode');

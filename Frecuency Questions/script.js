@@ -238,3 +238,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.quizApp = new QuizApp();
   quizApp.init();
 });
+
+ function darkMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  const theme = element.classList.contains("dark-mode") ? "dark" : "light";
+  localStorage.setItem('theme', theme);
+}

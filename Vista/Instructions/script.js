@@ -11,16 +11,23 @@ class QuizApp {
     this.questionsContainer = document.getElementById('questions-container');
     this.nextBtn = document.getElementById('next-btn');
     const params = new URLSearchParams(window.location.search);
-    const idioma = params.get('lang') || localStorage.getItem('idioma') || 'es'; // Prioriza URL, luego localStorage, luego 'es'
-    this.languageSelector = idioma;
     this.quizType = params.get('name') || 'Instructions';  // Tipo de quiz (ej. 'Instructions' o 'performance/example1')
     this.homeSpan = document.getElementById('home');
     this.btnHome = document.getElementById('btn-home');
+
+    this.languageSelector = localStorage.getItem('idioma') || 'es'; // Obtiene el idioma seleccionado del localStorage o usa 'es' por defecto
+    this.questionTitle = document.createElement('h2');
+    this.questionDiv = document.createElement('div');
+    this.optionsDiv = document.createElement('div');
+
+
+
   }
+
 
   async init() {
     await this.loadUniversalTranslations();  // Carga traducciones universales para botnes y mensajes generales
-    await this.loadTranslationScript();  // Carga dinámica del script de traducciones
+    await this.loadTranslationScript(this.languageSelector);  // Carga dinámica del script de traducciones
     this.createDynamicElements();
     this.addEventListeners();
     this.loadLanguageData();
@@ -30,7 +37,7 @@ class QuizApp {
     if (theme === 'dark') {
       document.body.classList.add('dark-mode');
     }
-  
+
   }
 
   asignarTraducciones() {
@@ -61,14 +68,14 @@ class QuizApp {
   }
 
   // Carga dinámica del archivo de traducciones
-  async loadTranslationScript() {
-    const scriptPath = `./traducciones/script.${this.languageSelector}.js`;  // Ej. '../traducciones/script.es.js'
+  async loadTranslationScript(language) {
+    const scriptPath = `./traducciones/script.${language}.js`;  // Ej. '../traducciones/script.es.js'
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src = scriptPath;
       script.onload = () => {
         // Verifica y mapea la variable global existente (ej. data_es) a window.quizData
-        const globalVarName = `data_${this.languageSelector}`;  // ej. 'data_es'
+        const globalVarName = `data_${language}`;  // ej. 'data_es'
         if (window[globalVarName]) {
           window.quizData = window[globalVarName];  // Asigna data_es a window.quizData
           resolve();
@@ -114,27 +121,24 @@ class QuizApp {
     this.questionsContainer.innerHTML = '';
 
     // Título
-    const questionTitle = document.createElement('h2');
-    const questionDiv = document.createElement('div');
-    questionTitle.textContent = q.question;
-    this.questionsContainer.appendChild(questionTitle);
-    this.questionsContainer.appendChild(questionDiv);
-    
+    this.questionTitle.textContent = q.question;
+    this.questionsContainer.appendChild(this.questionTitle);
+    this.questionsContainer.appendChild(this.questionDiv);
+
     // Opciones
-    const optionsDiv = document.createElement('div');
-    optionsDiv.classList.add('instructions');
+    this.optionsDiv.classList.add('instructions');
 
     q.instructions.forEach((option, i) => {
       const optionElement = this.createOption(i,
         option,
       );
-      optionsDiv.appendChild(optionElement);
+      this.optionsDiv.appendChild(optionElement);
     });
 
-    this.questionsContainer.appendChild(optionsDiv);
+    this.questionsContainer.appendChild(this.optionsDiv);
   }
 
-  createOption(numeroInstructions,labelText) {
+  createOption(numeroInstructions, labelText) {
     const wrapper = document.createElement('div');
     wrapper.style.display = 'flex';
     wrapper.style.alignItems = 'center';
@@ -180,7 +184,7 @@ class QuizApp {
 
 }
 
- function darkMode() {
+function darkMode() {
   var element = document.body;
   element.classList.toggle("dark-mode");
   const theme = element.classList.contains("dark-mode") ? "dark" : "light";
@@ -192,4 +196,21 @@ class QuizApp {
 document.addEventListener('DOMContentLoaded', () => {
   const quizApp = new QuizApp();
   quizApp.init();
+});
+
+
+const languaje = document.getElementById('language');
+const buttons = document.querySelectorAll('options');
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const selectedLanguage = button.getAttribute('languaje');
+    localStorage.setItem('idioma', selectedLanguage);
+    questionTitle.textContent = loadTranslationScript(selectedLanguage).then(() => {
+      questionTitle.textContent = window.quizData.questions[0].question;
+    });
+    
+  });
+
+  window.location.reload();
+  console.log('Página recargada con el nuevo idioma.');
 });
